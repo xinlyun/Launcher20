@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-de/strings.xml -->
+    <eat-comment/>
+    <string msgid="8803738611398979849" name="accessibility_all_apps_button">"Apps"</string>
+    <string msgid="3628162007991023603" name="accessibility_delete_button">"Entfernen"</string>
+    <string msgid="816822994629942611" name="accessibility_search_button">"Suchen"</string>
+    <string msgid="3938249215065842475" name="accessibility_voice_search_button">"Sprachsuche"</string>
+    <string msgid="217823393239365967" name="activity_not_found">"App ist nicht installiert."</string>
+    <string msgid="2578400570124163469" name="all_apps_button_label">"Apps"</string>
+    <string msgid="5665035103260318891" name="all_apps_cling_add_item">"Berühren und halten Sie eine App, um sie zum Startbildschirm hinzuzufügen."</string>
+    <string msgid="2559734712581447107" name="all_apps_cling_title">"Apps auswählen"</string>
+    <string msgid="1022222300329398558" name="all_apps_home_button_label">"Startseite"</string>
+    <string msgid="8424725141379931883" name="application_name">"Übersicht"</string>
+    <string msgid="5494241912377704885" name="apps_customize_apps_scroll_format">"App-Seite %1$d von %2$d"</string>
+    <string msgid="5383009742241717437" name="apps_customize_widgets_scroll_format">"Widget-Seite %1$d von %2$d"</string>
+    <string msgid="6378522164293415735" name="cab_app_selection_text">"1 App ausgewählt"</string>
+    <string msgid="8916111874189565067" name="cab_folder_selection_text">"1 Ordner ausgewählt"</string>
+    <string msgid="914548323652698884" name="cab_menu_app_info">"App-Details"</string>
+    <string msgid="4089398025537640349" name="cab_menu_delete_app">"App deinstallieren"</string>
+    <string msgid="8115847384500412878" name="cab_shortcut_selection_text">"1 Verknüpfung ausgewählt"</string>
+    <string msgid="962527270506951955" name="cab_widget_selection_text">"1 Widget ausgewählt"</string>
+    <string msgid="3811860427489435048" name="cancel_action">"Abbrechen"</string>
+    <string msgid="6063168087625352235" name="chooser_wallpaper">"Hintergrund auswählen"</string>
+    <string msgid="2780907108735868381" name="cling_dismiss">"OK"</string>
+    <string msgid="1759078539443491182" name="completely_out_of_space">"Auf Ihrem Startbildschirm ist kein Platz mehr vorhanden."</string>
+    <string msgid="6875529190849858047" name="custom_workspace_cling_description_1"/>
+    <string msgid="2758258454975288377" name="custom_workspace_cling_description_2"/>
+    <string msgid="1433009175359948587" name="custom_workspace_cling_title_1"/>
+    <string msgid="5516006164661020362" name="custom_workspace_cling_title_2"/>
+    <string msgid="4057140866420001240" name="default_scroll_format">"Seite %1$d von %2$d"</string>
+    <string msgid="665300185123139530" name="delete_target_label">"Entfernen"</string>
+    <string msgid="748894921183769150" name="delete_target_uninstall_label">"Deinstallieren"</string>
+    <string msgid="6664588234817475108" name="delete_zone_label_all_apps">"Deinstallieren"</string>
+    <string msgid="3683920959591819044" name="delete_zone_label_all_apps_system_app">"Update deinstallieren"</string>
+    <string msgid="7153615831493049150" name="delete_zone_label_workspace">"Entfernen"</string>
+    <string msgid="2847171357608437154" name="dream_name">"Raketenstartgerät"</string>
+    <string msgid="2285187188524172774" name="external_drop_widget_error">"Element wurde nicht auf Startbildschirm abgelegt."</string>
+    <string msgid="7040647073452295370" name="external_drop_widget_pick_title">"Widget zum Erstellen auswählen"</string>
+    <string msgid="8352867485656129478" name="folder_cling_create_folder">"Stapeln Sie Apps übereinander, um einen neuen Ordner auf Ihrem Startbildschirm zu erstellen."</string>
+    <string msgid="270598675060435169" name="folder_cling_move_item">"Berühren und halten Sie eine App, um sie zu verschieben."</string>
+    <string msgid="4308949882377840953" name="folder_cling_title">"Apps mit Ordnern organisieren"</string>
+    <string msgid="3130534551370511932" name="folder_closed">"Ordner wurde geschlossen"</string>
+    <string msgid="8633351560105748141" name="folder_hint_text">"Unbenannter Ordner"</string>
+    <string msgid="8551881338202938211" name="folder_name"/>
+    <string msgid="3051680259794759037" name="folder_name_format">"Ordner: <ns1:g id="NAME">%1$s</ns1:g>"</string>
+    <string msgid="1262064100943801533" name="folder_opened">"Ordner geöffnet, <ns1:g id="WIDTH">%1$d</ns1:g> x <ns1:g id="HEIGHT">%2$d</ns1:g>"</string>
+    <string msgid="7951233572858053642" name="folder_renamed">"Ordner umbenannt in <ns1:g id="NAME">%1$s</ns1:g>"</string>
+    <string msgid="1335478160661137579" name="folder_tap_to_close">"Ordner durch Berühren schließen"</string>
+    <string msgid="5201612989905472442" name="folder_tap_to_rename">"Umbenennung durch Berühren speichern"</string>
+    <string msgid="8359351016167075858" name="gadget_error_text">"Fehler beim Laden des Widgets"</string>
+    <string msgid="2103752818818161976" name="group_applications">"Apps"</string>
+    <string msgid="9133529424900391877" name="group_shortcuts">"Verknüpfungen"</string>
+    <string msgid="1568191644272224858" name="group_wallpapers">"Hintergründe"</string>
+    <string msgid="6704978494073105844" name="group_widgets">"Widgets"</string>
+    <string msgid="5921706419368316758" name="home">"Startbildschirm"</string>
+    <string msgid="6304886797358479361" name="hotseat_out_of_space">"Kein Platz mehr auf der App-Leiste"</string>
+    <string msgid="4019495079517426980" name="info_target_label">"App-Info"</string>
+    <string msgid="6545340627805449250" name="invalid_hotseat_item">"Dieses Widget ist zu groß für die App-Leiste."</string>
+    <string msgid="7395697462851217506" name="long_press_widget_to_add">"Zum Hinzufügen Widget berühren und halten"</string>
+    <string msgid="2652226429823445833" name="market">"Shop"</string>
+    <string msgid="3065046628354640854" name="menu_add">"Hinzufügen"</string>
+    <string msgid="4901160661634590633" name="menu_help">"Hilfe"</string>
+    <string msgid="6233177331075781114" name="menu_item_add_item">"Zum Startbildschirm hinzufügen"</string>
+    <string msgid="2308685199463588895" name="menu_manage_apps">"Apps verwalten"</string>
+    <string msgid="6424587053194766192" name="menu_notifications">"Benachrichtigungen"</string>
+    <string msgid="4826514464423239041" name="menu_search">"Suchen"</string>
+    <string msgid="3946232973327980394" name="menu_settings">"Systemeinstellungen"</string>
+    <string msgid="5837429080911269832" name="menu_wallpaper">"Hintergrund"</string>
+    <string msgid="8365249326091984698" name="out_of_space">"Auf dem Startbildschirm ist kein Platz mehr vorhanden."</string>
+    <string msgid="8634424803272077038" name="permdesc_install_shortcut">"Ermöglicht einer App das Hinzufügen von Verknüpfungen ohne Eingriff des Nutzers"</string>
+    <string msgid="5788109303585403679" name="permdesc_read_settings">"Ermöglicht einer App, die Einstellungen und Verknüpfungen auf dem Startbildschirm zu lesen"</string>
+    <string msgid="274355570620220977" name="permdesc_uninstall_shortcut">"Ermöglicht einer App das Entfernen von Verknüpfungen ohne Eingriff des Nutzers"</string>
+    <string msgid="8530105489115785531" name="permdesc_write_settings">"Ermöglicht einer App, die Einstellungen und Verknüpfungen auf dem Startbildschirm zu ändern"</string>
+    <string msgid="1201690825493376489" name="permlab_install_shortcut">"Verknüpfungen installieren"</string>
+    <string msgid="3452408290738106747" name="permlab_read_settings">"Einstellungen und Shortcuts für Startseite lesen"</string>
+    <string msgid="7696645932555926449" name="permlab_uninstall_shortcut">"Verknüpfungen deinstallieren"</string>
+    <string msgid="1360567537236705628" name="permlab_write_settings">"Einstellungen und Shortcuts für Startseite schreiben"</string>
+    <string msgid="5630222540525626723" name="pick_wallpaper">"Hintergrund-Bilder"</string>
+    <string msgid="6016003384693240896" name="rename_action">"OK"</string>
+    <string msgid="5646236631298452787" name="rename_folder_label">"Ordnername"</string>
+    <string msgid="4544573104191526550" name="rename_folder_title">"Ordner umbenennen"</string>
+    <string msgid="4757756326465060694" name="shortcut_duplicate">"\"<ns1:g id="NAME">%s</ns1:g>\"-Verknüpfung ist bereits vorhanden."</string>
+    <string msgid="7071557296331322355" name="shortcut_installed">"\"<ns1:g id="NAME">%s</ns1:g>\"-Verknüpfung wurde erstellt."</string>
+    <string msgid="2129499669449749995" name="shortcut_uninstalled">"\"<ns1:g id="NAME">%s</ns1:g>\"-Verknüpfung wurde entfernt."</string>
+    <string msgid="1793455815754848652" name="title_select_application">"App wählen"</string>
+    <string msgid="1873670208166882222" name="title_select_shortcut">"Verknüpfung auswählen"</string>
+    <string msgid="3371120195364560632" name="uid_name">"Android Core Apps"</string>
+    <string msgid="6429814133777046491" name="uninstall_system_app_text">"Dies ist eine Systemanwendung, die nicht deinstalliert werden kann."</string>
+    <string msgid="4215640646180727542" name="wallpaper_instructions">"Hintergrund festlegen"</string>
+    <string msgid="1386418557719032947" name="widget_dims_format">"%1$d × %2$d"</string>
+    <string msgid="9145860100000983599" name="widgets_tab_label">"Widgets"</string>
+    <string msgid="791013895761065070" name="workspace_cling_move_item">"Hier können Sie Ihre Lieblings-Apps ablegen."</string>
+    <string msgid="2459977609848572588" name="workspace_cling_open_all_apps">"Berühren Sie den Kreis für eine Übersicht aller Apps."</string>
+    <string msgid="738396473989890567" name="workspace_cling_title">"Fühlen Sie sich wie zu Hause"</string>
+    <string msgid="2968608205939373034" name="workspace_description_format">"Startbildschirm %1$d"</string>
+    <string msgid="1704767047951143301" name="workspace_scroll_format">"Startbildschirm %1$d von %2$d"</string>
+</resources>

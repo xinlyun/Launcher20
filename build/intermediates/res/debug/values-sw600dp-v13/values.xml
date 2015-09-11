@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-sw600dp/config.xml -->
+    <eat-comment/>
+    <bool name="allow_rotation">true</bool>
+    <bool name="config_useCustomClings">true</bool>
+    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-sw600dp/dimens.xml -->
+    <eat-comment/>
+    <dimen name="app_icon_drawable_padding">3dp</dimen>
+    <dimen name="app_icon_padding_top">4dp</dimen>
+    <dimen name="app_icon_size">64dp</dimen>
+    <dimen name="app_widget_preview_label_margin_left">@dimen/app_widget_preview_padding_left</dimen>
+    <dimen name="app_widget_preview_label_margin_right">@dimen/app_widget_preview_padding_right</dimen>
+    <dimen name="app_widget_preview_label_margin_top">8dp</dimen>
+    <dimen name="apps_customize_cell_height">96dp</dimen>
+    <dimen name="apps_customize_cell_width">96dp</dimen>
+    <dimen name="apps_customize_pageLayoutPaddingLeft">12dp</dimen>
+    <dimen name="apps_customize_pageLayoutPaddingRight">12dp</dimen>
+    <dimen name="apps_customize_tab_bar_height">60dp</dimen>
+    <dimen name="apps_customize_tab_bar_margin_top">8dp</dimen>
+    <dimen name="apps_customize_widget_cell_height_gap">24dp</dimen>
+    <dimen name="apps_customize_widget_cell_width_gap">20dp</dimen>
+    <dimen name="button_bar_height">94dip</dimen>
+    <dimen name="button_bar_height_bottom_padding">14dp</dimen>
+    <dimen name="button_bar_height_plus_padding">104dp</dimen>
+    <dimen name="button_bar_height_top_padding">20dp</dimen>
+    <dimen name="button_bar_width_left_padding">25dp</dimen>
+    <dimen name="button_bar_width_right_padding">25dp</dimen>
+    <dimen name="cell_layout_left_padding_port">12dp</dimen>
+    <dimen name="cell_layout_right_padding_port">12dp</dimen>
+    <dimen name="folder_cell_height">90dp</dimen>
+    <dimen name="folder_cell_width">86dp</dimen>
+    <dimen name="folder_height_gap">3dp</dimen>
+    <dimen name="folder_padding">6dp</dimen>
+    <dimen name="folder_preview_size">68dp</dimen>
+    <dimen name="folder_width_gap">3dp</dimen>
+    <dimen name="hotseat_cell_height">70dp</dimen>
+    <dimen name="hotseat_cell_width">70dp</dimen>
+    <dimen name="hotseat_height_gap">-1dp</dimen>
+    <dimen name="hotseat_width_gap">-1dp</dimen>
+    <dimen name="qsb_bar_height">48dp</dimen>
+    <dimen name="qsb_bar_height_inset">34dp</dimen>
+    <dimen name="qsb_padding_left">16dp</dimen>
+    <dimen name="qsb_padding_right">16dp</dimen>
+    <dimen name="reveal_radius">64dp</dimen>
+    <dimen name="search_bar_height">48dp</dimen>
+    <dimen name="workspace_cell_height_land">88dp</dimen>
+    <dimen name="workspace_cell_height_port">96dp</dimen>
+    <dimen name="workspace_cell_width_land">88dp</dimen>
+    <dimen name="workspace_cell_width_port">96dp</dimen>
+    <dimen name="workspace_divider_padding_left">19dp</dimen>
+    <dimen name="workspace_divider_padding_right">19dp</dimen>
+    <dimen name="workspace_height_gap_land">0dp</dimen>
+    <dimen name="workspace_height_gap_port">24dp</dimen>
+    <dimen name="workspace_width_gap_land">32dp</dimen>
+    <dimen name="workspace_width_gap_port">0dp</dimen>
+    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-sw600dp/config.xml -->
+    <eat-comment/>
+    <integer name="cell_count_x">6</integer>
+    <integer name="cell_count_y">6</integer>
+    <integer name="config_cameraDistance">14000</integer>
+    <integer name="config_flingToDeleteMinVelocity">-1000</integer>
+    <integer name="folder_max_count_x">6</integer>
+    <integer name="folder_max_count_y">6</integer>
+    <integer name="folder_max_num_items">36</integer>
+    <integer name="hotseat_all_apps_index">3</integer>
+    <integer name="hotseat_cell_count">7</integer>
+    <integer name="hotseat_item_scale_percentage">80</integer>
+    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-sw600dp/styles.xml -->
+    <eat-comment/>
+    <style name="ClingButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingStart">35dp</item>
+        <item name="android:paddingEnd">35dp</item>
+        <item name="android:text">@string/cling_dismiss</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/cling_button_bg</item>
+    </style>
+    <style name="ClingText">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">2.0</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
+    </style>
+    <style name="ClingTitleText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">#33B5E5</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">2.0</item>
+    </style>
+</resources>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-tl/strings.xml -->
+    <eat-comment/>
+    <string msgid="8803738611398979849" name="accessibility_all_apps_button">"Apps"</string>
+    <string msgid="3628162007991023603" name="accessibility_delete_button">"Alisin"</string>
+    <string msgid="816822994629942611" name="accessibility_search_button">"Maghanap"</string>
+    <string msgid="3938249215065842475" name="accessibility_voice_search_button">"Paghahanap gamit ang Boses"</string>
+    <string msgid="217823393239365967" name="activity_not_found">"Hindi naka-install ang app."</string>
+    <string msgid="2578400570124163469" name="all_apps_button_label">"Apps"</string>
+    <string msgid="5665035103260318891" name="all_apps_cling_add_item">"Upang magdagdag ng app sa iyong Home screen, pindutin ito nang matagal."</string>
+    <string msgid="2559734712581447107" name="all_apps_cling_title">"Pumili ng ilang apps"</string>
+    <string msgid="1022222300329398558" name="all_apps_home_button_label">"Home"</string>
+    <string msgid="8424725141379931883" name="application_name">"Launcher"</string>
+    <string msgid="5494241912377704885" name="apps_customize_apps_scroll_format">"Pahina ng apps %1$d ng %2$d"</string>
+    <string msgid="5383009742241717437" name="apps_customize_widgets_scroll_format">"Pahina ng widget %1$d ng %2$d"</string>
+    <string msgid="6378522164293415735" name="cab_app_selection_text">"1 app ang napili"</string>
+    <string msgid="8916111874189565067" name="cab_folder_selection_text">"1 folder ang napili"</string>
+    <string msgid="914548323652698884" name="cab_menu_app_info">"Mga detalye ng app"</string>
+    <string msgid="4089398025537640349" name="cab_menu_delete_app">"I-uninstall ang app"</string>
+    <string msgid="8115847384500412878" name="cab_shortcut_selection_text">"1 shortcut ang napili"</string>
+    <string msgid="962527270506951955" name="cab_widget_selection_text">"1 widget ang napili"</string>
+    <string msgid="3811860427489435048" name="cancel_action">"Kanselahin"</string>
+    <string msgid="6063168087625352235" name="chooser_wallpaper">"Pumili ng wallpaper mula sa"</string>
+    <string msgid="2780907108735868381" name="cling_dismiss">"OK"</string>
+    <string msgid="1759078539443491182" name="completely_out_of_space">"Wala nang puwang sa iyong mga Home screen."</string>
+    <string msgid="6875529190849858047" name="custom_workspace_cling_description_1"/>
+    <string msgid="2758258454975288377" name="custom_workspace_cling_description_2"/>
+    <string msgid="1433009175359948587" name="custom_workspace_cling_title_1"/>
+    <string msgid="5516006164661020362" name="custom_workspace_cling_title_2"/>
+    <string msgid="4057140866420001240" name="default_scroll_format">"Pahina %1$d ng %2$d"</string>
+    <string msgid="665300185123139530" name="delete_target_label">"Alisin"</string>
+    <string msgid="748894921183769150" name="delete_target_uninstall_label">"I-uninstall"</string>
+    <string msgid="6664588234817475108" name="delete_zone_label_all_apps">"I-uninstall"</string>
+    <string msgid="3683920959591819044" name="delete_zone_label_all_apps_system_app">"I-uninstall ang update"</string>
+    <string msgid="7153615831493049150" name="delete_zone_label_workspace">"Alisin"</string>
+    <string msgid="2847171357608437154" name="dream_name">"Rocket Launcher"</string>
+    <string msgid="2285187188524172774" name="external_drop_widget_error">"Hindi ma-drop ang item sa Home screen na ito."</string>
+    <string msgid="7040647073452295370" name="external_drop_widget_pick_title">"Pumili ng widget na lilikhain"</string>
+    <string msgid="8352867485656129478" name="folder_cling_create_folder">"Upang gumawa ng bagong folder sa iyong home screen, magpatong ng isang app sa ibabaw ng isa pa."</string>
+    <string msgid="270598675060435169" name="folder_cling_move_item">"Upang ilipat ang isang app, pindutin ito nang matagal."</string>
+    <string msgid="4308949882377840953" name="folder_cling_title">"Isaayos ang iyong apps gamit ang mga folder"</string>
+    <string msgid="3130534551370511932" name="folder_closed">"Nakasara ang folder"</string>
+    <string msgid="8633351560105748141" name="folder_hint_text">"Walang Pangalang Folder"</string>
+    <string msgid="8551881338202938211" name="folder_name"/>
+    <string msgid="3051680259794759037" name="folder_name_format">"Folder: <ns1:g id="NAME">%1$s</ns1:g>"</string>
+    <string msgid="1262064100943801533" name="folder_opened">"Binuksan ang folder, <ns1:g id="WIDTH">%1$d</ns1:g> by <ns1:g id="HEIGHT">%2$d</ns1:g>"</string>
+    <string msgid="7951233572858053642" name="folder_renamed">"Binago ang pangalan ng folder patungong <ns1:g id="NAME">%1$s</ns1:g>"</string>
+    <string msgid="1335478160661137579" name="folder_tap_to_close">"Pindutin upang isara ang folder"</string>
+    <string msgid="5201612989905472442" name="folder_tap_to_rename">"Pindutin upang i-save ang pagpapalit ng pangalan"</string>
+    <string msgid="8359351016167075858" name="gadget_error_text">"Problema sa pag-load ng widget"</string>
+    <string msgid="2103752818818161976" name="group_applications">"Apps"</string>
+    <string msgid="9133529424900391877" name="group_shortcuts">"Mga Shortcut"</string>
+    <string msgid="1568191644272224858" name="group_wallpapers">"Mga Wallpaper"</string>
+    <string msgid="6704978494073105844" name="group_widgets">"Mga Widget"</string>
+    <string msgid="5921706419368316758" name="home">"Home"</string>
+    <string msgid="6304886797358479361" name="hotseat_out_of_space">"Wala nang lugar sa hotseat."</string>
+    <string msgid="4019495079517426980" name="info_target_label">"Impormasyon ng app"</string>
+    <string msgid="6545340627805449250" name="invalid_hotseat_item">"Masyadong malaki ang widget na ito para sa hotseat."</string>
+    <string msgid="7395697462851217506" name="long_press_widget_to_add">"Pindutin nang matagal upang kumuha ng widget."</string>
+    <string msgid="2652226429823445833" name="market">"Mamili"</string>
+    <string msgid="3065046628354640854" name="menu_add">"Idagdag"</string>
+    <string msgid="4901160661634590633" name="menu_help">"Tulong"</string>
+    <string msgid="6233177331075781114" name="menu_item_add_item">"Idagdag sa Home screen"</string>
+    <string msgid="2308685199463588895" name="menu_manage_apps">"Pamahalaan ang apps"</string>
+    <string msgid="6424587053194766192" name="menu_notifications">"Mga Notification"</string>
+    <string msgid="4826514464423239041" name="menu_search">"Paghahanap"</string>
+    <string msgid="3946232973327980394" name="menu_settings">"Mga setting ng system"</string>
+    <string msgid="5837429080911269832" name="menu_wallpaper">"Wallpaper"</string>
+    <string msgid="8365249326091984698" name="out_of_space">"Wala nang lugar sa Home screen na ito."</string>
+    <string msgid="8634424803272077038" name="permdesc_install_shortcut">"Binibigyang-daan ang isang app na magdagdag ng mga shortcut nang walang panghihimasok ng user."</string>
+    <string msgid="5788109303585403679" name="permdesc_read_settings">"Binibigyang-daan ang app na basahin ang mga setting at shortcut sa Home."</string>
+    <string msgid="274355570620220977" name="permdesc_uninstall_shortcut">"Binibigyang-daan ang app na mag-alis ng mga shortcut nang walang panghihimasok ng user."</string>
+    <string msgid="8530105489115785531" name="permdesc_write_settings">"Binibigyang-daan ang app na baguhin ang mga setting at shortcut sa Home."</string>
+    <string msgid="1201690825493376489" name="permlab_install_shortcut">"i-install ang mga shortcut"</string>
+    <string msgid="3452408290738106747" name="permlab_read_settings">"basahin ang mga setting ng Home at shortcut"</string>
+    <string msgid="7696645932555926449" name="permlab_uninstall_shortcut">"huwag i-install ang mga shortcut"</string>
+    <string msgid="1360567537236705628" name="permlab_write_settings">"magsulat ng mga setting ng Home at mga shortcut"</string>
+    <string msgid="5630222540525626723" name="pick_wallpaper">"Mga Wallpaper"</string>
+    <string msgid="6016003384693240896" name="rename_action">"OK"</string>
+    <string msgid="5646236631298452787" name="rename_folder_label">"Pangalan ng folder"</string>
+    <string msgid="4544573104191526550" name="rename_folder_title">"Palitan ng pangalan ang folder"</string>
+    <string msgid="4757756326465060694" name="shortcut_duplicate">"Umiiral na ang shortcut na \"<ns1:g id="NAME">%s</ns1:g>\"."</string>
+    <string msgid="7071557296331322355" name="shortcut_installed">"Nalikha ang shortcut na \"<ns1:g id="NAME">%s</ns1:g>\"."</string>
+    <string msgid="2129499669449749995" name="shortcut_uninstalled">"Inalis ang shortcut na \"<ns1:g id="NAME">%s</ns1:g>\"."</string>
+    <string msgid="1793455815754848652" name="title_select_application">"Pumili ng app"</string>
+    <string msgid="1873670208166882222" name="title_select_shortcut">"Pumili ng shortcut"</string>
+    <string msgid="3371120195364560632" name="uid_name">"Android Core Apps"</string>
+    <string msgid="6429814133777046491" name="uninstall_system_app_text">"Isa itong app ng system at hindi maaaring i-uninstall."</string>
+    <string msgid="4215640646180727542" name="wallpaper_instructions">"Itakda ang wallpaper"</string>
+    <string msgid="1386418557719032947" name="widget_dims_format">"%1$d × %2$d"</string>
+    <string msgid="9145860100000983599" name="widgets_tab_label">"Mga Widget"</string>
+    <string msgid="791013895761065070" name="workspace_cling_move_item">"Maaari mong ilagay ang iyong mga paboritong app dito."</string>
+    <string msgid="2459977609848572588" name="workspace_cling_open_all_apps">"Upang tingnan ang lahat ng iyong apps, pindutin ang bilog."</string>
+    <string msgid="738396473989890567" name="workspace_cling_title">"Gawing komportable ang iyong sarili"</string>
+    <string msgid="2968608205939373034" name="workspace_description_format">"Home screen %1$d"</string>
+    <string msgid="1704767047951143301" name="workspace_scroll_format">"Home screen %1$d ng %2$d"</string>
+</resources>

@@ -1,0 +1,12 @@
+/home/xinlyun/Android_workspace/Launcher2/build/intermediates/classes/debug
+/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/Msc-6e192c8e87451aba998393deb8d9a9150d7439ae.jar
+/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/android-common_classes-ef7ee7d5c58ab5b9d998c718378fd1b8890128e4.jar
+/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/Android_Location_V1.3.3-593ddfbeeef0c959d529b4124839dbd326d2311a.jar
+/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/AMap_Services_V2.5.0-6b218ec8b0c07fab366fa526c41f0b8b2ea6046d.jar
+/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/Android_2DMapApi_V2.5.0-d1762f9fef1e4cb1d3398fb3dc9385ae2a13fa5b.jar
+/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/NavigationApi_1.2.0-ca4e1bb31902fa0b3cb066c13c43d87325bd6fb8.jar
+/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/Android_Map_V2.5.0-639ef2e391fc5569c5b90dfbf24e771485d34b09.jar
+/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/armeabi-v7a-aedd0bc2ed065fe9785d9642d2386e40c9bb1551.jar
+/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/armeabi-8d1f5566ff6d607be36f67b8f5568a7c05f7bc7d.jar
+/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/x86-37ce2431efd4ad574b7ffbfab3da61c9509620c5.jar
+/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/arm64-v8a-63456b8f1e78191e994910315d21bdbf61a9c7af.jar

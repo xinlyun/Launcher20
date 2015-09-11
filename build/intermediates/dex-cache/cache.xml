@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/xinlyun/Android_workspace/Launcher2/libs/AMap_Services_V2.5.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e84628aa8eea7b9892768f19c41dbe02abc7f666">
+        <dex dex="/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/AMap_Services_V2.5.0-6b218ec8b0c07fab366fa526c41f0b8b2ea6046d.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/Android_workspace/Launcher2/libs/arm64-v8a.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ef0679c56319922651364607b2421688bf36023f">
+        <dex dex="/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/arm64-v8a-63456b8f1e78191e994910315d21bdbf61a9c7af.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/Android_workspace/Launcher2/libs/Android_Map_V2.5.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e9c091d42e926071305011fc4daeb2404c443a5f">
+        <dex dex="/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/Android_Map_V2.5.0-639ef2e391fc5569c5b90dfbf24e771485d34b09.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/Android_workspace/Launcher2/libs/armeabi-v7a.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="585964b7868249f4daf882883b6a32ed079ba133">
+        <dex dex="/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/armeabi-v7a-aedd0bc2ed065fe9785d9642d2386e40c9bb1551.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/Android_workspace/Launcher2/libs/Android_Location_V1.3.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="71e7604372d8a66689ff8df047e9a748e19a5169">
+        <dex dex="/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/Android_Location_V1.3.3-593ddfbeeef0c959d529b4124839dbd326d2311a.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/Android_workspace/Launcher2/libs/NavigationApi_1.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6e00244e4c28d923faedd5892327dbac0099a9fe">
+        <dex dex="/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/NavigationApi_1.2.0-ca4e1bb31902fa0b3cb066c13c43d87325bd6fb8.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/Android_workspace/Launcher2/libs/x86.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="67625f639abb17e14e557f2c7a541b556b324d8c">
+        <dex dex="/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/x86-37ce2431efd4ad574b7ffbfab3da61c9509620c5.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/Android_workspace/Launcher2/libs/android-common_classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9592830037dbf81ebc866250b8f1461aa27387a4">
+        <dex dex="/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/android-common_classes-ef7ee7d5c58ab5b9d998c718378fd1b8890128e4.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/Android_workspace/Launcher2/libs/armeabi.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3e074ac4d628e72e5d3072c79bb3d69d3ed698e7">
+        <dex dex="/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/armeabi-8d1f5566ff6d607be36f67b8f5568a7c05f7bc7d.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/Android_workspace/Launcher2/libs/Msc.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="14e02a95fa56eb18b385a4f156b4fb14d4721df4">
+        <dex dex="/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/Msc-6e192c8e87451aba998393deb8d9a9150d7439ae.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/Android_workspace/Launcher2/libs/Android_2DMapApi_V2.5.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c111d9a441220cc379a91401de8888087e70fafc">
+        <dex dex="/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/Android_2DMapApi_V2.5.0-d1762f9fef1e4cb1d3398fb3dc9385ae2a13fa5b.jar" />
+    </item>
+
+</items>

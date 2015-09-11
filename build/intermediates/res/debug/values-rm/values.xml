@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-rm/strings.xml -->
+    <eat-comment/>
+    <string msgid="1022222300329398558" name="all_apps_home_button_label">"Pagina da partenza"</string>
+    <string msgid="8424725141379931883" name="application_name">"Lantschader"</string>
+    <string msgid="3811860427489435048" name="cancel_action">"Interrumper"</string>
+    <string msgid="6875529190849858047" name="custom_workspace_cling_description_1"/>
+    <string msgid="2758258454975288377" name="custom_workspace_cling_description_2"/>
+    <string msgid="1433009175359948587" name="custom_workspace_cling_title_1"/>
+    <string msgid="5516006164661020362" name="custom_workspace_cling_title_2"/>
+    <string msgid="8551881338202938211" name="folder_name"/>
+    <string msgid="8359351016167075858" name="gadget_error_text">"Problems cun chargiar il widget"</string>
+    <string msgid="9133529424900391877" name="group_shortcuts">"Scursanidas"</string>
+    <string msgid="1568191644272224858" name="group_wallpapers">"Funds davos"</string>
+    <string msgid="6704978494073105844" name="group_widgets">"Widgets"</string>
+    <string msgid="3065046628354640854" name="menu_add">"Agiuntar"</string>
+    <string msgid="6233177331075781114" name="menu_item_add_item">"Agiuntar al visur da partenza"</string>
+    <string msgid="6424587053194766192" name="menu_notifications">"Avis"</string>
+    <string msgid="4826514464423239041" name="menu_search">"Tschertgar"</string>
+    <string msgid="5837429080911269832" name="menu_wallpaper">"Fund davos"</string>
+    <string msgid="8365249326091984698" name="out_of_space">"Nagin spazi liber sin il visur da partenza."</string>
+    <string msgid="1201690825493376489" name="permlab_install_shortcut">"Installar scursanidas"</string>
+    <string msgid="3452408290738106747" name="permlab_read_settings">"Leger ils parameters e las scursanidas da la pagina da partenza"</string>
+    <string msgid="7696645932555926449" name="permlab_uninstall_shortcut">"deinstallar scursanidas"</string>
+    <string msgid="1360567537236705628" name="permlab_write_settings">"Definir ils parameters e las scursanidas per la pagina da partenza"</string>
+    <string msgid="5630222540525626723" name="pick_wallpaper">"Maletgs da fund davos"</string>
+    <string msgid="6016003384693240896" name="rename_action">"OK"</string>
+    <string msgid="5646236631298452787" name="rename_folder_label">"Num da l\'ordinatur"</string>
+    <string msgid="4544573104191526550" name="rename_folder_title">"Renumnar l\'ordinatur"</string>
+    <string msgid="4757756326465060694" name="shortcut_duplicate">"\"La scursanida \"\"<ns1:g id="NAME">%s</ns1:g>\"\" exista gia.\""</string>
+    <string msgid="7071557296331322355" name="shortcut_installed">"\"Creà ina scursanida \"\"<ns1:g id="NAME">%s</ns1:g>\"\".\""</string>
+    <string msgid="2129499669449749995" name="shortcut_uninstalled">"\"La scursanida \"\"<ns1:g id="NAME">%s</ns1:g>\"\" è vegnida stizzada.\""</string>
+    <string msgid="3371120195364560632" name="uid_name">"Applicaziuns da basa dad Android"</string>
+    <string msgid="4215640646180727542" name="wallpaper_instructions">"Definir in fund davos"</string>
+</resources>
