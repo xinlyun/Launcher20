@@ -36,4 +36,4 @@
             android:text="@string/info_target_label"
             android:drawableStart="@drawable/info_target_selector" />
     </FrameLayout>
-</merge><!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/layout/drop_target_bar.xml -->
+</merge><!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/layout/drop_target_bar.xml -->

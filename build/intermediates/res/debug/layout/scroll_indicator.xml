@@ -19,4 +19,4 @@
     android:alpha="0"
     android:scaleType="fitXY"
     android:src="@drawable/hotseat_scrubber_holo" />
-<!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/layout/scroll_indicator.xml -->
+<!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/layout/scroll_indicator.xml -->

@@ -31,4 +31,4 @@
             layout="@layout/drop_target_bar" />
     </LinearLayout>
 </com.android.launcher20.SearchDropTargetBar>
-<!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/layout/qsb_bar.xml -->
+<!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/layout/qsb_bar.xml -->

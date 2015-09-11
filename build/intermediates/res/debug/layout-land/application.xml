@@ -18,4 +18,4 @@
    style="@style/WorkspaceIcon.Landscape"
    android:focusable="true"
    android:background="@drawable/focusable_view_bg" />
-<!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/layout-land/application.xml -->
+<!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/layout-land/application.xml -->

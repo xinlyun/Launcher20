@@ -20,4 +20,4 @@
     <item android:state_selected="true" android:drawable="@drawable/grid_selected" />
     <item android:drawable="@android:color/transparent" />
 </selector>
-<!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/drawable/wallpaper_gallery_item.xml -->
+<!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/drawable/wallpaper_gallery_item.xml -->

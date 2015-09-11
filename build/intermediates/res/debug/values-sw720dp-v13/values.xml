@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-sw720dp/wallpapers.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values-sw720dp/wallpapers.xml -->
     <eat-comment/>
     <string-array name="wallpapers" translatable="false">
         <item>wallpaper_00</item>
@@ -15,14 +15,14 @@
         <item>wallpaper_09</item>
         <item>wallpaper_10</item>
     </string-array>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-sw720dp/config.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values-sw720dp/config.xml -->
     <eat-comment/>
     <bool name="config_largeHeap">true</bool>
     <bool name="config_useDropTargetDownTransition">true</bool>
     <bool name="config_workspaceFadeAdjacentScreens">true</bool>
     <bool name="hotseat_transpose_layout_with_orientation">false</bool>
     <bool name="is_large_screen">true</bool>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-sw720dp/dimens.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values-sw720dp/dimens.xml -->
     <eat-comment/>
     <dimen name="all_apps_button_vertical_padding">4dip</dimen>
     <dimen name="app_icon_padding_top">0dp</dimen>
@@ -86,7 +86,7 @@
     <dimen name="workspace_width_gap_port">0dp</dimen>
     <integer name="apps_customize_maxCellCountX">-1</integer>
     <integer name="apps_customize_maxCellCountY">-1</integer>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-sw720dp/config.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values-sw720dp/config.xml -->
     <eat-comment/>
     <integer name="cell_count_x">8</integer>
     <integer name="cell_count_y">5</integer>
@@ -97,7 +97,7 @@
     <integer name="folder_max_num_items">-1</integer>
     <integer name="hotseat_all_apps_index">4</integer>
     <integer name="hotseat_cell_count">9</integer>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-sw720dp/styles.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values-sw720dp/styles.xml -->
     <eat-comment/>
     <style name="ClingButton">
         <item name="android:layout_width">wrap_content</item>

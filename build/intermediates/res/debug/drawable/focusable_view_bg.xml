@@ -17,4 +17,4 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_focused="true" android:drawable="@drawable/focused_bg" />
 </selector>
-<!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/drawable/focusable_view_bg.xml -->
+<!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/drawable/focusable_view_bg.xml -->

@@ -43,7 +43,7 @@ public class FloatService extends Service
 
     public FloatWindowsView addNewFloatView(int mFloatTitle,int mFloatWindow,Context context){
         FloatWindowsView f = new FloatWindowsView(context);
-        f.createParames(0);
+        f.createParames(0,null);
         f.createFloatView(mFloatTitle, mFloatWindow);
         f.setTag(floatViews.size());
 
@@ -57,7 +57,9 @@ public class FloatService extends Service
         return f;
     }
 
-    public FloatWindowsView replace(int posi,int Tag,int mFloatTitle,int mFloatWindow,Context context1){
+
+
+    public FloatWindowsView replace(int posi,int Tag,int mFloatTitle,int mFloatWindow,Context context1,IBinder iBinder){
         if(floatViews.size()>Tag){
             FloatWindowsView fwv = floatViews.get(Tag);
             FloatWindowsView f = new FloatWindowsView(context1);
@@ -73,7 +75,7 @@ public class FloatService extends Service
             return f;}
         else {
             FloatWindowsView f = new FloatWindowsView(context1);
-            f.createParames(posi);
+            f.createParames(posi,iBinder);
             f.createFloatView(mFloatTitle,mFloatWindow);
             f.setTag(Tag);
             floatViews.add(Tag,f);
@@ -128,7 +130,7 @@ public class FloatService extends Service
 
 
     public FloatWindowsView replace(int Tag,int mFloatTitle,int mFloatWindow){
-        return replace(Tag,0,mFloatTitle,mFloatWindow,FloatService.this);
+        return replace(Tag,0,mFloatTitle,mFloatWindow,FloatService.this,null);
     }
 
     public FloatWindowsView addNewFloatView(int mFloatTitle,int mFloatWindow){

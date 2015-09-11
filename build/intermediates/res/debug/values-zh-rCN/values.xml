@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-zh-rCN/strings.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values-zh-rCN/strings.xml -->
     <eat-comment/>
     <string-array name="preference_values_tts_role">z
         <item>xiaoyan</item>

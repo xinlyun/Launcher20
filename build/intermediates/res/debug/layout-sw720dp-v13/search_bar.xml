@@ -63,4 +63,4 @@
             android:adjustViewBounds="true" />
     </com.android.launcher20.HolographicLinearLayout>
 </RelativeLayout>
-<!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/layout-sw720dp/search_bar.xml -->
+<!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/layout-sw720dp/search_bar.xml -->

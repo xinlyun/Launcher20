@@ -30,4 +30,4 @@
         android:layout_toRightOf="@id/snippet"
         android:background="@drawable/end" />
 
-</RelativeLayout><!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/layout/poikeywordsearch_uri.xml -->
+</RelativeLayout><!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/layout/poikeywordsearch_uri.xml -->

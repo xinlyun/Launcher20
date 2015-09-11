@@ -2,4 +2,4 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
     <item android:drawable="@drawable/whitenooutborder" android:state_pressed="false"></item>
     <item android:drawable="@drawable/pressednooutborder" android:state_pressed="true"></item>
-</selector><!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/drawable/startborder.xml -->
+</selector><!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/drawable/startborder.xml -->

@@ -45,4 +45,4 @@
         android:contentDescription="@string/accessibility_voice_search_button" />
     <!--android:onClick="onClickVoiceButton"-->
 </LinearLayout>
-<!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/layout-land/search_bar.xml -->
+<!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/layout-land/search_bar.xml -->

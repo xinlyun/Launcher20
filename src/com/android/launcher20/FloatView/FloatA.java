@@ -33,9 +33,15 @@ public class FloatA extends Thread {
     };
     private FloatA floatA1 = null;
     FloatWindowsView other = null;
+    IBinder iBinder = null;
+    public FloatA(Activity context1,IBinder iBinder){
+        this.context = context1;
+        this.iBinder = iBinder;
+    }
     public FloatA(Activity context1,FloatA floatA){
         this.context = context1;
         this.floatA1 = floatA;
+        this.iBinder = floatA.getiBinder();
 //        other = floatA.getFloatWindowsView();
 //        floatA=null;
         if(floatA!=null)other = floatA.getFloatWindowsView();
@@ -48,6 +54,10 @@ public class FloatA extends Thread {
         mfloatService = floatService;
         return this;
     }
+    private IBinder getiBinder(){
+        return this.iBinder;
+    }
+
     public FloatWindowsView getFloatWindowsView(){
         return  this.mfloatWindowsView;
     }
@@ -84,7 +94,7 @@ public class FloatA extends Thread {
 
     protected void setConentView(int layout){
 //        mfloatWindowsView = mfloatService.replacetry(0,R.layout.map_title_layout,layout,context);
-        mfloatWindowsView = mfloatService.replace(where,0,R.layout.map_title_layout,layout,context);
+        mfloatWindowsView = mfloatService.replace(where,0,R.layout.map_title_layout,layout,context,this.iBinder);
 
 
 //        mfloatWindowsView = new FloatWindowsView(context);

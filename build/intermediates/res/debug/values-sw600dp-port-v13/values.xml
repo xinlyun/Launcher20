@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-sw600dp-port/dimens.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values-sw600dp-port/dimens.xml -->
     <eat-comment/>
     <dimen name="apps_customize_cell_height">108dp</dimen>
     <dimen name="apps_customize_cell_width">96dp</dimen>

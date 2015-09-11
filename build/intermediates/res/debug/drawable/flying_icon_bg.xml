@@ -18,4 +18,4 @@
     <item android:state_pressed="true" android:drawable="@drawable/flying_icon_bg_pressed" />
     <item android:drawable="@android:color/transparent" />
 </selector>
-<!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/drawable/flying_icon_bg.xml -->
+<!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/drawable/flying_icon_bg.xml -->

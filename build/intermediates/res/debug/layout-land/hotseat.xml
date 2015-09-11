@@ -34,4 +34,4 @@
         launcher:heightGap="@dimen/hotseat_height_gap"
         launcher:maxGap="@dimen/workspace_max_gap" />
 </com.android.launcher20.Hotseat>
-<!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/layout-land/hotseat.xml -->
+<!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/layout-land/hotseat.xml -->

@@ -21,4 +21,4 @@
     android:background="@drawable/wallpaper_gallery_item"
     android:scaleType="fitXY"
     android:focusable="true" />
-<!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/layout/wallpaper_item.xml -->
+<!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/layout/wallpaper_item.xml -->

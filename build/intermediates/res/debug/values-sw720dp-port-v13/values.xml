@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-sw720dp-port/dimens.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values-sw720dp-port/dimens.xml -->
     <eat-comment/>
     <dimen name="apps_customize_pageLayoutHeightGap">36dp</dimen>
     <dimen name="apps_customize_pageLayoutPaddingLeft">24dp</dimen>
@@ -27,7 +27,7 @@
     <integer name="apps_customize_maxCellCountY">7</integer>
     <integer name="apps_customize_widget_cell_count_x">3</integer>
     <integer name="apps_customize_widget_cell_count_y">3</integer>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-sw720dp-port/styles.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values-sw720dp-port/styles.xml -->
     <eat-comment/>
     <style name="TabIndicator.AppsCustomize">
         <item name="android:maxWidth">180dp</item>

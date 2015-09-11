@@ -22,4 +22,4 @@
     <item android:drawable="@drawable/ic_launcher_info_normal_holo"  />
     <item android:drawable="@drawable/ic_launcher_info_active_holo"  />
 </transition>
-<!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/drawable/info_target_selector.xml -->
+<!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/drawable/info_target_selector.xml -->

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-rm/strings.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values-rm/strings.xml -->
     <eat-comment/>
     <string msgid="1022222300329398558" name="all_apps_home_button_label">"Pagina da partenza"</string>
     <string msgid="8424725141379931883" name="application_name">"Lantschader"</string>

@@ -9,13 +9,6 @@
         <dex dex="/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/AMap_Services_V2.5.0-6b218ec8b0c07fab366fa526c41f0b8b2ea6046d.jar" />
     </item>
     <item
-        jar="/home/xinlyun/Android_workspace/Launcher2/libs/arm64-v8a.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="ef0679c56319922651364607b2421688bf36023f">
-        <dex dex="/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/arm64-v8a-63456b8f1e78191e994910315d21bdbf61a9c7af.jar" />
-    </item>
-    <item
         jar="/home/xinlyun/Android_workspace/Launcher2/libs/Android_Map_V2.5.0.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -23,11 +16,11 @@
         <dex dex="/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/Android_Map_V2.5.0-639ef2e391fc5569c5b90dfbf24e771485d34b09.jar" />
     </item>
     <item
-        jar="/home/xinlyun/Android_workspace/Launcher2/libs/armeabi-v7a.jar"
+        jar="/home/xinlyun/git_workspace/Launcher20/libs/Msc.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="585964b7868249f4daf882883b6a32ed079ba133">
-        <dex dex="/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/armeabi-v7a-aedd0bc2ed065fe9785d9642d2386e40c9bb1551.jar" />
+        sha1="14e02a95fa56eb18b385a4f156b4fb14d4721df4">
+        <dex dex="/home/xinlyun/git_workspace/Launcher20/build/intermediates/pre-dexed/debug/Msc-01e0c677bad84cfa92e5d71d77e75260ae8cdd8b.jar" />
     </item>
     <item
         jar="/home/xinlyun/Android_workspace/Launcher2/libs/Android_Location_V1.3.3.jar"
@@ -72,11 +65,95 @@
         <dex dex="/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/Msc-6e192c8e87451aba998393deb8d9a9150d7439ae.jar" />
     </item>
     <item
+        jar="/home/xinlyun/git_workspace/Launcher20/libs/NavigationApi_1.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6e00244e4c28d923faedd5892327dbac0099a9fe">
+        <dex dex="/home/xinlyun/git_workspace/Launcher20/build/intermediates/pre-dexed/debug/NavigationApi_1.2.0-3646b411ff807fef9090edfd11aa2f4b9135a208.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/git_workspace/Launcher20/libs/armeabi-v7a.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="585964b7868249f4daf882883b6a32ed079ba133">
+        <dex dex="/home/xinlyun/git_workspace/Launcher20/build/intermediates/pre-dexed/debug/armeabi-v7a-4028b8d0990290ab5f1d687487bacb68fc4bb46f.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/git_workspace/Launcher20/libs/Android_Map_V2.5.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e9c091d42e926071305011fc4daeb2404c443a5f">
+        <dex dex="/home/xinlyun/git_workspace/Launcher20/build/intermediates/pre-dexed/debug/Android_Map_V2.5.0-b65569b5af9d212da3e1cbcf659a07874e6bcb56.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/Android_workspace/Launcher2/libs/arm64-v8a.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ef0679c56319922651364607b2421688bf36023f">
+        <dex dex="/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/arm64-v8a-63456b8f1e78191e994910315d21bdbf61a9c7af.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/git_workspace/Launcher20/libs/x86.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="67625f639abb17e14e557f2c7a541b556b324d8c">
+        <dex dex="/home/xinlyun/git_workspace/Launcher20/build/intermediates/pre-dexed/debug/x86-253a7b719d2411d5936c95092b4f430b1a6c735d.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/git_workspace/Launcher20/libs/arm64-v8a.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ef0679c56319922651364607b2421688bf36023f">
+        <dex dex="/home/xinlyun/git_workspace/Launcher20/build/intermediates/pre-dexed/debug/arm64-v8a-b1d11c17b0d7096c04090a393930b6501bf82442.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/Android_workspace/Launcher2/libs/armeabi-v7a.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="585964b7868249f4daf882883b6a32ed079ba133">
+        <dex dex="/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/armeabi-v7a-aedd0bc2ed065fe9785d9642d2386e40c9bb1551.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/git_workspace/Launcher20/libs/armeabi.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3e074ac4d628e72e5d3072c79bb3d69d3ed698e7">
+        <dex dex="/home/xinlyun/git_workspace/Launcher20/build/intermediates/pre-dexed/debug/armeabi-7cacff20c605e9ba5b0d1caff0a5ae87e081184d.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/git_workspace/Launcher20/libs/Android_Location_V1.3.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="71e7604372d8a66689ff8df047e9a748e19a5169">
+        <dex dex="/home/xinlyun/git_workspace/Launcher20/build/intermediates/pre-dexed/debug/Android_Location_V1.3.3-d84d1f6941f4bae5a0660b207347f214f06b04a0.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/git_workspace/Launcher20/libs/Android_2DMapApi_V2.5.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c111d9a441220cc379a91401de8888087e70fafc">
+        <dex dex="/home/xinlyun/git_workspace/Launcher20/build/intermediates/pre-dexed/debug/Android_2DMapApi_V2.5.0-7700a2335577c6b5db6d67448962688290cbb365.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/git_workspace/Launcher20/libs/AMap_Services_V2.5.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e84628aa8eea7b9892768f19c41dbe02abc7f666">
+        <dex dex="/home/xinlyun/git_workspace/Launcher20/build/intermediates/pre-dexed/debug/AMap_Services_V2.5.0-8146cfd870327ce895db976a593107f06e7968a4.jar" />
+    </item>
+    <item
         jar="/home/xinlyun/Android_workspace/Launcher2/libs/Android_2DMapApi_V2.5.0.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="c111d9a441220cc379a91401de8888087e70fafc">
         <dex dex="/home/xinlyun/Android_workspace/Launcher2/build/intermediates/pre-dexed/debug/Android_2DMapApi_V2.5.0-d1762f9fef1e4cb1d3398fb3dc9385ae2a13fa5b.jar" />
+    </item>
+    <item
+        jar="/home/xinlyun/git_workspace/Launcher20/libs/android-common_classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9592830037dbf81ebc866250b8f1461aa27387a4">
+        <dex dex="/home/xinlyun/git_workspace/Launcher20/build/intermediates/pre-dexed/debug/android-common_classes-251882ec2b221f0ec59c8a166f7e78692b58599e.jar" />
     </item>
 
 </items>

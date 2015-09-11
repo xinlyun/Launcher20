@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-sw600dp-land/dimens.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values-sw600dp-land/dimens.xml -->
     <eat-comment/>
     <dimen name="app_icon_drawable_padding_land">0dp</dimen>
     <dimen name="app_icon_padding_top">0dp</dimen>
@@ -18,7 +18,7 @@
     <dimen name="workspace_divider_padding_right">0dp</dimen>
     <dimen name="workspace_divider_padding_top">12dp</dimen>
     <dimen name="workspace_icon_text_size">11sp</dimen>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-sw600dp-land/config.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values-sw600dp-land/config.xml -->
     <eat-comment/>
     <integer name="folder_max_count_x">8</integer>
     <integer name="folder_max_count_y">5</integer>

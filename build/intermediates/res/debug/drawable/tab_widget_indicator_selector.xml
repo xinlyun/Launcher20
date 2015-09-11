@@ -31,4 +31,4 @@
     <item android:state_focused="true" android:state_selected="false" android:state_pressed="true" android:drawable="@drawable/tab_unselected_pressed_focused_holo" />
     <item android:state_focused="true" android:state_selected="true" android:state_pressed="true" android:drawable="@drawable/tab_selected_pressed_focused_holo" />
 </selector>
-<!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/drawable/tab_widget_indicator_selector.xml -->
+<!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/drawable/tab_widget_indicator_selector.xml -->

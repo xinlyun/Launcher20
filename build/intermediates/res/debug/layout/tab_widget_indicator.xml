@@ -17,4 +17,4 @@
 <com.android.launcher20.AccessibleTabView
     xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/TabIndicator.AppsCustomize" />
-<!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/layout/tab_widget_indicator.xml -->
+<!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/layout/tab_widget_indicator.xml -->

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-sw340dp-port/config.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values-sw340dp-port/config.xml -->
     <eat-comment/>
     <bool name="config_workspaceFadeAdjacentScreens">false</bool>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-sw340dp-port/dimens.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values-sw340dp-port/dimens.xml -->
     <eat-comment/>
     <dimen name="apps_customize_cell_height">92dp</dimen>
     <dimen name="apps_customize_pageLayoutPaddingBottom">20dp</dimen>
@@ -19,7 +19,7 @@
     <dimen name="search_bar_height">48dp</dimen>
     <dimen name="workspace_divider_padding_left">6dp</dimen>
     <dimen name="workspace_divider_padding_right">6dp</dimen>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-sw340dp-port/styles.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values-sw340dp-port/styles.xml -->
     <eat-comment/>
     <style name="SearchButton">
         <item name="android:layout_gravity">center_vertical</item>

@@ -1,7 +1,9 @@
 package com.android.launcher20.FloatView;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.PixelFormat;
+import android.os.IBinder;
 import android.os.Message;
 import android.util.Log;
 import android.view.Gravity;
@@ -51,8 +53,9 @@ public class FloatWindowsView {
      */
     public FloatWindowsView(Context context){
         this.context = context;
-        mWindowManager = (WindowManager) context.getApplicationContext()
-                .getSystemService(Context.WINDOW_SERVICE);
+//        mWindowManager = (WindowManager) context.getApplicationContext()
+//                .getSystemService(Context.WINDOW_SERVICE);
+        mWindowManager = ((Activity)context).getWindowManager();
         width =mWindowManager.getDefaultDisplay().getWidth();
         screenWidth=width;
         height = mWindowManager.getDefaultDisplay().getHeight();
@@ -107,6 +110,7 @@ public class FloatWindowsView {
         }
         else{
             wmParams.flags = LayoutParams.FLAG_NOT_TOUCH_MODAL;
+
         }
         mWindowManager.updateViewLayout(mFloatLayout, wmParams);
 
@@ -118,10 +122,16 @@ public class FloatWindowsView {
      */
     public void createParames(LayoutParams params){
         wmParams = new LayoutParams();
-        wmParams.type = LayoutParams.TYPE_PHONE;
+        wmParams.type = LayoutParams.LAST_APPLICATION_WINDOW;
+//        wmParams.token = params.token;
+
         //设置图片格式，效果为背景透明
         wmParams.format = PixelFormat.RGBA_8888;
+
         //设置浮动窗口不可聚焦（实现操作除浮动窗口外的其他可见窗口的操作）
+
+        wmParams.memoryType = LayoutParams.MEMORY_TYPE_HARDWARE;
+
         wmParams.flags =
 //                LayoutParams.FLAG_SCALED
 //          LayoutParams.FLAG_NOT_TOUCH_MODAL
@@ -144,13 +154,17 @@ public class FloatWindowsView {
      * 根据标签对LayoutParams进行初始化
      * @param Tag
      */
-    public void createParames(int Tag){
+    public void createParames(int Tag,IBinder iBinder){
         System.out.println("~~~~~~~~~~~~~~c");
         wmParams = new LayoutParams();
         //获取WindowManagerImpl.CompatModeWrapper
 //        mWindowManager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
         //设置window type
-        wmParams.type = LayoutParams.TYPE_PHONE;
+        wmParams.type = LayoutParams.LAST_APPLICATION_WINDOW;
+//        wmParams.token = iBinder;
+
+        wmParams.memoryType = LayoutParams.MEMORY_TYPE_HARDWARE;
+
         //设置图片格式，效果为背景透明
         wmParams.format = PixelFormat.RGBA_8888;
         //设置浮动窗口不可聚焦（实现操作除浮动窗口外的其他可见窗口的操作）

@@ -21,4 +21,4 @@
     android:toAlpha="1.0"
 
     android:duration="@android:integer/config_mediumAnimTime" />
-<!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/anim/fade_in_fast.xml -->
+<!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/anim/fade_in_fast.xml -->

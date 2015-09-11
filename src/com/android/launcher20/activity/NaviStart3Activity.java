@@ -10,6 +10,7 @@ import android.location.Location;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Message;
 import android.text.Editable;
 import android.text.InputType;
@@ -227,10 +228,12 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         }
     };
 
-    public NaviStart3Activity(Activity context1,FloatA floatA) {
+    public NaviStart3Activity(Activity context1,IBinder iBinder) {
+        super(context1,iBinder);
+    }
+    public NaviStart3Activity(Activity context1,FloatA floatA){
         super(context1,floatA);
     }
-
 
     //导航准备
     private RouteOverLay mRouteOverLay;
@@ -647,16 +650,16 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
             ToastUtil.show(getApplication(), "请输入搜索关键字");
             return;
         } else {
-            doSearchQuery();
+            doSearchQuery("");
         }
     }
     /**
      * 开始进行poi搜索
      */
-    protected void doSearchQuery() {
+    protected void doSearchQuery(String cityCode) {
         showProgressDialog();// 显示进度框
 //        currentPage = 0;
-        query = new PoiSearch.Query(keyWord, "", "");// 第一个参数表示搜索字符串，第二个参数表示poi搜索类型，第三个参数表示poi搜索区域（空字符串代表全国）
+        query = new PoiSearch.Query(keyWord, "", cityCode);// 第一个参数表示搜索字符串，第二个参数表示poi搜索类型，第三个参数表示poi搜索区域（空字符串代表全国）
         query.setPageSize(10);// 设置每页最多返回多少条poiitem
         query.setPageNum(0);// 设置查第一页
 
@@ -1121,7 +1124,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
 
     @Override
     public void afterTextChanged(Editable s) {
-
+        inputAble(false);
     }
 
     /**
@@ -1153,6 +1156,15 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
                     } else if (suggestionCities != null
                             && suggestionCities.size() > 0) {
                         showSuggestCity(suggestionCities);
+                        boolean flag = false;
+                        for(SuggestionCity city:suggestionCities){
+                            if(city.getCityCode().equals(cityCode)){
+                                doSearchQuery(cityCode);
+                                flag=true;
+                                break;
+                            }
+                        }
+                        if(!flag)doSearchQuery(suggestionCities.get(0).getCityCode());
                     } else {
 //                        ToastUtil.show(PoiKeywordSearchActivity.this,
 //                                R.string.no_result);

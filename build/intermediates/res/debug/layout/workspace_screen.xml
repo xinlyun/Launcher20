@@ -32,4 +32,4 @@
     launcher:heightGap="@dimen/workspace_height_gap"
     launcher:maxGap="@dimen/workspace_max_gap" />
 
-    <!--launcher:cellHeight="@dimen/workspace_cell_height"--><!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/layout/workspace_screen.xml -->
+    <!--launcher:cellHeight="@dimen/workspace_cell_height"--><!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/layout/workspace_screen.xml -->

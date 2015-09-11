@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values/extra_wallpapers.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values/extra_wallpapers.xml -->
     <eat-comment/>
     <string-array name="extra_wallpapers">
     </string-array>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values/strings.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values/strings.xml -->
     <eat-comment/>
     <string-array name="preference_values_tts_role">z
         <item>xiaoyan</item>
@@ -23,7 +23,7 @@
         <item>vinn</item>
         <item>vils</item>
     </string-array>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values/wallpapers.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values/wallpapers.xml -->
     <eat-comment/>
     <string-array name="wallpapers" translatable="false">
         <item>wallpaper_01</item>
@@ -39,7 +39,7 @@
         <item>wallpaper_11</item>
         <item>wallpaper_12</item>
     </string-array>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values/attrs.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values/attrs.xml -->
     <eat-comment/>
     <attr name="direction">
         <!-- Vertical widget. -->
@@ -47,7 +47,7 @@
         <!-- Horizontal widget. -->
         <enum name="horizontal" value="1"/>
     </attr>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values/config.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values/config.xml -->
     <eat-comment/>
     <bool name="allow_rotation">false</bool>
     <bool name="config_DisablePressedIconBackground">false</bool>
@@ -57,7 +57,7 @@
     <bool name="config_workspaceFadeAdjacentScreens">false</bool>
     <bool name="hotseat_transpose_layout_with_orientation">true</bool>
     <bool name="is_large_screen">false</bool>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values/colors.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values/colors.xml -->
     <eat-comment/>
     <color name="appwidget_error_color">#FCCC</color>
     <color name="black"> #000000</color>
@@ -86,7 +86,7 @@
     <declare-styleable name="PagedView"><attr format="dimension" name="pageLayoutWidthGap"/><attr format="dimension" name="pageLayoutHeightGap"/><attr format="dimension" name="pageLayoutPaddingTop"/><attr format="dimension" name="pageLayoutPaddingBottom"/><attr format="dimension" name="pageLayoutPaddingLeft"/><attr format="dimension" name="pageLayoutPaddingRight"/><attr format="dimension" name="pageSpacing"/><attr format="dimension" name="scrollIndicatorPaddingLeft"/><attr format="dimension" name="scrollIndicatorPaddingRight"/></declare-styleable>
     <declare-styleable name="StrokedTextView"><attr format="color" name="strokeColor"/><attr format="color" name="strokeTextColor"/><attr format="float" name="strokeWidth"/></declare-styleable>
     <declare-styleable name="Workspace"><attr format="integer" name="defaultScreen"/><attr format="integer" name="cellCountX"/><attr format="integer" name="cellCountY"/></declare-styleable>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values/dimens.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
@@ -202,7 +202,7 @@
     <dimen name="workspace_width_gap_port">0dp</dimen>
     <integer name="apps_customize_maxCellCountX">-1</integer>
     <integer name="apps_customize_maxCellCountY">-1</integer>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values/config.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values/config.xml -->
     <eat-comment/>
     <integer name="cell_count_x">4</integer>
     <integer name="cell_count_y">4</integer>
@@ -242,7 +242,7 @@
     <integer name="hotseat_all_apps_index">2</integer>
     <integer name="hotseat_cell_count">5</integer>
     <integer name="hotseat_item_scale_percentage">100</integer>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values/strings.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values/strings.xml -->
     <eat-comment/>
     <string name="accessibility_all_apps_button">Apps</string>
     <string name="accessibility_delete_button">Remove</string>
@@ -450,7 +450,7 @@
     <string name="workspace_description_format">Home screen %1$d</string>
     <string name="workspace_scroll_format">Home screen %1$d of %2$d</string>
     <string name="yes">"  是  "</string>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values/styles.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values/styles.xml -->
     <eat-comment/>
     <style name="ClingButton">
         <item name="android:layout_width">wrap_content</item>

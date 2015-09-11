@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-sw340dp/dimens.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values-sw340dp/dimens.xml -->
     <eat-comment/>
     <dimen name="button_bar_height">80dip</dimen>
     <dimen name="button_bar_height_bottom_padding">8dp</dimen>

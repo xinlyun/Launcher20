@@ -93,4 +93,4 @@
         android:layout_height="match_parent"
         android:visibility="gone" />
 </com.android.launcher20.AppsCustomizeTabHost>
-<!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/layout/apps_customize_pane.xml -->
+<!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/layout/apps_customize_pane.xml -->

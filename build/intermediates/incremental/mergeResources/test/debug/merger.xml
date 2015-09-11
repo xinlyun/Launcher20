@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/home/xinlyun/Android_workspace/Launcher2/src/androidTest/res"/><source path="/home/xinlyun/Android_workspace/Launcher2/build/generated/res/rs/test/debug"/><source path="/home/xinlyun/Android_workspace/Launcher2/build/generated/res/generated/test/debug"/></dataSet><mergedItems/></merger>
+<merger version="3"><dataSet config="main"><source path="/home/xinlyun/git_workspace/Launcher20/src/androidTest/res"/><source path="/home/xinlyun/git_workspace/Launcher20/build/generated/res/rs/test/debug"/><source path="/home/xinlyun/git_workspace/Launcher20/build/generated/res/generated/test/debug"/></dataSet><mergedItems/></merger>

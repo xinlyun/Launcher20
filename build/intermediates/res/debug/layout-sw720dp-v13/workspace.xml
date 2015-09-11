@@ -30,4 +30,4 @@
       <include android:id="@+id/cell3" layout="@layout/workspace_screen" />
       <include android:id="@+id/cell4" layout="@layout/workspace_screen" />
       <include android:id="@+id/cell5" layout="@layout/workspace_screen" />
-</com.android.launcher20.Workspace><!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/layout-sw720dp/workspace.xml -->
+</com.android.launcher20.Workspace><!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/layout-sw720dp/workspace.xml -->

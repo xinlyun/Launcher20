@@ -413,25 +413,26 @@ public final class Launcher extends Activity
             if (flagisLive) {
                 savecellview =
                         (CellLayout) mWorkspace.getChildAt(0);
+
                 mSharedPreferences = getSharedPreferences("myown",Context.MODE_PRIVATE);
                 int id = mSharedPreferences.getInt("id",1000);
                 int x = mSavedInstanceState.getInt("posix",10);
                 int y = mSavedInstanceState.getInt("posiy",10);
-
+                
                 SaveWidgetif(id,x,y,savecellview);
 //                Log.d("add","x"+spanXY[0]+" y"+spanXY[1]);
 //                Log.d("add2","x"+saveposi[0]+" y"+saveposi[1]);
 //                if( saveposi[0]==0&&saveposi[1]==0){
-//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,null);
+//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
 //                    naviStart3Activity1.onStart(0);
 //                }else if(saveposi[0]==0&&saveposi[1]==1){
-//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,null);
+//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
 //                    naviStart3Activity1.onStart(1);
 //                }else {
-//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,null);
+//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
 //                    naviStart3Activity1.onStart(2);
 //                }
-                NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,null);
+                NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
                 naviStart3Activity1.onStart(saveposi[1]);
 
             }
@@ -456,7 +457,6 @@ public final class Launcher extends Activity
 
         @Override
         public void onLongClick(MotionEvent ev) {
-
 //            Log.d("Long","x"+ev.getRawX()+" y"+ev.getRawY());
 //            View v =(View)saveview.getParent().getParent();
 //            CellLayout.CellInfo longClickCellInfo = (CellLayout.CellInfo) v.getTag();
@@ -1470,16 +1470,17 @@ public final class Launcher extends Activity
             Log.d("add","x"+spanXY[0]+" y"+spanXY[1]);
             Log.d("add2","x"+saveposi[0]+" y"+saveposi[1]);
 //            if( saveposi[0]==0&&saveposi[1]==0){
-//                NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,null);
+//                NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
 //                naviStart3Activity1.onStart(0);
 //            }else if(saveposi[0]==0&&saveposi[1]==1){
-//                NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,null);
+//                NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
 //                naviStart3Activity1.onStart(1);
 //            }else {
-//                NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,null);
+//                NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
 //                naviStart3Activity1.onStart(2);
 //            }
-            NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,null);
+            NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
+            
             naviStart3Activity1.onStart(saveposi[1]);
             flagWidget = false;
         }
@@ -3859,16 +3860,16 @@ public final class Launcher extends Activity
 //                Log.d("add2","x"+saveposi[0]+" y"+saveposi[1]);
                 saveview = item.hostView;
 //                if( saveposi[0]==0&&saveposi[1]==0){
-//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,null);
+//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
 //                    naviStart3Activity1.onStart(0);
 //                }else if( saveposi[0]==0&&saveposi[1]==1){
-//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,null);
+//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
 //                    naviStart3Activity1.onStart(1);
 //                }else {
-//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,null);
+//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
 //                    naviStart3Activity1.onStart(2);
 //                }
-                NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,null);
+                NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
                 naviStart3Activity1.onStart(saveposi[1]);
 
             }
@@ -4438,7 +4439,8 @@ public final class Launcher extends Activity
     NaviStart3Activity naviStart3Activity;
     WindowManager windowManager;
     public void addFloatWin(){
-        NaviStart3Activity naviStart3Activity = new NaviStart3Activity(this, null);
+        NaviStart3Activity naviStart3Activity = new NaviStart3Activity(this, savecellview.getWindowToken());
+
         naviStart3Activity.onStart(0);
 
     }

@@ -31,4 +31,4 @@
         android:id="@+id/folder_icon_name"
         style="@style/WorkspaceIcon.Landscape.Folder"/>
 </com.android.launcher20.FolderIcon>
-<!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/layout-land/folder_icon.xml -->
+<!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/layout-land/folder_icon.xml -->

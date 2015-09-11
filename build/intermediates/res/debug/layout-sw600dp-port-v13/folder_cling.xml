@@ -49,4 +49,4 @@
         android:layout_gravity="bottom|end"
         android:onClick="dismissFolderCling" />
 </com.android.launcher20.Cling>
-<!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/layout-sw600dp-port/folder_cling.xml -->
+<!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/layout-sw600dp-port/folder_cling.xml -->

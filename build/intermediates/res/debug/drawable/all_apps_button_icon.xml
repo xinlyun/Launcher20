@@ -19,4 +19,4 @@
     <item android:state_pressed="true" android:drawable="@drawable/ic_allapps_pressed" />
     <item android:drawable="@drawable/ic_allapps" />
 </selector>
-<!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/drawable/all_apps_button_icon.xml -->
+<!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/drawable/all_apps_button_icon.xml -->

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/values-sw380dp-port/dimens.xml -->
+    <!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/values-sw380dp-port/dimens.xml -->
     <eat-comment/>
     <dimen name="hotseat_width_gap">2dp</dimen>
     <dimen name="qsb_bar_height">56dp</dimen>

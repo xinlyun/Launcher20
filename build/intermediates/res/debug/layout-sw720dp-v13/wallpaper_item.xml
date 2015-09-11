@@ -23,4 +23,4 @@
         android:layout_height="@dimen/wallpaper_chooser_grid_height"
         android:scaleType="centerCrop"
         android:focusable="true" />
-</FrameLayout><!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/layout-sw720dp/wallpaper_item.xml -->
+</FrameLayout><!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/layout-sw720dp/wallpaper_item.xml -->

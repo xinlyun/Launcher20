@@ -27,4 +27,4 @@
     android:textColor="@color/appwidget_error_color"
     android:text="@string/gadget_error_text"
     />
-<!-- From: file:/home/xinlyun/Android_workspace/Launcher2/res/layout/appwidget_error.xml -->
+<!-- From: file:/home/xinlyun/git_workspace/Launcher20/res/layout/appwidget_error.xml -->

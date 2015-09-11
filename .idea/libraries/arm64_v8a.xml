@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="arm64-v8a">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/arm64-v8a.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
