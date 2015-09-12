@@ -4,6 +4,8 @@ package com.android.launcher20.activity;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.location.Location;
@@ -53,6 +55,7 @@ import com.amap.api.navi.model.NaviInfo;
 import com.amap.api.navi.model.NaviLatLng;
 import com.amap.api.navi.view.RouteOverLay;
 import com.amap.api.services.core.AMapException;
+import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.core.PoiItem;
 import com.amap.api.services.core.SuggestionCity;
 import com.amap.api.services.help.Inputtips;
@@ -93,6 +96,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         ,AMap.OnMapClickListener
         ,AMap.OnMapLoadedListener
 //        ,AMap.OnMapLongClickListener
+        ,View.OnFocusChangeListener
 {
     // --------------View基本控件---------------------
     private MapView mMapView;// 地图控件
@@ -108,7 +112,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
     private ImageView mWayImage;// 途经点点击按钮
     private ImageView mEndImage;// 终点点击按钮
     private ImageView mStrategyImage;// 行车策略点击按钮
-//    private ImageView mbtnReturn; //返回上一页
+    //    private ImageView mbtnReturn; //返回上一页
     private ImageView mBtnOpen;  //打开侧栏
     private LinearLayout naviLinearlayout;  //侧栏布局
     private AutoCompleteTextView mSearchText;
@@ -414,6 +418,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         mAmap.setOnMarkerClickListener(this);
         mSearchText.addTextChangedListener(this);
         mSearchText.setOnClickListener(this);
+        mSearchText.setOnFocusChangeListener(this);
 //        mbtnReturn.setOnClickListener(this);
         mBtnOpen.setOnClickListener(this);
         mbtnSearch.setOnClickListener(this);
@@ -600,7 +605,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
             case R.id.navi_btn_open:
 
                 if(!mflag_openOrclose){
-                   openLeftLayout();
+                    openLeftLayout();
                 }else {
                     closeLeftLayout();
                 }
@@ -609,7 +614,18 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
                 inputAble(false);
 //                mAmap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
 //                mSearchText.setText("梅州曾宪梓中学");
-                searchButton();
+//                searchButton();
+                Intent intent = new Intent(getContext(),SearchPage.class);
+                Bundle bundle = new Bundle();
+                if(mLocation!=null)
+                {
+                    bundle.putParcelable("myown",mLocation);
+                    bundle.putString("city",cityCode);
+                }
+                intent.putExtra("myown", bundle);
+                getContext().startActivity(intent);
+
+
                 break;
             case R.id.navistart_auto_textview:
                 inputAble(true);
@@ -933,21 +949,27 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
 
 
     private OnLocationChangedListener mListener;
+    private LatLonPoint mLocation = null;
+    private SharedPreferences mshare;
     @Override
     public void onLocationChanged(AMapLocation aMapLocation) {
         if (mListener != null && aMapLocation != null) {
             if (aMapLocation!=null&&aMapLocation.getAMapException().getErrorCode() == 0) {
 
-
                 mListener.onLocationChanged(aMapLocation);// 显示系统小蓝点
                 cityCode = aMapLocation.getCityCode();
                 mIsGetGPS = true;
                 mStartPoint =new NaviLatLng(aMapLocation.getLatitude(), aMapLocation.getLongitude());
-
+                mLocation = new LatLonPoint(mStartPoint.getLatitude(),mStartPoint.getLongitude());
 //                mGPSMarker.setPosition(new LatLng(
 //                        mStartPoint.getLatitude(), mStartPoint
 //                        .getLongitude()));
-
+                mshare = getContext().getSharedPreferences("myown",Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = mshare.edit();
+                editor.putString("x", Double.toString(mLocation.getLatitude()));
+                editor.putString("y", Double.toString(mLocation.getLongitude()));
+                editor.putString("city",cityCode);
+                editor.commit();
                 mStartPoints.clear();
                 mStartPoints.add(mStartPoint);
             }
@@ -985,7 +1007,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
             mLocationManger = LocationManagerProxy.getInstance(getContext());
             //此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
             //注意设置合适的定位时间的间隔（最小间隔支持为2000ms），并且在合适时间调用removeUpdates()方法来取消定位请求
-            //在定位结束后，在合适的生命周期调用destroy()方法
+            //在定位结束后，在合适的生命周c期调用destroy()方法
             //其中如果间隔时间为-1，则定位只定一次
             //在单次定位情况下，定位无论成功与否，都无需调用removeUpdates()方法移除请求，定位sdk内部会移除
             mLocationManger.requestLocationData(
@@ -1124,7 +1146,8 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
 
     @Override
     public void afterTextChanged(Editable s) {
-        inputAble(false);
+//        inputAble(false);
+//        searchButton();
     }
 
     /**
@@ -1239,7 +1262,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
 
         mRouteOverLay.addToMap();
 //        if (mIsMapLoaded) {
-            mRouteOverLay.zoomToSpan();
+        mRouteOverLay.zoomToSpan();
 //        }
 
         double length = ((int) (naviPath.getAllLength() / (double) 1000 * 10))
@@ -1250,6 +1273,14 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         mRouteDistanceView.setText(String.valueOf(length));
         mRouteTimeView.setText(String.valueOf(time));
         mRouteCostView.setText(String.valueOf(cost));
+    }
+
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        if(v.getId()==R.id.navistart_auto_textview){
+            inputAble(false);
+        searchButton();
+        }
     }
 
     /**

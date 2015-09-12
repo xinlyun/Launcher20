@@ -117,6 +117,12 @@
             <meta-data android:name="android.wallpaper.preview"
                 android:resource="@xml/wallpaper_picker_preview" />
         </activity>
+        <activity android:name=".activity.SearchPage"
+            android:label="SearchPage"
+
+            >
+        </activity>
+
 
         <!-- Intent received used to prepopulate the default workspace. -->
         <receiver
