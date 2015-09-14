@@ -273,6 +273,9 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         AMapNavi.getInstance(getContext()).setAMapNaviListener(getAMapNaviListener());
         TTSController.getInstance(getContext()).startSpeaking();
     }
+
+
+
     /**
      * 初始化资源文件，主要是字符串
      */
@@ -572,7 +575,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
             case R.id.navi_route_button:
                 mNaviMethod = ROUTE_METHOD;
                 showDialog();
-                calculateRoute();
+                calculateDriverRoute();
                 break;
             // 模拟导航处理事件
             case R.id.navi_navi_button:
@@ -968,9 +971,11 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
     @Override
     public void onLocationChanged(AMapLocation aMapLocation) {
         if (mListener != null && aMapLocation != null) {
+
             if (aMapLocation!=null&&aMapLocation.getAMapException().getErrorCode() == 0) {
 
                 mListener.onLocationChanged(aMapLocation);// 显示系统小蓝点
+
                 cityCode = aMapLocation.getCityCode();
                 mIsGetGPS = true;
                 mStartPoint =new NaviLatLng(aMapLocation.getLatitude(), aMapLocation.getLongitude());
@@ -983,6 +988,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
                 editor.putString("x", Double.toString(mLocation.getLatitude()));
                 editor.putString("y", Double.toString(mLocation.getLongitude()));
                 editor.putString("city",cityCode);
+
                 editor.commit();
                 mStartPoints.clear();
                 mStartPoints.add(mStartPoint);
@@ -1264,7 +1270,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
      * 初始化路线描述信息和加载线路
      */
     private void initNavi() {
-
+        Log.d(TAG,"initNavi");
         mAmapNavi = AMapNavi.getInstance(getContext());
         AMapNaviPath naviPath = mAmapNavi.getNaviPath();
         if (naviPath == null) {
@@ -1363,4 +1369,10 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
             }
         }
     };
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initNavi();
+    }
 }

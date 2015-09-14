@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.android.launcher20.R;
@@ -16,7 +17,7 @@ import com.android.launcher20.R;
 /**
  * Created by root on 15-8-11.
  */
-public class FloatA extends Thread {
+public class FloatA extends Thread implements FLoatAStatusListener{
     private FloatService mfloatService=null;
     private FloatWindowsView mfloatWindowsView;
     private static Activity context;
@@ -25,6 +26,7 @@ public class FloatA extends Thread {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             mfloatService = ((FloatService.MyBinder)service).getService();
+
             onCreate();
         }
         @Override
@@ -42,10 +44,7 @@ public class FloatA extends Thread {
         this.context = context1;
         this.floatA1 = floatA;
         this.iBinder = floatA.getiBinder();
-//        other = floatA.getFloatWindowsView();
-//        floatA=null;
         if(floatA!=null)other = floatA.getFloatWindowsView();
-//            this.mfloatService = floatA.getFloatService();
     }
     public FloatService getFloatService(){
         return this.mfloatService;
@@ -86,6 +85,7 @@ public class FloatA extends Thread {
 
     protected void onCreate(){
 //        setConentView(R.layout.myfloat_layout);
+        mfloatService.addStatusListener(this);
         StopIt();
     }
 
@@ -167,8 +167,13 @@ public class FloatA extends Thread {
     }
 
 
+    @Override
+    public void onResume() {
 
+    }
 
+    @Override
+    public void onPause() {
 
-
+    }
 }

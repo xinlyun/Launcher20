@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -18,6 +19,7 @@ public class FloatService extends Service
 {
     private boolean isMiss=false;
     ArrayList<FloatWindowsView> floatViews;
+    private ArrayList<FLoatAStatusListener> floatAStatusListeners;
     public FloatService() {
     }
 
@@ -38,6 +40,7 @@ public class FloatService extends Service
     @Override
     public void onCreate() {
         super.onCreate();
+        floatAStatusListeners = new ArrayList<>();
         floatViews = new ArrayList<FloatWindowsView>();
     }
 
@@ -57,6 +60,22 @@ public class FloatService extends Service
         return f;
     }
 
+
+    public void addStatusListener(FLoatAStatusListener fLoatAStatusListener){
+        floatAStatusListeners.add(fLoatAStatusListener);
+    }
+
+    public void onResume(){
+        for(FLoatAStatusListener f:floatAStatusListeners){
+            f.onResume();
+        }
+    }
+
+    public void onPause(){
+        for(FLoatAStatusListener f:floatAStatusListeners){
+            f.onPause();
+        }
+    }
 
 
     public FloatWindowsView replace(int posi,int Tag,int mFloatTitle,int mFloatWindow,Context context1,IBinder iBinder){

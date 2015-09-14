@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -38,6 +39,7 @@ import com.android.launcher20.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Created by root on 15-9-12.
@@ -62,10 +64,13 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
     private List<NaviLatLng> startPoint;
     private List<NaviLatLng> endPoint,wayPoint;
     private String posi;
+    private Stack<String> names;
+    private List<PoiItem> poiItems;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.searchpage);
+        names = new Stack<>();
         initView();
     }
 
@@ -103,6 +108,19 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
             mLocation = new LatLonPoint(Double.valueOf(x),Double.valueOf(y));
             startPoint.add(new NaviLatLng(mLocation.getLatitude(),mLocation.getLongitude()));
         }
+
+        mlistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("SearchPage","onItemCLick");
+                PoiItem poiItem = poiItems.get(position);
+                endPoint.clear();
+                endPoint.add(new NaviLatLng(poiItem.getLatLonPoint().getLatitude(), poiItem.getLatLonPoint().getLongitude()));
+                AMapNavi.getInstance(SearchPage.this).calculateDriveRoute(startPoint, endPoint,
+                        wayPoint, AMapNavi.DrivingDefault) ;
+                SearchPage.this.finish();
+            }
+        });
     }
 
 
@@ -110,18 +128,21 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
     @Override
     public void onPoiSearched(PoiResult poiResult, int i) {
         Log.d("SearchPage","onPoiSearched");
-
-
         if (poiResult != null && poiResult.getQuery() != null
                 && poiResult.getPois() != null && poiResult.getPois().size() > 0) {// 搜索poi的结果
 //            if (poiResult.getQuery().equals(startSearchQuery)) {
-                List<PoiItem> poiItems = poiResult.getPois();// 取得poiitem数据
+                poiItems = poiResult.getPois();// 取得poiitem数据
+
                 arrayAdapter.clear();
+                names.clear();
 //                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
                 for(PoiItem poiItem:poiItems){
+
                     RouteSearch.FromAndTo fromAndTo = new RouteSearch.FromAndTo(mLocation,poiItem.getLatLonPoint());
                     RouteSearch.DriveRouteQuery query = new RouteSearch.DriveRouteQuery(fromAndTo,RouteSearch.DrivingDefault,null,null,"");
+                    names.push(poiItem.toString());
                     routeSearch.calculateDriveRouteAsyn(query);
+
 //                    endPoint.clear();
 //                    endPoint.add(new NaviLatLng(poiItem.getLatLonPoint().getLatitude(),poiItem.getLatLonPoint().getLongitude()));
 //                    if(mAmapNavi.calculateDriveRoute(startPoint,endPoint,
@@ -132,11 +153,11 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
 
 //                    }
 
-                    arrayAdapter.add(poiItem.toString());
+//                    arrayAdapter.add(poiItem.toString());
                 }
 //                mlistview.setAdapter(arrayAdapter);
 
-                arrayAdapter.notifyDataSetChanged();
+//                arrayAdapter.notifyDataSetChanged();
 //            }
         }
     }
@@ -159,7 +180,8 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
     public void onDriveRouteSearched(DriveRouteResult driveRouteResult, int i) {
 
         Log.d("SearchPage","Distance  "+driveRouteResult.getPaths().get(0).getDistance());
-
+        arrayAdapter.add(names.pop() + "  Distance  " + driveRouteResult.getPaths().get(0).getDistance());
+        arrayAdapter.notifyDataSetChanged();
     }
 
     @Override
