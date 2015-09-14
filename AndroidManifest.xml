@@ -119,7 +119,7 @@
         </activity>
         <activity android:name=".activity.SearchPage"
             android:label="SearchPage"
-
+            android:theme="@android:style/Theme.Translucent"
             >
         </activity>
 

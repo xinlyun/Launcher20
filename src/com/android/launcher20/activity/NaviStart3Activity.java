@@ -174,9 +174,11 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
     private PoiResult poiResult; // poi返回的结果
     private String keyWord = "";// 要输入的poi搜索关键字
     private String cityCode;
+    private ImageView mfloatBtn;
     //定位
     private LocationManagerProxy mLocationManger;
     private String TAG = "NaviStart";
+    private ArrayAdapter<String> aAdapter;
     private AMapLocationListener mLocationListener=new AMapLocationListener() {
 
         @Override
@@ -301,7 +303,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         mStartPointText = (AutoCompleteTextView) findViewById(R.id.navi_start_edit);
         mSearchText = (AutoCompleteTextView) findViewById(R.id.navistart_auto_textview);
         mbtnSearch = (ImageView) findViewById(R.id.navistart_search);
-
+        mfloatBtn = (ImageView) findViewById(R.id.navistart_float_action_btn);
         mBtnOpen = (ImageView) findViewById(R.id.navi_btn_open);
 
         naviLinearlayout = (LinearLayout) findViewById(R.id.navibarcontainer);
@@ -408,6 +410,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         mWayImage.setOnClickListener(this);
         mEndImage.setOnClickListener(this);
         mStrategyImage.setOnClickListener(this);
+        mfloatBtn.setOnClickListener(this);
 //        mNaviMethodGroup.setOnCheckedChangeListener(this);
         // 设置地图点击事件
         mAmap.setOnMapClickListener(this);
@@ -419,10 +422,18 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         mSearchText.addTextChangedListener(this);
         mSearchText.setOnClickListener(this);
         mSearchText.setOnFocusChangeListener(this);
+        mSearchText.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    searchButton();
+            }
+        });
+
 //        mbtnReturn.setOnClickListener(this);
         mBtnOpen.setOnClickListener(this);
         mbtnSearch.setOnClickListener(this);
         mStartNaviButton.setOnClickListener(this);
+
     }
     /**
      * 设置一些amap的属性
@@ -633,6 +644,9 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
             case R.id.routestartnavi:
                 NaviCustomActivity nca = new NaviCustomActivity((Activity)getContext(),this);
                 nca.onStart(0);
+                break;
+            case R.id.navistart_float_action_btn:
+                searchButton();
                 break;
         }
     }
@@ -1126,11 +1140,12 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
                             for (int i = 0; i < tipList.size(); i++) {
                                 listString.add(tipList.get(i).getName());
                             }
-                            ArrayAdapter<String> aAdapter = new ArrayAdapter<String>(
+                            aAdapter = new ArrayAdapter<String>(
                                     getContext().getApplicationContext(),
 //                                    R.layout.route_inputs, listString);
                                     R.layout.autotextstyle, listString);
                             mSearchText.setAdapter(aAdapter);
+
                             aAdapter.notifyDataSetChanged();
                         }
                     }

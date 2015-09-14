@@ -43,6 +43,7 @@ import java.util.List;
  * Created by root on 15-9-12.
  */
 public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListener, RouteSearch.OnRouteSearchListener,TextWatcher
+    ,AMapNaviListener
 
 {
     private String strStart ;
@@ -74,7 +75,7 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
         wayPoint = new ArrayList<NaviLatLng>();
 
         mAmapNavi = AMapNavi.getInstance(this);
-        mAmapNavi.setAMapNaviListener(getAMapNaviListener());
+        mAmapNavi.setAMapNaviListener(this);
 
         mAutoText = (EditText) findViewById(R.id.id_searchpage);
         mAutoText.addTextChangedListener(this);
@@ -88,9 +89,10 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
         try {
             mLocation = bundle.getParcelable("myown");
             cityCode = bundle.getString("city");
+            startPoint.add(new NaviLatLng(mLocation.getLatitude(),mLocation.getLongitude()));
             Log.d("SearchPage",mLocation.getLatitude()+" "+mLocation.getLongitude()+ " "+cityCode);
         }catch (Exception e){
-            Log.d("SearchPage",e.getMessage());
+            Log.d("SearchPage",e.toString());
         }
         if(mLocation == null){
             SharedPreferences mshare = getSharedPreferences("myown", Context.MODE_PRIVATE);
@@ -117,13 +119,18 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
                 arrayAdapter.clear();
 //                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
                 for(PoiItem poiItem:poiItems){
-//                    RouteSearch.FromAndTo fromAndTo = new RouteSearch.FromAndTo(mLocation,poiItem.getLatLonPoint());
-//                    RouteSearch.DriveRouteQuery query = new RouteSearch.DriveRouteQuery(fromAndTo,RouteSearch.DrivingDefault,null,null,"");
-                    endPoint.clear();
-                    endPoint.add(new NaviLatLng(poiItem.getLatLonPoint().getLatitude(),poiItem.getLatLonPoint().getLongitude()));
-                    mAmapNavi.calculateDriveRoute(startPoint,endPoint,
-                            wayPoint, AMapNavi.DrivingDefault);
-//                    routeSearch.calculateDriveRouteAsyn(query);
+                    RouteSearch.FromAndTo fromAndTo = new RouteSearch.FromAndTo(mLocation,poiItem.getLatLonPoint());
+                    RouteSearch.DriveRouteQuery query = new RouteSearch.DriveRouteQuery(fromAndTo,RouteSearch.DrivingDefault,null,null,"");
+                    routeSearch.calculateDriveRouteAsyn(query);
+//                    endPoint.clear();
+//                    endPoint.add(new NaviLatLng(poiItem.getLatLonPoint().getLatitude(),poiItem.getLatLonPoint().getLongitude()));
+//                    if(mAmapNavi.calculateDriveRoute(startPoint,endPoint,
+//                            wayPoint, AMapNavi.DrivingDefault)) {
+//                        Log.d("SearchPage", "calculate success");
+//                        initNavi();
+//                        mAmapNavi.resumeNavi();
+
+//                    }
 
                     arrayAdapter.add(poiItem.toString());
                 }
@@ -185,101 +192,8 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
     }
 
 
-    /**
-     * 导航回调函数
-     *
-     * @return
-     */
-    private AMapNaviListener mAmapNaviListener;
-    private AMapNaviListener getAMapNaviListener() {
-        if (mAmapNaviListener == null) {
 
-            mAmapNaviListener = new AMapNaviListener() {
-                @Override
-                public void onInitNaviFailure() {
 
-                }
-
-                @Override
-                public void onInitNaviSuccess() {
-
-                }
-
-                @Override
-                public void onStartNavi(int i) {
-
-                }
-
-                @Override
-                public void onTrafficStatusUpdate() {
-
-                }
-
-                @Override
-                public void onLocationChange(AMapNaviLocation aMapNaviLocation) {
-
-                }
-
-                @Override
-                public void onGetNavigationText(int i, String s) {
-
-                }
-
-                @Override
-                public void onEndEmulatorNavi() {
-
-                }
-
-                @Override
-                public void onArriveDestination() {
-
-                }
-
-                @Override
-                public void onCalculateRouteSuccess() {
-                    Log.d("SearchPage","onCalculateRouteSuccess");
-                    initNavi();
-                }
-
-                @Override
-                public void onCalculateRouteFailure(int i) {
-
-                }
-
-                @Override
-                public void onReCalculateRouteForYaw() {
-
-                }
-
-                @Override
-                public void onReCalculateRouteForTrafficJam() {
-
-                }
-
-                @Override
-                public void onArrivedWayPoint(int i) {
-
-                }
-
-                @Override
-                public void onGpsOpenStatus(boolean b) {
-
-                }
-
-                @Override
-                public void onNaviInfoUpdated(AMapNaviInfo aMapNaviInfo) {
-
-                }
-
-                @Override
-                public void onNaviInfoUpdate(NaviInfo naviInfo) {
-
-                }
-            };
-
-        }
-        return mAmapNaviListener;
-    }
 
     /**
      * 初始化路线描述信息和加载线路
@@ -289,6 +203,7 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
 
         AMapNaviPath naviPath = mAmapNavi.getNaviPath();
         if (naviPath == null) {
+            Log.d("SearchPage","initNavi  naviPath null");
             return;
         }
         // 获取路径规划线路，显示到地图上
@@ -308,4 +223,91 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
     }
 
 
+
+
+    //---------------\
+    /**
+     * 导航回调函数
+
+     */
+    @Override
+    public void onInitNaviFailure() {
+        Log.d("SearchPage","onInitNaviFailure");
+    }
+
+    @Override
+    public void onInitNaviSuccess() {
+        Log.d("SearchPage","onInitNaviSuccess");
+    }
+
+    @Override
+    public void onStartNavi(int i) {
+        Log.d("SearchPage","onStartNavi");
+    }
+
+    @Override
+    public void onTrafficStatusUpdate() {
+        Log.d("SearchPage","onTrafficStatusUpdate");
+    }
+
+    @Override
+    public void onLocationChange(AMapNaviLocation aMapNaviLocation) {
+        Log.d("SearchPage","onLocationChange");
+    }
+
+    @Override
+    public void onGetNavigationText(int i, String s) {
+        Log.d("SearchPage","onGetNavigationText");
+    }
+
+    @Override
+    public void onEndEmulatorNavi() {
+        Log.d("SearchPage","onEndEmulatorNavi");
+    }
+
+    @Override
+    public void onArriveDestination() {
+        Log.d("SearchPage","onArriveDestination");
+    }
+
+    @Override
+    public void onCalculateRouteSuccess() {
+        Log.d("SearchPage","onCalculateRouteSuccess");
+        initNavi();
+    }
+
+    @Override
+    public void onCalculateRouteFailure(int i) {
+        Log.d("SearchPage","onCalculateRouteFailure");
+    }
+
+    @Override
+    public void onReCalculateRouteForYaw() {
+        Log.d("SearchPage","onReCalculateRouteForYaw");
+    }
+
+    @Override
+    public void onReCalculateRouteForTrafficJam() {
+        Log.d("SearchPage","onReCalculateRouteForTrafficJam");
+    }
+
+    @Override
+    public void onArrivedWayPoint(int i) {
+
+    }
+
+    @Override
+    public void onGpsOpenStatus(boolean b) {
+
+    }
+
+    @Override
+    public void onNaviInfoUpdated(AMapNaviInfo aMapNaviInfo) {
+
+    }
+
+    @Override
+    public void onNaviInfoUpdate(NaviInfo naviInfo) {
+
+    }
 }
