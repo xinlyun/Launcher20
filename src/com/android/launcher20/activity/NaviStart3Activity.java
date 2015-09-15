@@ -1053,7 +1053,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
 
 //    View view;
     /**
-     * Marker标记点击事件
+     * Marker标记点击事件,展开一个内容框
      * @param marker
      * @return
      */
@@ -1100,6 +1100,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
 
     /**
      * 调起高德地图导航功能，如果没安装高德地图，会进入异常，可以在异常中处理，调起高德地图app的下载页面
+     * 这里没用上了，可为合作时保留使用
      */
     public void startAMapNavi(Marker marker) {
         // 构造导航参数
@@ -1129,10 +1130,6 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
 
     /**
      * 搜索栏文字修改时的响应事件，通过amap提供的services进行查询服务
-     * @param s
-     * @param start
-     * @param before
-     * @param count
      */
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -1167,8 +1164,6 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
 
     @Override
     public void afterTextChanged(Editable s) {
-//        inputAble(false);
-//        searchButton();
     }
 
     /**
@@ -1214,20 +1209,13 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
                     }
                 }
             } else {
-//                ToastUtil.show(PoiKeywordSearchActivity.this,
-//                        R.string.no_result);
                 Toast.makeText(getContext(),"no_result",Toast.LENGTH_SHORT).show();
             }
         } else if (rCode == 27) {
-//            ToastUtil.show(PoiKeywordSearchActivity.this,
-//                    R.string.error_network);
             Toast.makeText(getContext(),"error_network",Toast.LENGTH_SHORT).show();
         } else if (rCode == 32) {
-//            ToastUtil.show(PoiKeywordSearchActivity.this, R.string.error_key);
             Toast.makeText(getContext(),"error_key",Toast.LENGTH_SHORT).show();
         } else {
-//            ToastUtil.show(PoiKeywordSearchActivity.this,
-//                    getString(R.string.error_other) + rCode);
             Toast.makeText(getContext(),"error_other",Toast.LENGTH_SHORT).show();
         }
     }
@@ -1241,13 +1229,12 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         }
 //        ToastUtil.show(PoiKeywordSearchActivity.this, infomation);
         Toast.makeText(getContext(),infomation,Toast.LENGTH_SHORT).show();
-
     }
 
     @Override
     public void onPoiItemDetailSearched(PoiItemDetail poiItemDetail, int i) {
-
     }
+
 
     @Override
     public boolean onMarkerClick(Marker marker) {
@@ -1256,6 +1243,9 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         return false;
     }
 
+    /**
+     * 地图加载时根据路径缩放地图产生全览效果
+     */
     @Override
     public void onMapLoaded() {
         mIsMapLoaded = true;
@@ -1315,8 +1305,6 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
             this.poi=y;
         }
 
-
-
         @Override
         public void run() {
             super.run();
@@ -1372,7 +1360,6 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
     public void onResume() {
         super.onResume();
         mMapView.onResume();
-
         initNavi();
     }
 

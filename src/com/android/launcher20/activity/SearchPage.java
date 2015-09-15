@@ -109,6 +109,9 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
             startPoint.add(new NaviLatLng(mLocation.getLatitude(),mLocation.getLongitude()));
         }
 
+        /**
+         * 当被展示的地点被点击时，获取地点坐标，根据当前坐标重新开始计算路径，因为AMapNavi是单例对象，在其完成路径计算后即可关闭当前活动
+         */
         mlistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -141,24 +144,8 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
                     RouteSearch.FromAndTo fromAndTo = new RouteSearch.FromAndTo(mLocation,poiItem.getLatLonPoint());
                     RouteSearch.DriveRouteQuery query = new RouteSearch.DriveRouteQuery(fromAndTo,RouteSearch.DrivingDefault,null,null,"");
                     names.push(poiItem.toString());
-                    routeSearch.calculateDriveRouteAsyn(query);
-
-//                    endPoint.clear();
-//                    endPoint.add(new NaviLatLng(poiItem.getLatLonPoint().getLatitude(),poiItem.getLatLonPoint().getLongitude()));
-//                    if(mAmapNavi.calculateDriveRoute(startPoint,endPoint,
-//                            wayPoint, AMapNavi.DrivingDefault)) {
-//                        Log.d("SearchPage", "calculate success");
-//                        initNavi();
-//                        mAmapNavi.resumeNavi();
-
-//                    }
-
-//                    arrayAdapter.add(poiItem.toString());
                 }
-//                mlistview.setAdapter(arrayAdapter);
 
-//                arrayAdapter.notifyDataSetChanged();
-//            }
         }
     }
 
@@ -231,8 +218,6 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
         // 获取路径规划线路，显示到地图上
 //        PoiOverlay poiOverlay = new PoiOverlay(mAmap,null);
 
-
-
         double length = ((int) (naviPath.getAllLength() / (double) 1000 * 10))
                 / (double) 10;
         // 不足分钟 按分钟计
@@ -292,6 +277,9 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
         Log.d("SearchPage","onArriveDestination");
     }
 
+    /**
+     * 在完成路径计算后初始化AMapNavi
+     */
     @Override
     public void onCalculateRouteSuccess() {
         Log.d("SearchPage","onCalculateRouteSuccess");

@@ -99,6 +99,9 @@ public class FloatWindowGroup extends LinearLayout {
         return super.dispatchTouchEvent(ev);
     }
 
+    /**
+     * 窗口内缩
+     */
     private void canMove(){
         wmParams.x+=18;
         wmParams.y+=18;
@@ -108,6 +111,9 @@ public class FloatWindowGroup extends LinearLayout {
         mWindowManager.updateViewLayout(mFloatLayout,wmParams);
     }
 
+    /**
+     * 窗口略扩大
+     */
     private void putDown(){
         wmParams.x-=18;
         wmParams.y-=18;

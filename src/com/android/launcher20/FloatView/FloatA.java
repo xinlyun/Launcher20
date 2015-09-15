@@ -22,6 +22,13 @@ public class FloatA extends Thread implements FLoatAStatusListener{
     private FloatWindowsView mfloatWindowsView;
     private static Activity context;
     private int where = 0;
+    private FloatA floatA1 = null;
+    private FloatWindowsView other = null;
+    private IBinder iBinder = null;
+
+    /**
+     * 获得FloatService对象，并开始实际工作
+     */
     private ServiceConnection connection =new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
@@ -33,9 +40,9 @@ public class FloatA extends Thread implements FLoatAStatusListener{
         public void onServiceDisconnected(ComponentName name) {
         }
     };
-    private FloatA floatA1 = null;
-    FloatWindowsView other = null;
-    IBinder iBinder = null;
+
+
+
     public FloatA(Activity context1,IBinder iBinder){
         this.context = context1;
         this.iBinder = iBinder;
@@ -160,7 +167,6 @@ public class FloatA extends Thread implements FLoatAStatusListener{
     protected int getY(){
         return mfloatWindowsView.getWmParams().y;
     }
-
 
     @Override
     public void onResume() {

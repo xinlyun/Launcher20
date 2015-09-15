@@ -3,7 +3,7 @@ package com.android.launcher20.FloatView;
 import android.view.MotionEvent;
 
 /**
- * Created by Administrator on 2015/8/25.
+ * FloatService向外部用户传递窗口触摸事件
  */
 public interface FloatServiceListener{
     void onClickDown(MotionEvent ev);
