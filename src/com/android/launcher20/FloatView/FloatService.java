@@ -11,8 +11,6 @@ import android.view.MotionEvent;
 
 import java.util.ArrayList;
 
-//import com.amap.api.maps.AMap;
-//import com.amap.api.maps.MapView;
 
 public class FloatService extends Service
 //        implements AMapNaviViewListener
@@ -23,14 +21,26 @@ public class FloatService extends Service
     public FloatService() {
     }
 
+    /**
+     *
+     * @return 窗口是否隐藏
+     */
     public boolean isMiss(){
         return isMiss;
     }
+
+    /**
+     * 对窗口进行隐藏操作
+     */
     public void onDismiss(){
         Log.d("Service", "dismiss");
         if(floatViews.size()>0) {isMiss=true;
         floatViews.get(0).dismiss();}
     }
+
+    /**
+     * 将隐藏的窗口重现
+     */
     public void reShow(){
 
         if(floatViews.size()>0){isMiss = false;floatViews.get(0).reshow();}
@@ -60,24 +70,36 @@ public class FloatService extends Service
         return f;
     }
 
-
+    /**
+     * 添加窗口的状态修改，让每个窗口能接受状态改变
+     * @param fLoatAStatusListener
+     */
     public void addStatusListener(FLoatAStatusListener fLoatAStatusListener){
         floatAStatusListeners.add(fLoatAStatusListener);
     }
 
+    /**
+     * 窗口重启
+     */
     public void onResume(){
         for(FLoatAStatusListener f:floatAStatusListeners){
             f.onResume();
         }
     }
 
+    /**
+     * 窗口暂停
+     */
     public void onPause(){
         for(FLoatAStatusListener f:floatAStatusListeners){
             f.onPause();
         }
     }
 
-
+    /**
+     * 窗口间的切换，包括窗口生成也由此完成
+     * @return 新生成的窗口
+     */
     public FloatWindowsView replace(int posi,int Tag,int mFloatTitle,int mFloatWindow,Context context1,IBinder iBinder){
         if(floatViews.size()>Tag){
             FloatWindowsView fwv = floatViews.get(Tag);
@@ -208,7 +230,12 @@ public class FloatService extends Service
 //        floatViews.get(0)
         if(floatViews.size()>0)floatViews.get(0).MovePosiXY(position);
     }
-
+    /**
+     * 随时移动窗口位置
+     * 主要用在窗口的被动移动上
+     * @param x
+     * @param y
+     */
     public void setPosition(float x,float y){
         if(floatViews.size()>0)floatViews.get(0).setPosition(x,y);
     }

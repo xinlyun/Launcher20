@@ -991,6 +991,9 @@ public final class Launcher extends Activity
         }
         if(floatService!=null)if (floatService.isMiss()&&flagSorM)floatService.reShow();
         bindService(new Intent(Launcher.this,FloatService.class),connection,BIND_AUTO_CREATE);
+
+
+        if(floatService!=null)floatService.onResume();
     }
 
     @Override
@@ -1006,6 +1009,7 @@ public final class Launcher extends Activity
         mPaused = true;
         mDragController.cancelDrag();
         mDragController.resetLastGestureUpTime();
+        floatService.onPause();
     }
 
     @Override

@@ -25,7 +25,8 @@ import com.android.launcher20.R;
 
 
 /**
- * Created by Administrator on 2015/7/28.
+ * 封装好的浮动窗口类
+ * 实质时对浮动窗口控制的集合类，完成窗口移动/切换/生成等工作
  */
 public class FloatWindowsView {
     private LayoutParams wmParams;
@@ -74,25 +75,6 @@ public class FloatWindowsView {
     }
 
     public void MovePosiXY(int position){
-//        switch (position){
-//            case 0:
-//                wmParams.x = posiAWHs[0].x;
-//                wmParams.y = posiAWHs[0].y;
-//
-//                break;
-//            case 1:
-//                wmParams.x = posiAWHs[1].x;
-//                wmParams.y = posiAWHs[1].y;
-//                break;
-//            case 2:
-//                wmParams.x = posiAWHs[1].x;
-//                wmParams.y = posiAWHs[1].y;
-//                break;
-//            case 3:
-//                wmParams.x = posiAWHs[1].x;
-//                wmParams.y = posiAWHs[1].y;
-//                break;
-//        }
         wmParams.x = posiAWHs[position].x;
         wmParams.y = posiAWHs[position].y;
         mWindowManager.updateViewLayout(mFloatLayout,wmParams);

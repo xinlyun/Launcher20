@@ -340,22 +340,19 @@ public class NaviCustomActivity extends FloatA implements
 
 	}
 
+	@Override
+	public void onPause() {
+		super.onPause();
+		mAMapNavi.pauseNavi();
+		mAmapAMapNaviView.onPause();
+	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	@Override
+	public void onResume() {
+		super.onResume();
+		mAMapNavi.resumeNavi();
+		mAmapAMapNaviView.onResume();
+	}
 	//-----------------------------------------------------
 
 	/**

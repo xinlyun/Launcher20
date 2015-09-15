@@ -2523,7 +2523,6 @@ public class CellLayout extends ViewGroup {
                     }
                 }
             }
-
         }
 
         if (boundingRect != null) {

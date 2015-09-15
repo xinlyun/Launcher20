@@ -1210,8 +1210,6 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
                         }
                         if(!flag)doSearchQuery(suggestionCities.get(0).getCityCode());
                     } else {
-//                        ToastUtil.show(PoiKeywordSearchActivity.this,
-//                                R.string.no_result);
                         Toast.makeText(getContext(),"no_result",Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -1373,6 +1371,14 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
     @Override
     public void onResume() {
         super.onResume();
+        mMapView.onResume();
+
         initNavi();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mMapView.onPause();
     }
 }

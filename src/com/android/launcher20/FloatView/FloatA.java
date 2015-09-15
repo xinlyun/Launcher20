@@ -105,12 +105,7 @@ public class FloatA extends Thread implements FLoatAStatusListener{
 //        if(other!=null)other.close();
     }
 
-//    public FloatA onStrat(Activity context1) {
-//        context = context1;
-//        FloatA fa = new FloatA();
-//        fa.start();
-//        return fa;
-//    }
+
 
 
     public void onStart(int where){
