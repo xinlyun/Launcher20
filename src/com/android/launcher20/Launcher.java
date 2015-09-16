@@ -1009,7 +1009,7 @@ public final class Launcher extends Activity
         mPaused = true;
         mDragController.cancelDrag();
         mDragController.resetLastGestureUpTime();
-        floatService.onPause();
+//        floatService.onPause();
     }
 
     @Override

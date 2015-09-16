@@ -10,6 +10,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -26,6 +27,7 @@ import com.amap.api.navi.model.AMapNaviLocation;
 import com.amap.api.navi.model.AMapNaviPath;
 import com.amap.api.navi.model.NaviInfo;
 import com.amap.api.navi.model.NaviLatLng;
+import com.amap.api.services.core.AMapException;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.core.PoiItem;
 import com.amap.api.services.poisearch.PoiItemDetail;
@@ -70,6 +72,7 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
 //    private String posi;
     private Stack<String> names;
     private List<PoiItem> poiItems;
+    private boolean calueSuccess=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,13 +128,13 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
         mlistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("SearchPage","onItemCLick");
+                Log.d("SearchPage", "onItemCLick");
                 PoiItem poiItem = poiItems.get(position);
                 endPoint.clear();
                 endPoint.add(new NaviLatLng(poiItem.getLatLonPoint().getLatitude(), poiItem.getLatLonPoint().getLongitude()));
                 AMapNavi.getInstance(SearchPage.this).calculateDriveRoute(startPoint, endPoint,
                         wayPoint, AMapNavi.DrivingDefault) ;
-                SearchPage.this.finish();
+
             }
         });
     }
@@ -154,6 +157,9 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
 
                     RouteSearch.FromAndTo fromAndTo = new RouteSearch.FromAndTo(mLocation,poiItem.getLatLonPoint());
                     RouteSearch.DriveRouteQuery query = new RouteSearch.DriveRouteQuery(fromAndTo,RouteSearch.DrivingDefault,null,null,"");
+
+                        routeSearch.calculateDriveRouteAsyn(query);
+
                     names.push(poiItem.toString());
                 }
 
@@ -164,6 +170,10 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
     public void onPoiItemDetailSearched(PoiItemDetail poiItemDetail, int i) {
 
     }
+
+
+
+
 
 
 
@@ -180,10 +190,12 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
         Log.d("SearchPage", "Distance  " + driveRouteResult.getPaths().get(0).getDistance());
 //        arrayAdapter.add(names.pop() + "  Distance  " + driveRouteResult.getPaths().get(0).getDistance());
 //        arrayAdapter.notifyDataSetChanged();
-        ListItem listItem  = new ListItem(names.pop(),""+driveRouteResult.getPaths().get(0).getDistance(),
-                ""+driveRouteResult.getPaths().get(0).getDuration());
-        myAdapter.addItem(listItem);
-        myAdapter.notifyDataSetChanged();
+
+            ListItem listItem = new ListItem(names.pop(), "" + driveRouteResult.getPaths().get(0).getDistance(),
+                    "" + driveRouteResult.getPaths().get(0).getDuration());
+            myAdapter.addItem(listItem);
+            myAdapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -297,8 +309,9 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
      */
     @Override
     public void onCalculateRouteSuccess() {
-        Log.d("SearchPage","onCalculateRouteSuccess");
-        initNavi();
+        Log.d("SearchPage", "onCalculateRouteSuccess");
+//        initNavi();
+        SearchPage.this.finish();
     }
 
     @Override
@@ -366,17 +379,22 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
         }
     }
 
-    class MyAdapter extends ArrayAdapter{
+    /**
+     * ListView适配器
+     */
+    class MyAdapter extends ArrayAdapter<ListItem>{
 
         List<ListItem> listItems;
         public MyAdapter(Context context, int resource,List<ListItem> listItems) {
             super(context, resource);
             this.listItems = listItems;
         }
+
         public MyAdapter(Context context,int resource){
             super(context,resource);
             listItems = new ArrayList<ListItem>();
         }
+
         public void setListItems(ArrayList<ListItem> listItems){
             this.listItems = listItems;
         }
@@ -387,12 +405,17 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
         }
 
         public void addItem(ListItem listItem){
+            add(listItem);
             this.listItems.add(listItem);
         }
 
 
+
+
+
+
         @Override
-        public Object getItem(int position) {
+        public View getView(int position, View convertView, ViewGroup parent) {
             ListItem listItem = listItems.get(position);
             LayoutInflater inflater = LayoutInflater.from(getContext());
             View view = inflater.inflate(R.layout.searchpage_listview_item, null);
@@ -406,4 +429,6 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
             return view;
         }
     }
+
+
 }
