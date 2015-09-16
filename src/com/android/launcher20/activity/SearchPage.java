@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -37,6 +38,7 @@ import com.amap.api.services.route.RouteSearch;
 import com.amap.api.services.route.WalkRouteResult;
 import com.android.launcher20.R;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -60,6 +62,8 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
     private PoiSearch.Query query;
     private PoiSearch poiSearch;
     private ArrayAdapter<String> arrayAdapter;
+    private MyAdapter myAdapter;
+    private ArrayList<ListItem> listItems;
     private AMapNavi mAmapNavi;
     private List<NaviLatLng> startPoint;
     private List<NaviLatLng> endPoint,wayPoint;
@@ -75,6 +79,9 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
     }
 
     private void initView(){
+        listItems = new ArrayList<ListItem>();
+        myAdapter = new MyAdapter(this,R.layout.searchpage_listview_item);
+
         startPoint = new ArrayList<NaviLatLng>();
         endPoint = new ArrayList<NaviLatLng>();
         wayPoint = new ArrayList<NaviLatLng>();
@@ -87,8 +94,11 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
         mlistview = (ListView) findViewById(R.id.id_search_listview);
         routeSearch = new RouteSearch(this);
         routeSearch.setRouteSearchListener(this);
-        arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
-        mlistview.setAdapter(arrayAdapter);
+
+//        arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
+//        mlistview.setAdapter(arrayAdapter);
+        mlistview.setAdapter(myAdapter);
+
         Intent intent = getIntent();
         Bundle bundle = intent.getBundleExtra("myown");
         try {
@@ -136,7 +146,8 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
 //            if (poiResult.getQuery().equals(startSearchQuery)) {
                 poiItems = poiResult.getPois();// 取得poiitem数据
 
-                arrayAdapter.clear();
+//                arrayAdapter.clear();
+                myAdapter.clear();
                 names.clear();
 //                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
                 for(PoiItem poiItem:poiItems){
@@ -166,9 +177,13 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
     @Override
     public void onDriveRouteSearched(DriveRouteResult driveRouteResult, int i) {
 
-        Log.d("SearchPage","Distance  "+driveRouteResult.getPaths().get(0).getDistance());
-        arrayAdapter.add(names.pop() + "  Distance  " + driveRouteResult.getPaths().get(0).getDistance());
-        arrayAdapter.notifyDataSetChanged();
+        Log.d("SearchPage", "Distance  " + driveRouteResult.getPaths().get(0).getDistance());
+//        arrayAdapter.add(names.pop() + "  Distance  " + driveRouteResult.getPaths().get(0).getDistance());
+//        arrayAdapter.notifyDataSetChanged();
+        ListItem listItem  = new ListItem(names.pop(),""+driveRouteResult.getPaths().get(0).getDistance(),
+                ""+driveRouteResult.getPaths().get(0).getDuration());
+        myAdapter.addItem(listItem);
+        myAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -319,5 +334,76 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
     @Override
     public void onNaviInfoUpdate(NaviInfo naviInfo) {
 
+    }
+
+
+//-------------------------以下为ListView的适配器使用类------------------------
+    class ListItem {
+        String name ;
+        String distance;
+        String time;
+        int id;
+        public ListItem(String name,String distance,String time){
+            this.name = name ;
+            this.distance = distance;
+            this.time = time;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getTime() {
+            return time;
+        }
+
+        public String getDistance() {
+            return distance;
+        }
+    }
+
+    class MyAdapter extends ArrayAdapter{
+
+        List<ListItem> listItems;
+        public MyAdapter(Context context, int resource,List<ListItem> listItems) {
+            super(context, resource);
+            this.listItems = listItems;
+        }
+        public MyAdapter(Context context,int resource){
+            super(context,resource);
+            listItems = new ArrayList<ListItem>();
+        }
+        public void setListItems(ArrayList<ListItem> listItems){
+            this.listItems = listItems;
+        }
+        @Override
+        public void clear() {
+            super.clear();
+            this.listItems.clear();
+        }
+
+        public void addItem(ListItem listItem){
+            this.listItems.add(listItem);
+        }
+
+
+        @Override
+        public Object getItem(int position) {
+            ListItem listItem = listItems.get(position);
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            View view = inflater.inflate(R.layout.searchpage_listview_item, null);
+            TextView name,distance,time;
+            name = (TextView) view.findViewById(R.id.id_search_listview_item_name);
+            distance = (TextView) view.findViewById(R.id.id_search_listview_item_distance);
+            time = (TextView) view.findViewById(R.id.id_search_listview_item_time);
+            name.setText(listItem.getName());
+            distance.setText(listItem.getDistance());
+            time.setText(listItem.getTime());
+            return view;
+        }
     }
 }

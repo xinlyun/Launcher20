@@ -379,6 +379,7 @@
 
     </RelativeLayout>
     <ImageView
+        android:id="@+id/navistart_float_action_btn"
         android:layout_marginTop="40dp"
         android:layout_marginLeft="740dp"
         android:src="@drawable/floatimage"
