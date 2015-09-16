@@ -67,7 +67,7 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
     private AMapNavi mAmapNavi;
     private List<NaviLatLng> startPoint;
     private List<NaviLatLng> endPoint,wayPoint;
-    private String posi;
+//    private String posi;
     private Stack<String> names;
     private List<PoiItem> poiItems;
     @Override
