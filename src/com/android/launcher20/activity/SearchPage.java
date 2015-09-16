@@ -53,8 +53,8 @@ public class SearchPage extends Activity implements PoiSearch.OnPoiSearchListene
     private String strStart ;
     private String cityCode;
 //    private LatLonPoint startPoint;
-    private PoiSearch.Query startSearchQuery;
-    private PoiSearch.Query endSearchQuery;
+//    private PoiSearch.Query startSearchQuery;
+//    private PoiSearch.Query endSearchQuery;
     private RouteSearch routeSearch;
     private EditText mAutoText;
     private ListView mlistview;
