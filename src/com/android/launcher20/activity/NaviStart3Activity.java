@@ -208,6 +208,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         @Override
         public void onLocationChanged(AMapLocation location) {
             Log.d(TAG,"onLocationChanged");
+//            mMapView.getDrawingCache();
 //            LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
 //            mGPSOptions.position(new LatLng(location.getLatitude(),location.getLongitude()));
 //            mAmap.addMarker(mGPSOptions);
@@ -844,8 +845,13 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
 
                 @Override
                 public void onCalculateRouteSuccess() {
+                    Log.d(TAG,"onCalculateRouteSuccess");
+                    try{
                     dissmissProgressDialog();
-                    closeDialog();
+                    closeDialog();}
+                    catch (Exception e){
+
+                    }
 //                    NaviRouteActivity nra = new NaviRouteActivity((Activity)getContext(),NaviStart3Activity.this);
 //                    nra.onStart(0);
                     mAmap.clear();
@@ -1259,7 +1265,9 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
      */
     private void initNavi() {
         Log.d(TAG,"initNavi");
+
         mAmapNavi = AMapNavi.getInstance(getContext());
+        mAmapNavi.setAMapNaviListener(getAMapNaviListener());
         AMapNaviPath naviPath = mAmapNavi.getNaviPath();
         if (naviPath == null) {
             return;
@@ -1366,6 +1374,6 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
     @Override
     public void onPause() {
         super.onPause();
-        mMapView.onPause();
+//        mMapView.onPause();
     }
 }
