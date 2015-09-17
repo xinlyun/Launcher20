@@ -21,6 +21,9 @@ import android.widget.LinearLayout;
 
 import com.android.launcher20.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //import com.lin.floatmaptest.R;
 
 
@@ -37,6 +40,7 @@ public class FloatWindowsView {
     private FloatWindowGroup mWindowOne;
     private LinearLayout mFloatLayout,mTitle,mWindow;
     private View mTitleLayout,mWindowLayout;
+    private ImageView mImage;
     private ImageView mFloatBtn;
     private Button btn;
     private int tag = -1;
@@ -205,7 +209,7 @@ public class FloatWindowsView {
         //获取浮动窗口视图所在布局
         mFloatLayout = (LinearLayout) inflater.inflate(R.layout.myfloat_layout, null);
         //添加mFloatLayout
-
+        mImage = (ImageView) mFloatLayout.findViewById(R.id.imageview_layout);
 //        mWindowManager.addView(mFloatLayout, wmParams);
         mTitle = (LinearLayout) mFloatLayout.findViewById(R.id.title_layout);
         mWindow = (LinearLayout) mFloatLayout.findViewById(R.id.window_layout);
@@ -293,7 +297,7 @@ public class FloatWindowsView {
         //获取浮动窗口视图所在布局
         mFloatLayout = (LinearLayout) inflater.inflate(R.layout.myfloat_layout, null);
         //添加mFloatLayout
-
+        mImage = (ImageView) mFloatLayout.findViewById(R.id.imageview_layout);
 //        mWindowManager.addView(mFloatLayout, wmParams);
         mTitle = (LinearLayout) mFloatLayout.findViewById(R.id.title_layout);
         mWindow = (LinearLayout) mFloatLayout.findViewById(R.id.window_layout);
@@ -306,7 +310,7 @@ public class FloatWindowsView {
 
 
         mTitleOne.addView(mTitleLayout);
-        mTitleOne.setTitle(wmParams,mWindowManager,mFloatLayout);
+        mTitleOne.setTitle(wmParams, mWindowManager, mFloatLayout);
         mTitle.addView(mTitleOne);
         mWindow.addView(mWindowLayout);
 
@@ -359,7 +363,9 @@ public class FloatWindowsView {
     public View getWindowView(){
         return mWindowLayout;
     }
-
+    public ImageView getBottomImage(){
+        return mImage;
+    }
 
     public void showADialog(){
         wmParams = new LayoutParams();
@@ -673,6 +679,7 @@ public class FloatWindowsView {
             message = handler.obtainMessage();
             message.what = 1;
             handler.sendMessage(message);
+
         }
     }
     public int getX(){
@@ -710,32 +717,45 @@ public class FloatWindowsView {
     private WindowGroupListener windowGroupListener = new WindowGroupListener() {
         @Override
         public void onClickDown(MotionEvent ev) {
-            if(windowsMovingListener!=null)windowsMovingListener.onClickDown(ev);
+//            if(windowsMovingListener!=null)windowsMovingListener.onClickDown(ev);
+            for (WindowsMovingListener m:windowsMovingListeners){
+                m.onClickDown(ev);
+            }
         }
 
         @Override
         public void onLongClick(MotionEvent ev) {
-            if(windowsMovingListener!=null){
-//                wmParams.flags = LayoutParams.FLAG_NOT_TOUCH_MODAL;
-//                mWindowManager.updateViewLayout(mFloatLayout,wmParams);
-                windowsMovingListener.onLongClick(ev);
-
+//            if(windowsMovingListener!=null){
+////                wmParams.flags = LayoutParams.FLAG_NOT_TOUCH_MODAL;
+////                mWindowManager.updateViewLayout(mFloatLayout,wmParams);
+//                windowsMovingListener.onLongClick(ev);
+//            }
+            for (WindowsMovingListener m:windowsMovingListeners){
+                m.onLongClick(ev);
             }
         }
         @Override
         public void onMoving(MotionEvent ev) {
-            if(windowsMovingListener!=null)
-                windowsMovingListener.onMoving(ev);
+//            if(windowsMovingListener!=null)
+//                windowsMovingListener.onMoving(ev);
+            for (WindowsMovingListener m:windowsMovingListeners){
+                m.onMoving(ev);
+            }
         }
         @Override
         public void onClickUp(MotionEvent ev) {
-            if(windowsMovingListener!=null)
-                windowsMovingListener.onClickUp(ev);
+//            if(windowsMovingListener!=null)
+//                windowsMovingListener.onClickUp(ev);
+            for (WindowsMovingListener m:windowsMovingListeners){
+                m.onClickUp(ev);
+            }
         }
     };
-    private WindowsMovingListener windowsMovingListener=null;
-    public void setWindowsMovingListener(WindowsMovingListener windowsMovingListener){
-        this.windowsMovingListener = windowsMovingListener;
+    private List<WindowsMovingListener> windowsMovingListeners=null;
+    public void addWindowsMovingListener(WindowsMovingListener windowsMovingListener){
+        if(windowsMovingListeners==null)windowsMovingListeners = new ArrayList<>();
+        this.windowsMovingListeners.add(windowsMovingListener);
+//        = windowsMovingListener;
     }
 
     public void cnTouch(boolean flag){

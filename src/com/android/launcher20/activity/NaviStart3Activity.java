@@ -253,6 +253,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
     protected void onCreate() {
         super.onCreate();
         setConentView(R.layout.activity_navistart3);
+
         height=((WindowManager) getContext()
                 .getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getHeight();
         // 初始化所需资源、控件、事件监听

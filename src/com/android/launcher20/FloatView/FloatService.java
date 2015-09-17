@@ -111,7 +111,7 @@ public class FloatService extends Service
 //        floatViews.remove(Tag);
             floatViews.add(Tag, f);
             f.refresh();
-            f.setWindowsMovingListener(windowsMovingListener);
+            f.addWindowsMovingListener(windowsMovingListener);
             fwv.close();
             return f;}
         else {
@@ -120,7 +120,7 @@ public class FloatService extends Service
             f.createFloatView(mFloatTitle,mFloatWindow);
             f.setTag(Tag);
             floatViews.add(Tag,f);
-            f.setWindowsMovingListener(windowsMovingListener);
+            f.addWindowsMovingListener(windowsMovingListener);
             return f;
         }
     }
