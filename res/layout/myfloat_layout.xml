@@ -20,6 +20,8 @@
             android:layout_height="fill_parent" />
 
     </LinearLayout>
+
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -42,21 +44,30 @@
 
         </LinearLayout>
 
-
-        <LinearLayout
-            android:id="@+id/window_layout"
-            android:orientation="vertical"
+        <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_weight="1"
-            android:layout_height="fill_parent">
-            <TextView
+            android:layout_height="fill_parent"
+            >
+            <ImageView
+                android:id="@+id/imageview_layout"
                 android:layout_width="fill_parent"
-                android:textSize="20dp"
-                android:text="                                            "
-                android:layout_height="1px" />
+                android:layout_height="fill_parent" />
+            <LinearLayout
+                android:id="@+id/window_layout"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_weight="1"
+                android:layout_height="fill_parent">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:textSize="20dp"
+                    android:text="                                            "
+                    android:layout_height="1px" />
 
+            </LinearLayout>
+        </RelativeLayout>
 
-        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
