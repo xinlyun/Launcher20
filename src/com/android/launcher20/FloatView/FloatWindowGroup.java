@@ -107,7 +107,7 @@ public class FloatWindowGroup extends LinearLayout {
         wmParams.y+=18;
         wmParams.width-=36;
         wmParams.height-=36;
-        wmParams.alpha=0.4f;
+//        wmParams.alpha=0.4f;
         mWindowManager.updateViewLayout(mFloatLayout,wmParams);
     }
 
@@ -119,7 +119,7 @@ public class FloatWindowGroup extends LinearLayout {
         wmParams.y-=18;
         wmParams.width+=36;
         wmParams.height+=36;
-        wmParams.alpha=1f;
+//        wmParams.alpha=1f;
         mWindowManager.updateViewLayout(mFloatLayout,wmParams);
     }
     private WindowGroupListener windowGroupListener;

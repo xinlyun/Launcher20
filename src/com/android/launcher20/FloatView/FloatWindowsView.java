@@ -40,7 +40,7 @@ public class FloatWindowsView {
     private FloatWindowGroup mWindowOne;
     private LinearLayout mFloatLayout,mTitle,mWindow;
     private View mTitleLayout,mWindowLayout;
-    private ImageView mImage;
+    private ImageView mImage_black,mImage_red;
     private ImageView mFloatBtn;
     private Button btn;
     private int tag = -1;
@@ -209,7 +209,8 @@ public class FloatWindowsView {
         //获取浮动窗口视图所在布局
         mFloatLayout = (LinearLayout) inflater.inflate(R.layout.myfloat_layout, null);
         //添加mFloatLayout
-        mImage = (ImageView) mFloatLayout.findViewById(R.id.imageview_layout);
+        mImage_black = (ImageView) mFloatLayout.findViewById(R.id.imageview_layout_loading);
+        mImage_red = (ImageView) mFloatLayout.findViewById(R.id.imageview_layout_red);
 //        mWindowManager.addView(mFloatLayout, wmParams);
         mTitle = (LinearLayout) mFloatLayout.findViewById(R.id.title_layout);
         mWindow = (LinearLayout) mFloatLayout.findViewById(R.id.window_layout);
@@ -315,7 +316,8 @@ public class FloatWindowsView {
         //获取浮动窗口视图所在布局
         mFloatLayout = (LinearLayout) inflater.inflate(R.layout.myfloat_layout, null);
         //添加mFloatLayout
-        mImage = (ImageView) mFloatLayout.findViewById(R.id.imageview_layout);
+        mImage_red = (ImageView) mFloatLayout.findViewById(R.id.imageview_layout_red);
+        mImage_black = (ImageView) mFloatLayout.findViewById(R.id.imageview_layout_loading);
 //        mWindowManager.addView(mFloatLayout, wmParams);
         mTitle = (LinearLayout) mFloatLayout.findViewById(R.id.title_layout);
         mWindow = (LinearLayout) mFloatLayout.findViewById(R.id.window_layout);
@@ -381,11 +383,13 @@ public class FloatWindowsView {
     public View getWindowView(){
         return mWindowLayout;
     }
-    public ImageView getBottomImage(){
-        return mImage;
+    public ImageView getBottomImage(int i){
+        if(i==0)return mImage_black;
+        return mImage_red;
     }
 
     public void showADialog(){
+        Log.d("FloatWindowsView","showADialog");
         wmParams = new LayoutParams();
         wmParams.type = LayoutParams.TYPE_PHONE;
         wmParams.format = PixelFormat.RGBA_8888;
@@ -437,7 +441,6 @@ public class FloatWindowsView {
                 LayoutParams.FLAG_NOT_FOCUSABLE |
                         LayoutParams.FLAG_LAYOUT_NO_LIMITS;
 
-//        mWindowManager.updateViewLayout(mFloatLayout, wmParams);
         mWindowManager.addView(mFloatLayout, wmParams);
     }
 
@@ -535,7 +538,9 @@ public class FloatWindowsView {
 //    };
     float length;
     float catter;
-    public void close(){
+    public void waitAndclose(){
+        Log.d("FloatWindowsView","close");
+        mImage_black.setX(0);
         length = width - wmParams.x;
         catter = length;
         android.os.Handler handler = new android.os.Handler(){
@@ -555,8 +560,10 @@ public class FloatWindowsView {
             }
         };
         new Closing(handler,0,1000).start();
-
-
+    }
+    public void close(){
+        Log.d("FloatWindowsView","close");
+        mWindowManager.removeViewImmediate(mFloatLayout);
 
     }
 
@@ -600,8 +607,6 @@ public class FloatWindowsView {
             currentY = wmParams.y;
             currentH = wmParams.height;
             currentW = wmParams.width;
-
-
 //        wmParams.height=0;
 //        wmParams.width=0;
             wmParams.x = 1200;
@@ -771,8 +776,8 @@ public class FloatWindowsView {
         mWindowManager.updateViewLayout(mFloatLayout,wmParams);
     }
     public void setPosition(float x, float y){
-        wmParams.x = (int) (x+4);
-        wmParams.y = (int) (y+38);
+        wmParams.x = (int) (x+22);
+        wmParams.y = (int) (y+36);
         mWindowManager.updateViewLayout(mFloatLayout,wmParams);
     }
 }

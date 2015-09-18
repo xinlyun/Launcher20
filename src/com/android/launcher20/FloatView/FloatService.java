@@ -42,7 +42,6 @@ public class FloatService extends Service
      * 将隐藏的窗口重现
      */
     public void reShow(){
-
         if(floatViews.size()>0){isMiss = false;floatViews.get(0).reshow();}
     }
 
@@ -102,7 +101,8 @@ public class FloatService extends Service
      */
     public FloatWindowsView replace(int posi,int Tag,int mFloatTitle,int mFloatWindow,Context context1,IBinder iBinder){
         if(floatViews.size()>Tag){
-            FloatWindowsView fwv = floatViews.get(Tag);
+            FloatWindowsView fwv =floatViews.remove(Tag);
+//            FloatWindowsView fwv = floatViews.get(Tag);
             FloatWindowsView f = new FloatWindowsView(context1);
             f.createParames(fwv.getWmParams());
             f.createFloatView(mFloatTitle, mFloatWindow);
@@ -113,7 +113,7 @@ public class FloatService extends Service
             f.refresh();
             f.addWindowsMovingListener(windowsMovingListener);
 
-            fwv.close();
+            fwv.waitAndclose();
             return f;}
         else {
             FloatWindowsView f = new FloatWindowsView(context1);

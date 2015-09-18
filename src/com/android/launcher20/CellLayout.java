@@ -2517,9 +2517,10 @@ public class CellLayout extends ViewGroup {
                 if(view instanceof LauncherAppWidgetHostView) {
                     if(((LauncherAppWidgetHostView)view).getAppWidgetInfo().provider.toString().equals("ComponentInfo{com.lin.floatmaptest/com.lin.floatmaptest.ExampleAppWidgetProvider}"))
                     {
-                        Log.d(TAG, "position x:" + view.getX() + " y:" + view.getY());
-                        if(appWidgetHostViewPosiChangeListener!=null)
-                        appWidgetHostViewPosiChangeListener.moving(view.getX(), view.getY());
+                        if(appWidgetHostViewPosiChangeListener!=null) {
+                            Log.d(TAG, "position x:" + view.getX() + " y:" + view.getY());
+                            appWidgetHostViewPosiChangeListener.moving(view.getX(), view.getY());
+                        }
                     }
                 }
             }
