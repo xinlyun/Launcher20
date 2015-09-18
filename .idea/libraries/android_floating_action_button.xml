@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="android-floating-action-button">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/android-floating-action-button.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

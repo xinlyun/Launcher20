@@ -253,33 +253,51 @@ public class FloatWindowsView {
 //        wmParams.
 
 //        mFloatLayout.setAnimation(createAnimation());
-        wmParams.windowAnimations = R.anim.openanim;
+//        wmParams.windowAnimations = R.anim.openanim;
         mWindowManager.addView(mFloatLayout, wmParams);
 //        mFloatWview.loadUrl("http://www.baidu.com");
-        mFloatLayout.setX(0-width);
-        android.os.Handler handler = new android.os.Handler(){
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                if(msg.what ==0){
-                    catterOpen = 0-msg.arg1;
-                    Log.d("bili",""+(1-catterOpen/lengthOpen));
-                    mFloatLayout.setX((float) msg.arg1);
-                    mFloatLayout.setAlpha(1-catterOpen/lengthOpen);
-                }
-                else {
-                    Log.d("x",""+mFloatLayout.getX());
-                    mFloatLayout.setAlpha(1);
-                    wmParams.x = (int)(width/40-5);
-                    wmParams.width =(int)(width*38/40+5);
-//                    mWindowManager.updateViewLayout(mFloatLayout,wmParams);
-                }
-            }
-
-        };
-        lengthOpen = 0-mFloatLayout.getX();
-
-        new Openning(handler,(int)mFloatLayout.getX(),0).start();
+//        mFloatLayout.setX(0-width);
+//        wmParams.x = 0 - width;
+//        mWindowManager.updateViewLayout(mFloatLayout,wmParams);
+//        android.os.Handler handler = new android.os.Handler(){
+//            @Override
+//            public void handleMessage(Message msg) {
+//                super.handleMessage(msg);
+//                if(msg.what ==0){
+//                    catterOpen = 0-msg.arg1;
+//                    Log.d("bili", "" + (1 - catterOpen / lengthOpen));
+////                    mFloatLayout.setX((float) msg.arg1);
+//
+//                    wmParams.x = msg.arg1;
+//                    mWindowManager.updateViewLayout(mFloatLayout, wmParams);
+//
+//                    mFloatLayout.setAlpha(1-catterOpen/lengthOpen);
+//                }
+//                else {
+//                    Log.d("x",""+mFloatLayout.getX());
+//                    mFloatLayout.setAlpha(1);
+//                    wmParams.x = (int)(width/40-5);
+//                    wmParams.width =(int)(width*38/40+5);
+////                    mWindowManager.updateViewLayout(mFloatLayout,wmParams);
+//                }
+//            }
+//
+//        };
+//
+//        Runnable runnable = new Runnable() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        };
+//
+//
+//
+//
+//        lengthOpen = 0-mFloatLayout.getX();
+//
+////        new Openning(handler,(int)mFloatLayout.getX(),0).start();
+//        new Openning(handler,0-width,0).start();
     }
 
 
@@ -527,31 +545,17 @@ public class FloatWindowsView {
                 if(msg.what==0){
 //                    wmParams.x = msg.arg1;
 //                    mWindowManager.updateViewLayout(mFloatLayout, wmParams);
-                    catter = msg.arg1-wmParams.x;
-                    Log.d("biliclose",""+(1-catter/length));
-                    mFloatLayout.setX((float)msg.arg1);
-                    mFloatLayout.setAlpha(1-catter/length);
+//                    catter = msg.arg1-wmParams.x;
+//                    Log.d("biliclose",""+(1-catter/length));
+//                    mFloatLayout.setX((float)msg.arg1);
+//                    mFloatLayout.setAlpha(1-catter/length);
                 }else {
                     mWindowManager.removeView(mFloatLayout);
                 }
             }
         };
+        new Closing(handler,0,1000).start();
 
-
-
-//        Closing closing = new Closing(handler,wmParams.x,width);
-//        closing.start();
-        wmParams.x = width;
-
-        mWindowManager.updateViewLayout(mFloatLayout,wmParams);
-
-//        mWindowManager.removeView(mFloatLayout);
-        mWindowManager.removeViewImmediate(mFloatLayout);
-//        mWindowManager.removeView(mFloatLayout);
-
-//        wmParams.x = width;
-//        mWindowManager.updateViewLayout(mFloatLayout,wmParams);
-//        mWindowManager.removeView(mFloatLayout);
 
 
     }

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +36,7 @@ import com.android.launcher20.R;
 public class NaviCustomActivity extends FloatA implements
         AMapNaviViewListener,AMapNaviListener {
 	private AMap aMap;
+	private LinearLayout mAmapAMapNaviView_layout;
 	private AMapNaviView mAmapAMapNaviView;
 	// 导航可以设置的参数
 	private boolean mDayNightFlag = Utils.DAY_MODE;// 默认为白天模式
@@ -100,9 +102,10 @@ public class NaviCustomActivity extends FloatA implements
 				mRouteOverLay.zoomToSpan();
 			}
 		});
-		mAmapAMapNaviView = (AMapNaviView) findViewById(R.id.customnavimap);
-
-
+//		mAmapAMapNaviView = (AMapNaviView) findViewById(R.id.customnavimap);
+		mAmapAMapNaviView_layout = (LinearLayout) findViewById(R.id.customnavimap_group);
+		mAmapAMapNaviView = new AMapNaviView(getContext());
+		mAmapAMapNaviView_layout.addView(mAmapAMapNaviView);
 		mAmapAMapNaviView.onCreate(((Activity)getContext()).getIntent().getExtras());
 
 		aMap = mAmapAMapNaviView.getMap();

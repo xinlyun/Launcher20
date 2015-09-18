@@ -7,8 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
 import android.util.DisplayMetrics;
@@ -29,7 +27,7 @@ import java.io.InputStream;
 //import com.lin.floatmaptest.R;
 
 /**
- * Created by root on 15-8-11.
+ *
  */
 public class FloatA extends Thread implements FLoatAStatusListener,WindowsMovingListener{
     private FloatService mfloatService=null;
@@ -191,12 +189,10 @@ public class FloatA extends Thread implements FLoatAStatusListener,WindowsMoving
     }
 
 
-    float x;
     @Override
     public void onClickDown(MotionEvent ev) {
 
     }
-    Bitmap bitmap;
     @Override
     public void onLongClick(MotionEvent ev) {
 
@@ -210,9 +206,9 @@ public class FloatA extends Thread implements FLoatAStatusListener,WindowsMoving
 
     @Override
     public void onClickUp(MotionEvent ev) {
-        mImage.setImageBitmap(null);
-        ll.setX(x);
-        if(bitmap!=null)bitmap.recycle();
+//        mImage.setImageBitmap(null);
+//        ll.setX(x);
+//        if(bitmap!=null)bitmap.recycle();
 
     }
 

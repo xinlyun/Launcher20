@@ -112,6 +112,7 @@ public class FloatService extends Service
             floatViews.add(Tag, f);
             f.refresh();
             f.addWindowsMovingListener(windowsMovingListener);
+
             fwv.close();
             return f;}
         else {
