@@ -134,7 +134,7 @@ public class NaviCustomActivity extends FloatA implements
 		viewOptions.setTrafficInfoUpdateEnabled(mTrafficFlag);// 设置是否更新路况
 		viewOptions.setCameraInfoUpdateEnabled(mCameraFlag);// 设置摄像头播报
 		viewOptions.setScreenAlwaysBright(mScreenFlag);// 设置屏幕常亮情况
-//		viewOptions.setNaviViewTopic(1);// 设置导航界面主题样式
+		viewOptions.setNaviViewTopic(1);// 设置导航界面主题样式
 		viewOptions.setLeaderLineEnabled(1248);
 		viewOptions.setRouteListButtonShow(true);
 //		aMap.getUiSettings().setZoomControlsEnabled(true);

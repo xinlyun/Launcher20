@@ -114,6 +114,7 @@ public class FloatService extends Service
             f.addWindowsMovingListener(windowsMovingListener);
 
             fwv.waitAndclose();
+
             return f;}
         else {
             FloatWindowsView f = new FloatWindowsView(context1);

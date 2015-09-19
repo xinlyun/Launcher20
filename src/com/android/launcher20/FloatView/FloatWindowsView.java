@@ -23,6 +23,8 @@ import com.android.launcher20.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 //import com.lin.floatmaptest.R;
 
@@ -442,6 +444,13 @@ public class FloatWindowsView {
                         LayoutParams.FLAG_LAYOUT_NO_LIMITS;
 
         mWindowManager.addView(mFloatLayout, wmParams);
+
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+               FloatWindowsView.this.close();
+            }
+        }, 8*1000);
     }
 
 
@@ -555,15 +564,39 @@ public class FloatWindowsView {
 //                    mFloatLayout.setX((float)msg.arg1);
 //                    mFloatLayout.setAlpha(1-catter/length);
                 }else {
-                    mWindowManager.removeView(mFloatLayout);
+                    if(mFloatLayout!=null) {
+                        mImage_red = null;
+                        mImage_black = null;
+                        mTitleLayout = null;
+                        mTitle = null;
+                        mWindowLayout = null;
+                        mWindow = null;
+
+                        mFloatLayout.removeAllViews();
+
+                        mWindowManager.removeView(mFloatLayout);
+                        mFloatLayout = null;
+                        mWindowManager = null;
+                        wmParams = null;
+                        windowGroupListener=null;
+
+                        System.gc();
+                    }
                 }
             }
         };
         new Closing(handler,0,1000).start();
     }
     public void close(){
-        Log.d("FloatWindowsView","close");
-        mWindowManager.removeViewImmediate(mFloatLayout);
+        Log.d("FloatWindowsView", "close");
+        try {
+            mWindowManager.removeView(mFloatLayout);
+            mFloatLayout = null;
+            System.gc();
+        }catch (Exception e){
+            Log.d("FLoatWIndowsView","已清除");
+        }
+//        mWindowManager.removeViewImmediate();
 
     }
 

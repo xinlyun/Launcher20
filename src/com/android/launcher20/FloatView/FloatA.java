@@ -157,14 +157,23 @@ public class FloatA extends Thread implements FLoatAStatusListener,WindowsMoving
 
     protected void StopIt(){
 //        mfloatWindowsView.close();
-        this.floatA1 = null;
+        if(this.floatA1!=null){
+            this.floatA1.finish();
+            this.floatA1.interrupt();
+            this.floatA1 = null;
+        }
 
     }
     public void stopm(){
         mfloatWindowsView.close();
     }
 
+    public void finish(){
 
+        mfloatService=null;
+
+        mfloatWindowsView=null;
+    }
 
     protected void dismiss(){
 
