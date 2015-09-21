@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="5px"
+        android:layout_height="fill_parent">
+
+        <ImageView
+            android:id="@+id/float_id_m"
+            android:layout_width="5px"
+            android:layout_height="90px"
+            android:src="@drawable/qianjin"
+            />
+        <ImageView
+            android:layout_width="5px"
+            android:layout_height="fill_parent" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/title_layout"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="11"
+
+            >
+            <TextView
+                android:layout_width="fill_parent"
+                android:textSize="20dp"
+                android:text="                                            "
+                android:layout_height="1px" />
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            >
+
+            <LinearLayout
+                android:id="@+id/window_layout"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_weight="1"
+                android:layout_height="fill_parent">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:textSize="20dp"
+                    android:text="                                            "
+                    android:layout_height="1px" />
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:layout_marginLeft="1080dp"
+                android:background="#60000000"
+                android:id="@+id/imageview_layout_loading"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                />
+            <ImageView
+                android:layout_marginLeft="1080dp"
+                android:background="#d0ff0000"
+                android:id="@+id/imageview_layout_red"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

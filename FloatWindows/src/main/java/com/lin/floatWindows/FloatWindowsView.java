@@ -1,4 +1,4 @@
-package com.android.launcher20.FloatView;
+package com.lin.floatWindows;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,7 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.android.launcher20.R;
+import com.lin.floatWindows.FloatTitleGroup;
 
 import java.util.ArrayList;
 import java.util.List;

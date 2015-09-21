@@ -1,4 +1,4 @@
-package com.android.launcher20.FloatView;
+package com.lin.floatWindows;
 
 import android.content.Context;
 import android.util.Log;

@@ -1,4 +1,4 @@
-package com.android.launcher20.FloatView;
+package com.lin.floatWindows;
 
 import android.app.Activity;
 import android.app.Application;
@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-import com.android.launcher20.R;
+//import com.android.launcher20.R;
 
 import java.io.DataInputStream;
 import java.io.File;
@@ -23,13 +23,13 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-//import com.lin.floatmaptest.R;
+
 
 /**
  *
  */
 public class FloatA
-//        extends Thread
+        extends Thread
         implements FLoatAStatusListener,WindowsMovingListener{
 //    private FloatService mfloatService=null;
     private FloatWindowsView mfloatWindowsView;
@@ -101,15 +101,15 @@ public class FloatA
         dialog.close();
         dialog = null;
     }
-//    @Override
-//    public void run() {
-//        super.run();
-////        Looper.prepare();
-////        context.bindService(new Intent(context, FloatService.class), connection, context.BIND_AUTO_CREATE);
-////        else onCreate();
-////        onCreate();
-////        Looper.loop();
-//    }
+    @Override
+    public void run() {
+        super.run();
+//        Looper.prepare();
+//        context.bindService(new Intent(context, FloatService.class), connection, context.BIND_AUTO_CREATE);
+//        else onCreate();
+//        onCreate();
+//        Looper.loop();
+    }
 
 
 
@@ -145,7 +145,7 @@ public class FloatA
 
     public void onStart(int where){
         this.where = where;
-//        this.start();
+        this.start();
         this.onCreate();
 
 //        while(this.isAlive()){}
