@@ -30,7 +30,7 @@ import java.io.InputStream;
  *
  */
 public class FloatA extends Thread implements FLoatAStatusListener,WindowsMovingListener{
-    private FloatService mfloatService=null;
+//    private FloatService mfloatService=null;
     private FloatWindowsView mfloatWindowsView;
     private static Activity context;
     private int where = 0;
@@ -42,20 +42,20 @@ public class FloatA extends Thread implements FLoatAStatusListener,WindowsMoving
     private FloatWindowsView dialog;
     private int width=1080,height=1920;
 
-    /**
-     * 获得FloatService对象，并开始实际工作
-     */
-    private ServiceConnection connection =new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            mfloatService = ((FloatService.MyBinder)service).getService();
-
-            onCreate();
-        }
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-        }
-    };
+//    /**
+//     * 获得FloatService对象，并开始实际工作
+//     */
+//    private ServiceConnection connection =new ServiceConnection() {
+//        @Override
+//        public void onServiceConnected(ComponentName name, IBinder service) {
+//            mfloatService = ((FloatService.MyBinder)service).getService();
+//
+//            onCreate();
+//        }
+//        @Override
+//        public void onServiceDisconnected(ComponentName name) {
+//        }
+//    };
 
 
 
@@ -75,13 +75,13 @@ public class FloatA extends Thread implements FLoatAStatusListener,WindowsMoving
         width = wm.getDefaultDisplay().getWidth();
         height = wm.getDefaultDisplay().getHeight();
     }
-    public FloatService getFloatService(){
-        return this.mfloatService;
-    }
-    public FloatA setFloatService(FloatService floatService){
-        mfloatService = floatService;
-        return this;
-    }
+//    public FloatService getFloatService(){
+//        return this.mfloatService;
+//    }
+//    public FloatA setFloatService(FloatService floatService){
+//        mfloatService = floatService;
+//        return this;
+//    }
     private IBinder getiBinder(){
         return this.iBinder;
     }
@@ -102,7 +102,7 @@ public class FloatA extends Thread implements FLoatAStatusListener,WindowsMoving
     public void run() {
         super.run();
 //        Looper.prepare();
-        context.bindService(new Intent(context, FloatService.class), connection, context.BIND_AUTO_CREATE);
+//        context.bindService(new Intent(context, FloatService.class), connection, context.BIND_AUTO_CREATE);
 //        else onCreate();
 //        onCreate();
 //        Looper.loop();
@@ -112,7 +112,8 @@ public class FloatA extends Thread implements FLoatAStatusListener,WindowsMoving
 
     protected void onCreate(){
 //        setConentView(R.layout.myfloat_layout);
-        mfloatService.addStatusListener(this);
+//        mfloatService.addStatusListener(this);
+        FloatManager.getContext(context).addStatusListener(this);
         StopIt();
     }
 
@@ -121,7 +122,8 @@ public class FloatA extends Thread implements FLoatAStatusListener,WindowsMoving
 
     protected void setConentView(int layout){
 //        mfloatWindowsView = mfloatService.replacetry(0,R.layout.map_title_layout,layout,context);
-        mfloatWindowsView = mfloatService.replace(where,0,R.layout.map_title_layout,layout,context,this.iBinder);
+//        mfloatWindowsView = mfloatService.replace(where,0,R.layout.map_title_layout,layout,context,this.iBinder);
+        mfloatWindowsView = FloatManager.getContext(context).replace(where,0,R.layout.map_title_layout,layout,this.iBinder);
         mfloatWindowsView.addWindowsMovingListener(this);
         ll = mfloatWindowsView.getWindowView();
         mImage = mfloatWindowsView.getBottomImage(1);
@@ -139,7 +141,7 @@ public class FloatA extends Thread implements FLoatAStatusListener,WindowsMoving
     public void onStart(int where){
         this.where = where;
         this.start();
-
+        this.onCreate();
 
 //        while(this.isAlive()){}
 //        onCreate();
@@ -170,7 +172,7 @@ public class FloatA extends Thread implements FLoatAStatusListener,WindowsMoving
 
     public void finish(){
 
-        mfloatService=null;
+//        mfloatService=null;
 
         mfloatWindowsView=null;
     }

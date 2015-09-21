@@ -96,7 +96,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         ,AMap.OnMapClickListener
         ,AMap.OnMapLoadedListener
 //        ,AMap.OnMapLongClickListener
-        ,View.OnFocusChangeListener
+//        ,View.OnFocusChangeListener
 {
     // --------------View基本控件---------------------
     private MapView mMapView;// 地图控件
@@ -368,10 +368,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
 
 
         mAmapNavi = AMapNavi.getInstance(getContext());// 初始化导航引擎
-
         // 初始化Marker添加到地图
-
-
         mStartMarker = mAmap.addMarker(new MarkerOptions()
                 .setFlat(true).perspective(true).icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory
                         .decodeResource(getContext().getResources(), R.drawable.start))));
@@ -426,10 +423,11 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         mAmap.setOnMarkerClickListener(this);
         mSearchText.addTextChangedListener(this);
         mSearchText.setOnClickListener(this);
-        mSearchText.setOnFocusChangeListener(this);
+//        mSearchText.setOnFocusChangeListener(this);
         mSearchText.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    inputAble(false);
                     searchButton();
             }
         });
@@ -1293,13 +1291,13 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         mRouteCostView.setText(String.valueOf(cost));
     }
 
-    @Override
-    public void onFocusChange(View v, boolean hasFocus) {
-        if(v.getId()==R.id.navistart_auto_textview){
-            inputAble(false);
-        searchButton();
-        }
-    }
+//    @Override
+//    public void onFocusChange(View v, boolean hasFocus) {
+//        if(v.getId()==R.id.navistart_auto_textview){
+//            inputAble(false);
+//        searchButton();
+//        }
+//    }
 
     /**
      * 模拟拖动线程，实现侧栏窗口移动效果

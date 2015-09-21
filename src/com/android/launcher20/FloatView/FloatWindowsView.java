@@ -578,7 +578,7 @@ public class FloatWindowsView {
                         mFloatLayout = null;
                         mWindowManager = null;
                         wmParams = null;
-                        windowGroupListener=null;
+//                        windowGroupListener=null;
 
                         System.gc();
                     }
