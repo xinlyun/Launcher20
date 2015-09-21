@@ -97,10 +97,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.common.Search;
-import com.android.launcher20.FloatView.FloatService;
-import com.android.launcher20.FloatView.FloatServiceListener;
 import com.android.launcher20.DropTarget.DragObject;
 import com.android.launcher20.activity.NaviStart3Activity;
+import com.lin.floatWindows.FloatManager;
+import com.lin.floatWindows.FloatServiceListener;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -404,44 +404,44 @@ public final class Launcher extends Activity
     private static boolean isPropertyEnabled(String propertyName) {
         return Log.isLoggable(propertyName, Log.VERBOSE);
     }
-    private FloatService floatService=null;
-    private ServiceConnection connection=new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            floatService = ((FloatService.MyBinder)service).getService();
-            floatService.setFloatServiceListener(floatServiceListener);
-            if (flagisLive) {
-                savecellview =
-                        (CellLayout) mWorkspace.getChildAt(0);
-
-                mSharedPreferences = getSharedPreferences("myown",Context.MODE_PRIVATE);
-                int id = mSharedPreferences.getInt("id",1000);
-                int x = mSavedInstanceState.getInt("posix",10);
-                int y = mSavedInstanceState.getInt("posiy",10);
-                
-                SaveWidgetif(id,x,y,savecellview);
-//                Log.d("add","x"+spanXY[0]+" y"+spanXY[1]);
-//                Log.d("add2","x"+saveposi[0]+" y"+saveposi[1]);
-//                if( saveposi[0]==0&&saveposi[1]==0){
-//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
-//                    naviStart3Activity1.onStart(0);
-//                }else if(saveposi[0]==0&&saveposi[1]==1){
-//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
-//                    naviStart3Activity1.onStart(1);
-//                }else {
-//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
-//                    naviStart3Activity1.onStart(2);
-//                }
-                NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
-                naviStart3Activity1.onStart(saveposi[1]);
-
-            }
-        }
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-
-        }
-    };
+//    private FloatService floatService=null;
+//    private ServiceConnection connection=new ServiceConnection() {
+//        @Override
+//        public void onServiceConnected(ComponentName name, IBinder service) {
+//            floatService = ((FloatService.MyBinder)service).getService();
+//            floatService.setFloatServiceListener(floatServiceListener);
+//            if (flagisLive) {
+//                savecellview =
+//                        (CellLayout) mWorkspace.getChildAt(0);
+//
+//                mSharedPreferences = getSharedPreferences("myown",Context.MODE_PRIVATE);
+//                int id = mSharedPreferences.getInt("id",1000);
+//                int x = mSavedInstanceState.getInt("posix",10);
+//                int y = mSavedInstanceState.getInt("posiy",10);
+//
+//                SaveWidgetif(id,x,y,savecellview);
+////                Log.d("add","x"+spanXY[0]+" y"+spanXY[1]);
+////                Log.d("add2","x"+saveposi[0]+" y"+saveposi[1]);
+////                if( saveposi[0]==0&&saveposi[1]==0){
+////                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
+////                    naviStart3Activity1.onStart(0);
+////                }else if(saveposi[0]==0&&saveposi[1]==1){
+////                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
+////                    naviStart3Activity1.onStart(1);
+////                }else {
+////                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
+////                    naviStart3Activity1.onStart(2);
+////                }
+//                NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
+//                naviStart3Activity1.onStart(saveposi[1]);
+//
+//            }
+//        }
+//        @Override
+//        public void onServiceDisconnected(ComponentName name) {
+//
+//        }
+//    };
     private FloatServiceListener floatServiceListener = new FloatServiceListener() {
         @Override
         public void onClickDown(MotionEvent ev) {
@@ -908,8 +908,8 @@ public final class Launcher extends Activity
 
     @Override
     protected void onResume() {
-        Log.d("Launcher","onresume");
-        startService(new Intent(Launcher.this,FloatService.class));
+        Log.d("Launcher", "onresume");
+//        startService(new Intent(Launcher.this,FloatService.class));
 
         long startTime = 0;
         if (DEBUG_RESUME_TIME) {
@@ -989,16 +989,53 @@ public final class Launcher extends Activity
         if (DEBUG_RESUME_TIME) {
             Log.d(TAG, "Time spent in onResume: " + (System.currentTimeMillis() - startTime));
         }
-        if(floatService!=null)if (floatService.isMiss()&&flagSorM)floatService.reShow();
-        bindService(new Intent(Launcher.this,FloatService.class),connection,BIND_AUTO_CREATE);
 
 
-        if(floatService!=null)floatService.onResume();
+//        if(floatService!=null)if (floatService.isMiss()&&flagSorM)floatService.reShow();
+        FloatManager.getContext(this).reShow();
+//        bindService(new Intent(Launcher.this,FloatService.class),connection,BIND_AUTO_CREATE);
+        initFloatView();
+
+//        if(floatService!=null)floatService.onResume();
+        FloatManager.getContext(this).onResume();
+    }
+
+    private void initFloatView(){
+        FloatManager.getContext(this).setFloatServiceListener(floatServiceListener);
+            if (flagisLive) {
+                savecellview =
+                        (CellLayout) mWorkspace.getChildAt(0);
+
+                mSharedPreferences = getSharedPreferences("myown", Context.MODE_PRIVATE);
+                    int id = mSharedPreferences.getInt("id", 1000);
+                    int x = mSharedPreferences.getInt("posix", 10);
+                    int y = mSharedPreferences.getInt("posiy", 10);
+                    SaveWidgetif(id, x, y, savecellview);
+
+
+
+//                Log.d("add","x"+spanXY[0]+" y"+spanXY[1]);
+//                Log.d("add2","x"+saveposi[0]+" y"+saveposi[1]);
+//                if( saveposi[0]==0&&saveposi[1]==0){
+//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
+//                    naviStart3Activity1.onStart(0);
+//                }else if(saveposi[0]==0&&saveposi[1]==1){
+//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
+//                    naviStart3Activity1.onStart(1);
+//                }else {
+//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
+//                    naviStart3Activity1.onStart(2);
+//                }
+//                NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this, savecellview.getWindowToken());
+//                naviStart3Activity1.onStart(saveposi[1]);
+                FloatManager.getContext(this).startWindows(NaviStart3Activity.class,saveposi[1]);
+            }
     }
 
     @Override
     protected void onPause() {
-        if(floatService!=null)if (!floatService.isMiss())floatService.onDismiss();
+//        if(floatService!=null)if (!floatService.isMiss())floatService.onDismiss();
+        FloatManager.getContext(this).onDismiss();
         Log.d("lift","oncPause");
         // NOTE: We want all transitions from launcher to act as if the wallpaper were enabled
         // to be consistent.  So re-enable the flag here, and we will re-disable it as necessary
@@ -1483,9 +1520,10 @@ public final class Launcher extends Activity
 //                NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
 //                naviStart3Activity1.onStart(2);
 //            }
-            NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
-            
-            naviStart3Activity1.onStart(saveposi[1]);
+//            NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
+//
+//            naviStart3Activity1.onStart(saveposi[1]);
+            FloatManager.getContext(this).startWindows(NaviStart3Activity.class,saveposi[1]);
             flagWidget = false;
         }
         resetAddInfo();
@@ -1828,8 +1866,8 @@ public final class Launcher extends Activity
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d("lift","onDestroy");
-        stopService(new Intent(Launcher.this,FloatService.class));
+        Log.d("lift", "onDestroy");
+//        stopService(new Intent(Launcher.this,FloatService.class));
         // Remove all pending runnables
         mHandler.removeMessages(ADVANCE_MSG);
         mHandler.removeMessages(0);
@@ -3195,8 +3233,9 @@ public final class Launcher extends Activity
     }
 
     void showAllApps(boolean animated) {
-        Log.d("Launcher","showAllApps");
-        if(floatService!=null)if (!floatService.isMiss())floatService.onDismiss();
+        Log.d("Launcher", "showAllApps");
+//        if(floatService!=null)if (!floatService.isMiss())floatService.onDismiss();
+        FloatManager.getContext(this).onDismiss();
         flagSorM = false;
         if (mState != State.WORKSPACE) return;
 
@@ -3309,7 +3348,8 @@ public final class Launcher extends Activity
      */
     void showHotseat(boolean animated) {
         Log.d("Launcher","showHotseat");
-        if(floatService!=null)if (floatService.isMiss())floatService.reShow();
+//        if(floatService!=null)if (floatService.isMiss())floatService.reShow();
+        FloatManager.getContext(this).reShow();
         flagSorM=true;
         if (!LauncherApplication.isScreenLarge()) {
             if (animated) {
@@ -3850,7 +3890,7 @@ public final class Launcher extends Activity
         if(appWidgetInfo.provider.toString().equals("ComponentInfo{com.lin.floatmaptest/com.lin.floatmaptest.ExampleAppWidgetProvider}")){
             Log.d(TAG,"IT HERE"+" "+item.hostView.getClass().toString()+"  ");
             flagisLive=true;
-            if(floatService!=null){
+//            if(floatService!=null){
                 savecellview =
                         (CellLayout) mWorkspace.getChildAt(0);
                 savecellview.setOnAppWidgetHostViewPosiChangeListener(this);
@@ -3873,10 +3913,11 @@ public final class Launcher extends Activity
 //                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
 //                    naviStart3Activity1.onStart(2);
 //                }
-                NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
-                naviStart3Activity1.onStart(saveposi[1]);
+//                NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
+//                naviStart3Activity1.onStart(saveposi[1]);
+                FloatManager.getContext(this).startWindows(NaviStart3Activity.class,saveposi[1]);
 
-            }
+//            }
         }
         item.hostView.setTag(item);
         item.onBindAppWidget(this);
@@ -4443,9 +4484,9 @@ public final class Launcher extends Activity
     NaviStart3Activity naviStart3Activity;
     WindowManager windowManager;
     public void addFloatWin(){
-        NaviStart3Activity naviStart3Activity = new NaviStart3Activity(this, savecellview.getWindowToken());
-
-        naviStart3Activity.onStart(0);
+//        NaviStart3Activity naviStart3Activity = new NaviStart3Activity(this, savecellview.getWindowToken());
+//
+//        naviStart3Activity.onStart(0);
 
     }
     public void changeSaveView(View cellLayout){
@@ -4462,7 +4503,8 @@ public final class Launcher extends Activity
             if(style==0){
                 flagWidget = true;}
             else if(style==1){
-                floatService.close();
+//                floatService.close();
+                FloatManager.getContext(Launcher.this).close();
                 mSharedPreferences = getSharedPreferences("myown",Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = mSharedPreferences.edit();
                 editor.putInt("id",1000);
@@ -4480,7 +4522,8 @@ public final class Launcher extends Activity
         int oldid = mSharedPreferences.getInt("id",1000);
         Log.d("Launcher","oldid:"+oldid);
         if(id==oldid){
-            floatService.setFloatWindowPosition(y);
+//            floatService.setFloatWindowPosition(y);
+            FloatManager.getContext(Launcher.this).setFloatWindowPosition(y);
             SharedPreferences.Editor editor = mSharedPreferences.edit();
             editor.putInt("posix",x);
             editor.putInt("posiy",y);
@@ -4490,7 +4533,8 @@ public final class Launcher extends Activity
     }
     @Override
     public void moving(float x, float y) {
-        floatService.setPosition(x,y);
+//        floatService.setPosition(x,y);
+        FloatManager.getContext(this).setPosition(x,y);
     }
 
 }

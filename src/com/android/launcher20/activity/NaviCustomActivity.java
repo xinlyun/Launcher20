@@ -23,11 +23,11 @@ import com.amap.api.navi.model.AMapNaviLocation;
 import com.amap.api.navi.model.AMapNaviPath;
 import com.amap.api.navi.model.NaviInfo;
 import com.amap.api.navi.view.RouteOverLay;
-import com.android.launcher20.FloatView.FloatA;
-import com.android.launcher20.FloatView.FloatManager;
 import com.android.launcher20.util.TTSController;
 import com.android.launcher20.util.Utils;
 import com.android.launcher20.R;
+import com.lin.floatWindows.FloatA;
+import com.lin.floatWindows.FloatManager;
 
 
 /**

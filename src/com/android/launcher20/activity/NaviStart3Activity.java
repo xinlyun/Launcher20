@@ -63,13 +63,13 @@ import com.amap.api.services.help.Tip;
 import com.amap.api.services.poisearch.PoiItemDetail;
 import com.amap.api.services.poisearch.PoiResult;
 import com.amap.api.services.poisearch.PoiSearch;
-import com.android.launcher20.FloatView.FloatA;
-import com.android.launcher20.FloatView.FloatManager;
 import com.android.launcher20.util.AMapUtil;
 import com.android.launcher20.util.MainApplication;
 import com.android.launcher20.util.TTSController;
 import com.android.launcher20.util.ToastUtil;
 import com.android.launcher20.R;
+import com.lin.floatWindows.FloatA;
+import com.lin.floatWindows.FloatManager;
 
 import java.util.ArrayList;
 import java.util.List;
