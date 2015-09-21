@@ -64,6 +64,7 @@ import com.amap.api.services.poisearch.PoiItemDetail;
 import com.amap.api.services.poisearch.PoiResult;
 import com.amap.api.services.poisearch.PoiSearch;
 import com.android.launcher20.FloatView.FloatA;
+import com.android.launcher20.FloatView.FloatManager;
 import com.android.launcher20.util.AMapUtil;
 import com.android.launcher20.util.MainApplication;
 import com.android.launcher20.util.TTSController;
@@ -235,12 +236,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         }
     };
 
-    public NaviStart3Activity(Activity context1,IBinder iBinder) {
-        super(context1,iBinder);
-    }
-    public NaviStart3Activity(Activity context1,FloatA floatA){
-        super(context1,floatA);
-    }
+
 
     //导航准备
     private RouteOverLay mRouteOverLay;
@@ -645,8 +641,9 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
                 inputAble(true);
                 break;
             case R.id.routestartnavi:
-                NaviCustomActivity nca = new NaviCustomActivity((Activity)getContext(),this);
-                nca.onStart(0);
+//                NaviCustomActivity nca = new NaviCustomActivity((Activity)getContext(),this);
+                FloatManager.getContext(getContext()).startWindows(this,NaviCustomActivity.class);
+//                nca.onStart(0);
                 break;
             case R.id.navistart_float_action_btn:
                 searchButton();

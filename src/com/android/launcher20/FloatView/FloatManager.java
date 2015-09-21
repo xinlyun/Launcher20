@@ -1,5 +1,6 @@
 package com.android.launcher20.FloatView;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.IBinder;
 import android.util.Log;
@@ -14,7 +15,7 @@ public class FloatManager {
     private boolean isMiss=false;
     ArrayList<FloatWindowsView> floatViews;
     private ArrayList<FLoatAStatusListener> floatAStatusListeners;
-
+    private FloatA floatA;
     /**
      *
      * @return 窗口是否隐藏
@@ -41,24 +42,24 @@ public class FloatManager {
 
     private static FloatManager floatManager;
     private static Context context;
-    private FloatManager(){
+    private FloatManager(Context context1){
+        this.context = context1;
         floatAStatusListeners = new ArrayList<>();
         floatViews = new ArrayList<FloatWindowsView>();
     }
 
     public static FloatManager getContext(Context context1){
         if(floatManager==null) {
-            floatManager = new FloatManager();
-
+            floatManager = new FloatManager(context1);
         }
-        context  = context1;
+//        context  = context1;
         return floatManager;
     }
 
 
     public FloatWindowsView addNewFloatView(int mFloatTitle,int mFloatWindow){
         FloatWindowsView f = new FloatWindowsView(context);
-        f.createParames(0,null);
+        f.createParames(0);
         f.createFloatView(mFloatTitle, mFloatWindow);
         f.setTag(floatViews.size());
 
@@ -104,7 +105,7 @@ public class FloatManager {
      * 窗口间的切换，包括窗口生成也由此完成
      * @return 新生成的窗口
      */
-    public FloatWindowsView replace(int posi,int Tag,int mFloatTitle,int mFloatWindow,IBinder iBinder){
+    public FloatWindowsView replace(int posi,int Tag,int mFloatTitle, int mFloatWindow){
         if(floatViews.size()>Tag){
             FloatWindowsView fwv =floatViews.remove(Tag);
 //            FloatWindowsView fwv = floatViews.get(Tag);
@@ -123,13 +124,40 @@ public class FloatManager {
             return f;}
         else {
             FloatWindowsView f = new FloatWindowsView(context);
-            f.createParames(posi,iBinder);
+            f.createParames(posi);
             f.createFloatView(mFloatTitle,mFloatWindow);
             f.setTag(Tag);
             floatViews.add(Tag,f);
             f.addWindowsMovingListener(windowsMovingListener);
             return f;
         }
+    }
+
+
+    public void startWindows(Class<?> tClass,int Tag){
+        try {
+            floatA = (FloatA) tClass.newInstance();
+            floatA.setContext((Activity) context);
+            floatA.testWin();
+            floatA.onStart(Tag);
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+    public void startWindows(FloatA floatA1,Class<?> tClass){
+        try {
+            floatA = (FloatA) tClass.newInstance();
+            floatA.setContext((Activity) context);
+            floatA.testWin();
+            floatA.onStart(floatA1.getWhere());
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
@@ -176,7 +204,7 @@ public class FloatManager {
 
 
     public FloatWindowsView replace(int Tag,int mFloatTitle,int mFloatWindow){
-        return replace(Tag,0,mFloatTitle,mFloatWindow,null);
+        return replace(Tag,0,mFloatTitle,mFloatWindow);
     }
 
 //    public FloatWindowsView addNewFloatView(int mFloatTitle,int mFloatWindow){

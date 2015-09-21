@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Bitmap;
 import android.graphics.PixelFormat;
-import android.os.IBinder;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.MotionEvent;
@@ -29,14 +28,15 @@ import java.io.InputStream;
 /**
  *
  */
-public class FloatA extends Thread implements FLoatAStatusListener,WindowsMovingListener{
+public class FloatA
+//        extends Thread
+        implements FLoatAStatusListener,WindowsMovingListener{
 //    private FloatService mfloatService=null;
     private FloatWindowsView mfloatWindowsView;
     private static Activity context;
     private int where = 0;
     private FloatA floatA1 = null;
     private FloatWindowsView other = null;
-    private IBinder iBinder = null;
     private  View ll;
     private ImageView mImage;
     private FloatWindowsView dialog;
@@ -56,25 +56,32 @@ public class FloatA extends Thread implements FLoatAStatusListener,WindowsMoving
 //        public void onServiceDisconnected(ComponentName name) {
 //        }
 //    };
+    public FloatA(){
 
+    }
 
-
-    public FloatA(Activity context1,IBinder iBinder){
-        this.context = context1;
-        this.iBinder = iBinder;
+    public void testWin(){
         WindowManager wm = context.getWindowManager();
         width = wm.getDefaultDisplay().getWidth();
         height = wm.getDefaultDisplay().getHeight();
     }
-    public FloatA(Activity context1,FloatA floatA){
-        this.context = context1;
-        this.floatA1 = floatA;
-        this.iBinder = floatA.getiBinder();
-        if(floatA!=null)other = floatA.getFloatWindowsView();
-        WindowManager wm = context.getWindowManager();
-        width = wm.getDefaultDisplay().getWidth();
-        height = wm.getDefaultDisplay().getHeight();
+    public void setContext(Activity context){
+        this.context = context;
     }
+//    public FloatA(Activity context1){
+//        this.context = context1;
+//        WindowManager wm = context.getWindowManager();
+//        width = wm.getDefaultDisplay().getWidth();
+//        height = wm.getDefaultDisplay().getHeight();
+//    }
+//    public FloatA(Activity context1,FloatA floatA){
+//        this.context = context1;
+//        this.floatA1 = floatA;
+//        if(floatA!=null)other = floatA.getFloatWindowsView();
+//        WindowManager wm = context.getWindowManager();
+//        width = wm.getDefaultDisplay().getWidth();
+//        height = wm.getDefaultDisplay().getHeight();
+//    }
 //    public FloatService getFloatService(){
 //        return this.mfloatService;
 //    }
@@ -82,9 +89,6 @@ public class FloatA extends Thread implements FLoatAStatusListener,WindowsMoving
 //        mfloatService = floatService;
 //        return this;
 //    }
-    private IBinder getiBinder(){
-        return this.iBinder;
-    }
 
     public FloatWindowsView getFloatWindowsView(){
         return  this.mfloatWindowsView;
@@ -96,17 +100,16 @@ public class FloatA extends Thread implements FLoatAStatusListener,WindowsMoving
     protected void closeDialog(){
         dialog.close();
         dialog = null;
-
     }
-    @Override
-    public void run() {
-        super.run();
-//        Looper.prepare();
-//        context.bindService(new Intent(context, FloatService.class), connection, context.BIND_AUTO_CREATE);
-//        else onCreate();
-//        onCreate();
-//        Looper.loop();
-    }
+//    @Override
+//    public void run() {
+//        super.run();
+////        Looper.prepare();
+////        context.bindService(new Intent(context, FloatService.class), connection, context.BIND_AUTO_CREATE);
+////        else onCreate();
+////        onCreate();
+////        Looper.loop();
+//    }
 
 
 
@@ -123,7 +126,7 @@ public class FloatA extends Thread implements FLoatAStatusListener,WindowsMoving
     protected void setConentView(int layout){
 //        mfloatWindowsView = mfloatService.replacetry(0,R.layout.map_title_layout,layout,context);
 //        mfloatWindowsView = mfloatService.replace(where,0,R.layout.map_title_layout,layout,context,this.iBinder);
-        mfloatWindowsView = FloatManager.getContext(context).replace(where,0,R.layout.map_title_layout,layout,this.iBinder);
+        mfloatWindowsView = FloatManager.getContext(context).replace(where,0,R.layout.map_title_layout,layout);
         mfloatWindowsView.addWindowsMovingListener(this);
         ll = mfloatWindowsView.getWindowView();
         mImage = mfloatWindowsView.getBottomImage(1);
@@ -136,11 +139,13 @@ public class FloatA extends Thread implements FLoatAStatusListener,WindowsMoving
     }
 
 
-
+    public int getWhere(){
+        return where;
+    }
 
     public void onStart(int where){
         this.where = where;
-        this.start();
+//        this.start();
         this.onCreate();
 
 //        while(this.isAlive()){}
@@ -161,7 +166,7 @@ public class FloatA extends Thread implements FLoatAStatusListener,WindowsMoving
 //        mfloatWindowsView.close();
         if(this.floatA1!=null){
             this.floatA1.finish();
-            this.floatA1.interrupt();
+//            this.floatA1.interrupt();
             this.floatA1 = null;
         }
 

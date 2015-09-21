@@ -142,7 +142,7 @@ public class FloatWindowsView {
      * 根据标签对LayoutParams进行初始化
      * @param Tag
      */
-    public void createParames(int Tag,IBinder iBinder){
+    public void createParames(int Tag){
         System.out.println("~~~~~~~~~~~~~~c");
         wmParams = new LayoutParams();
         //获取WindowManagerImpl.CompatModeWrapper

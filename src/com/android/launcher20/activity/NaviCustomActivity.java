@@ -24,6 +24,7 @@ import com.amap.api.navi.model.AMapNaviPath;
 import com.amap.api.navi.model.NaviInfo;
 import com.amap.api.navi.view.RouteOverLay;
 import com.android.launcher20.FloatView.FloatA;
+import com.android.launcher20.FloatView.FloatManager;
 import com.android.launcher20.util.TTSController;
 import com.android.launcher20.util.Utils;
 import com.android.launcher20.R;
@@ -57,9 +58,9 @@ public class NaviCustomActivity extends FloatA implements
 	private ImageView mNaviBtn;
 	private float zoom = 19.0f;
 	private AMapNaviViewOptions viewOptions;
-	public NaviCustomActivity(Activity context1,FloatA floatA) {
-		super(context1,floatA);
-	}
+//	public NaviCustomActivity(Activity context1,FloatA floatA) {
+//		super(context1,floatA);
+//	}
 	@Override
 	protected void onCreate() {
 		super.onCreate();
@@ -86,7 +87,8 @@ public class NaviCustomActivity extends FloatA implements
             @Override
             public void onClick(View v) {
                 AMapNavi.getInstance(getContext()).destroy();
-                new NaviStart3Activity((Activity)getContext(),NaviCustomActivity.this).onStart(0);
+//                new NaviStart3Activity((Activity)getContext(),NaviCustomActivity.this).onStart(0);
+				FloatManager.getContext(getContext()).startWindows(NaviCustomActivity.this,NaviStart3Activity.class);
             }
         });
 		mNaviBtn = (ImageView) findViewById(R.id.navi_image_navi);
