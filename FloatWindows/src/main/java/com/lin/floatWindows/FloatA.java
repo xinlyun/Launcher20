@@ -2,26 +2,15 @@ package com.lin.floatWindows;
 
 import android.app.Activity;
 import android.app.Application;
-import android.content.ComponentName;
+
 import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.graphics.Bitmap;
-import android.graphics.PixelFormat;
-import android.util.DisplayMetrics;
-import android.view.Display;
+
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-//import com.android.launcher20.R;
 
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 
 
 

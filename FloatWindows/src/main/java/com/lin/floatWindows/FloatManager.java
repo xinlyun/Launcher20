@@ -31,13 +31,22 @@ public class FloatManager {
         Log.d("Service", "dismiss");
         if(floatViews.size()>0) {isMiss=true;
             floatViews.get(0).dismiss();}
+        for(FLoatAStatusListener f:floatAStatusListeners){
+            f.onPause();
+        }
+
     }
 
     /**
      * 将隐藏的窗口重现
      */
     public void reShow(){
-        if(floatViews.size()>0){isMiss = false;floatViews.get(0).reshow();}
+        if(floatViews.size()>0){
+            isMiss = false;floatViews.get(0).reshow();
+            for(FLoatAStatusListener f:floatAStatusListeners){
+                f.onResume();
+            }
+        }
     }
 
     private static FloatManager floatManager;

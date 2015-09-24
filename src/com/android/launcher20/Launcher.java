@@ -329,7 +329,7 @@ public final class Launcher extends Activity
 
 
     private boolean flagWidget=false;
-    private boolean flagSorM=true;
+    private boolean flagSorM1=true,flagSorM2=true;
     private boolean flagisLive=false;
     //    private MyBroadcastRe myBroadcastRe;
     private HideFromAccessibilityHelper mHideFromAccessibilityHelper
@@ -992,7 +992,7 @@ public final class Launcher extends Activity
 
 
 //        if(floatService!=null)if (floatService.isMiss()&&flagSorM)floatService.reShow();
-        FloatManager.getContext(this).reShow();
+        if(flagSorM2)FloatManager.getContext(this).reShow();
 //        bindService(new Intent(Launcher.this,FloatService.class),connection,BIND_AUTO_CREATE);
         initFloatView();
 
@@ -1011,23 +1011,6 @@ public final class Launcher extends Activity
                     int x = mSharedPreferences.getInt("posix", 10);
                     int y = mSharedPreferences.getInt("posiy", 10);
                     SaveWidgetif(id, x, y, savecellview);
-
-
-
-//                Log.d("add","x"+spanXY[0]+" y"+spanXY[1]);
-//                Log.d("add2","x"+saveposi[0]+" y"+saveposi[1]);
-//                if( saveposi[0]==0&&saveposi[1]==0){
-//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
-//                    naviStart3Activity1.onStart(0);
-//                }else if(saveposi[0]==0&&saveposi[1]==1){
-//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
-//                    naviStart3Activity1.onStart(1);
-//                }else {
-//                    NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this,savecellview.getWindowToken());
-//                    naviStart3Activity1.onStart(2);
-//                }
-//                NaviStart3Activity naviStart3Activity1 = new NaviStart3Activity(Launcher.this, savecellview.getWindowToken());
-//                naviStart3Activity1.onStart(saveposi[1]);
                 FloatManager.getContext(this).startWindows(NaviStart3Activity.class,saveposi[1]);
             }
     }
@@ -1035,7 +1018,9 @@ public final class Launcher extends Activity
     @Override
     protected void onPause() {
 //        if(floatService!=null)if (!floatService.isMiss())floatService.onDismiss();
-        FloatManager.getContext(this).onDismiss();
+        if(!flagSorM1)FloatManager.getContext(this).onDismiss();
+
+        FloatManager.getContext(this).onPause();
         Log.d("lift","oncPause");
         // NOTE: We want all transitions from launcher to act as if the wallpaper were enabled
         // to be consistent.  So re-enable the flag here, and we will re-disable it as necessary
@@ -3236,7 +3221,8 @@ public final class Launcher extends Activity
         Log.d("Launcher", "showAllApps");
 //        if(floatService!=null)if (!floatService.isMiss())floatService.onDismiss();
         FloatManager.getContext(this).onDismiss();
-        flagSorM = false;
+        flagSorM1 = false;
+        flagSorM2 = false;
         if (mState != State.WORKSPACE) return;
 
         showAppsCustomizeHelper(animated, false);
@@ -3350,7 +3336,8 @@ public final class Launcher extends Activity
         Log.d("Launcher","showHotseat");
 //        if(floatService!=null)if (floatService.isMiss())floatService.reShow();
         FloatManager.getContext(this).reShow();
-        flagSorM=true;
+        flagSorM1=true;
+        flagSorM2=true;
         if (!LauncherApplication.isScreenLarge()) {
             if (animated) {
                 if (mHotseat.getAlpha() != 1f) {

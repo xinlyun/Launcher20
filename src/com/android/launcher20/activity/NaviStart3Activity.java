@@ -30,6 +30,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,8 @@ import com.amap.api.location.AMapLocationListener;
 import com.amap.api.location.LocationManagerProxy;
 import com.amap.api.location.LocationProviderProxy;
 import com.amap.api.maps.AMap;
+import com.amap.api.maps.CameraUpdate;
+import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.BitmapDescriptorFactory;
@@ -175,7 +178,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
     private PoiResult poiResult; // poi返回的结果
     private String keyWord = "";// 要输入的poi搜索关键字
     private String cityCode;
-    private ImageView mfloatBtn;
+//    private ImageView mfloatBtn;
     //定位
     private LocationManagerProxy mLocationManger;
     private String TAG = "NaviStart";
@@ -208,7 +211,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
 
         @Override
         public void onLocationChanged(AMapLocation location) {
-            Log.d(TAG,"onLocationChanged");
+//            Log.d(TAG,"onLocationChanged");
 //            mMapView.getDrawingCache();
 //            LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
 //            mGPSOptions.position(new LatLng(location.getLatitude(),location.getLongitude()));
@@ -304,7 +307,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         mStartPointText = (AutoCompleteTextView) findViewById(R.id.navi_start_edit);
         mSearchText = (AutoCompleteTextView) findViewById(R.id.navistart_auto_textview);
         mbtnSearch = (ImageView) findViewById(R.id.navistart_search);
-        mfloatBtn = (ImageView) findViewById(R.id.navistart_float_action_btn);
+//        mfloatBtn = (ImageView) findViewById(R.id.navistart_float_action_btn);
         mBtnOpen = (ImageView) findViewById(R.id.navi_btn_open);
 
         naviLinearlayout = (LinearLayout) findViewById(R.id.navibarcontainer);
@@ -345,6 +348,16 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         mRouteCostView = (TextView) findViewById(R.id.navi_route_cost);
         mStartNaviButton = (Button) findViewById(R.id.routestartnavi);
         mdownLayout = (LinearLayout) findViewById(R.id.navistart_down_llayout);
+
+        mshare = getContext().getSharedPreferences("myown", Context.MODE_PRIVATE);
+        String  sx = mshare.getString("x","xx");
+        String sy = mshare.getString("y","yy");
+        Log.d(TAG,"xx"+sx);
+        if(!sx.equals("xx")) {
+
+            CameraUpdate c = CameraUpdateFactory.newLatLngZoom(new LatLng(Double.valueOf(sx), Double.valueOf(sy)), 16);
+            mAmap.animateCamera(c, cancelableCallback);
+        }
 
     }
 
@@ -408,7 +421,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         mWayImage.setOnClickListener(this);
         mEndImage.setOnClickListener(this);
         mStrategyImage.setOnClickListener(this);
-        mfloatBtn.setOnClickListener(this);
+//        mfloatBtn.setOnClickListener(this);
 //        mNaviMethodGroup.setOnCheckedChangeListener(this);
         // 设置地图点击事件
         mAmap.setOnMapClickListener(this);
@@ -645,9 +658,9 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
                 FloatManager.getContext(getContext()).startWindows(this,NaviCustomActivity.class);
 //                nca.onStart(0);
                 break;
-            case R.id.navistart_float_action_btn:
-                searchButton();
-                break;
+//            case R.id.navistart_float_action_btn:
+//                searchButton();
+//                break;
         }
     }
 
@@ -683,6 +696,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
             doSearchQuery("");
         }
     }
+
     /**
      * 开始进行poi搜索
      */
@@ -755,8 +769,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
     private OnItemClickListener getOnItemClickListener() {
         return new OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int index,
-                                    long arg3) {
+            public void onItemClick(AdapterView<?> arg0, View arg1, int index,long arg3) {
                 switch (index) {
                     // 我的位置为起点进行导航或路径规划
                     case 0:
@@ -966,16 +979,30 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
 
 
 
+    AMap.CancelableCallback cancelableCallback = new AMap.CancelableCallback() {
+        @Override
+        public void onFinish() {
+            mAmap.stopAnimation();
+        }
 
+        @Override
+        public void onCancel() {
+            mAmap.stopAnimation();
+        }
+    };
     private OnLocationChangedListener mListener;
     private LatLonPoint mLocation = null;
     private SharedPreferences mshare;
     @Override
     public void onLocationChanged(AMapLocation aMapLocation) {
+//        Log.d(TAG,"onLocationChanged");
         if (mListener != null && aMapLocation != null) {
 
             if (aMapLocation!=null&&aMapLocation.getAMapException().getErrorCode() == 0) {
 
+
+//                CameraUpdate c = CameraUpdateFactory.newLatLngZoom(new LatLng(aMapLocation.getLatitude(),aMapLocation.getLongitude()),20);
+//                mAmap.animateCamera(c,cancelableCallback);
                 mListener.onLocationChanged(aMapLocation);// 显示系统小蓝点
 
                 cityCode = aMapLocation.getCityCode();
@@ -1034,6 +1061,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
             //在单次定位情况下，定位无论成功与否，都无需调用removeUpdates()方法移除请求，定位sdk内部会移除
             mLocationManger.requestLocationData(
                     LocationProviderProxy.AMapNetwork, 2*1000, 20, this);
+
         }
     }
 
@@ -1148,7 +1176,9 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
                             aAdapter = new ArrayAdapter<String>(
                                     getContext().getApplicationContext(),
 //                                    R.layout.route_inputs, listString);
-                                    R.layout.autotextstyle, listString);
+                                    R.layout.autotextstyle,
+                                    listString
+                            );
                             mSearchText.setAdapter(aAdapter);
 
                             aAdapter.notifyDataSetChanged();
@@ -1265,6 +1295,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         mAmapNavi = AMapNavi.getInstance(getContext());
         mAmapNavi.setAMapNaviListener(getAMapNaviListener());
         AMapNaviPath naviPath = mAmapNavi.getNaviPath();
+
         if (naviPath == null) {
             return;
         }
@@ -1276,6 +1307,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         mRouteOverLay.addToMap();
 //        if (mIsMapLoaded) {
         mRouteOverLay.zoomToSpan();
+
 //        }
 
         double length = ((int) (naviPath.getAllLength() / (double) 1000 * 10))
@@ -1370,6 +1402,6 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
     @Override
     public void onPause() {
         super.onPause();
-//        mMapView.onPause();
+        mMapView.onPause();
     }
 }
