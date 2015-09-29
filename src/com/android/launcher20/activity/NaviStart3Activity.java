@@ -12,7 +12,6 @@ import android.location.Location;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
 import android.os.Message;
 import android.text.Editable;
 import android.text.InputType;
@@ -30,7 +29,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -73,6 +71,8 @@ import com.android.launcher20.util.ToastUtil;
 import com.android.launcher20.R;
 import com.lin.floatWindows.FloatA;
 import com.lin.floatWindows.FloatManager;
+import com.lin.myfloatactionbtn.MenuListener;
+import com.lin.myfloatactionbtn.MyFloatActionMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,6 +99,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         ,TextWatcher,PoiSearch.OnPoiSearchListener,AMap.OnMarkerClickListener
         ,AMap.OnMapClickListener
         ,AMap.OnMapLoadedListener
+        ,MenuListener
 //        ,AMap.OnMapLongClickListener
 //        ,View.OnFocusChangeListener
 {
@@ -124,6 +125,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
     // 地图和导航核心逻辑类
     private AMap mAmap;
     private AMapNavi mAmapNavi;
+    private MyFloatActionMenu mMyFloatActionMenu;
     // ---------------------变量---------------------
     private String[] mStrategyMethods;// 记录行车策略的数组
     private String[] mPositionMethods;// 记录起点我的位置、地图点选数组
@@ -178,7 +180,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
     private PoiResult poiResult; // poi返回的结果
     private String keyWord = "";// 要输入的poi搜索关键字
     private String cityCode;
-//    private ImageView mfloatBtn;
+    //    private ImageView mfloatBtn;
     //定位
     private LocationManagerProxy mLocationManger;
     private String TAG = "NaviStart";
@@ -269,7 +271,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         // 以下两句逻辑是为了保证进入首页开启定位和加入导航回调
 
         TTSController ttsManager = TTSController.getInstance(getContext());// 初始化语音模块
-        ttsManager.init();
+        ttsManager.initSynthesizer();
         AMapNavi.getInstance(getContext()).setAMapNaviListener(ttsManager);// 设置语音模块播报
         AMapNavi.getInstance(getContext()).setAMapNaviListener(getAMapNaviListener());
         TTSController.getInstance(getContext()).startSpeaking();
@@ -348,8 +350,10 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         mRouteCostView = (TextView) findViewById(R.id.navi_route_cost);
         mStartNaviButton = (Button) findViewById(R.id.routestartnavi);
         mdownLayout = (LinearLayout) findViewById(R.id.navistart_down_llayout);
-
+        mMyFloatActionMenu = (MyFloatActionMenu) findViewById(R.id.navistart_mfam);
         mshare = getContext().getSharedPreferences("myown", Context.MODE_PRIVATE);
+
+
         String  sx = mshare.getString("x","xx");
         String sy = mshare.getString("y","yy");
         Log.d(TAG,"xx"+sx);
@@ -436,8 +440,8 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         mSearchText.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    inputAble(false);
-                    searchButton();
+                inputAble(false);
+                searchButton();
             }
         });
 
@@ -445,7 +449,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         mBtnOpen.setOnClickListener(this);
         mbtnSearch.setOnClickListener(this);
         mStartNaviButton.setOnClickListener(this);
-
+        mMyFloatActionMenu.setMenuListener(this);
     }
     /**
      * 设置一些amap的属性
@@ -638,7 +642,8 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
 //                mAmap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
 //                mSearchText.setText("梅州曾宪梓中学");
 //                searchButton();
-                Intent intent = new Intent(getContext(),SearchPage.class);
+//                Intent intent = new Intent(getContext(),SearchPage.class);
+                Intent intent = new Intent(getContext(),IatDemo.class);
                 Bundle bundle = new Bundle();
                 if(mLocation!=null)
                 {
@@ -856,8 +861,8 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
                 public void onCalculateRouteSuccess() {
                     Log.d(TAG,"onCalculateRouteSuccess");
                     try{
-                    dissmissProgressDialog();
-                    closeDialog();}
+                        dissmissProgressDialog();
+                        closeDialog();}
                     catch (Exception e){
 
                     }
@@ -1089,7 +1094,7 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
      */
     @Override
     public View getInfoWindow(final Marker marker) {
-        Log.d("open","i was be click");
+        Log.d("open", "i was be click");
         View view = ((Activity)getContext()).getLayoutInflater().inflate(R.layout.poikeywordsearch_uri,
                 null);
 
@@ -1164,33 +1169,34 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
         String newText = s.toString().trim();
-        Inputtips inputTips = new Inputtips(getContext(),
-                new Inputtips.InputtipsListener() {
-                    @Override
-                    public void onGetInputtips(List<Tip> tipList, int rCode) {
-                        if (rCode == 0) {// 正确返回
-                            List<String> listString = new ArrayList<String>();
-                            for (int i = 0; i < tipList.size(); i++) {
-                                listString.add(tipList.get(i).getName());
-                            }
-                            aAdapter = new ArrayAdapter<String>(
-                                    getContext().getApplicationContext(),
+        if(newText.length()>1){
+            Inputtips inputTips = new Inputtips(getContext(),
+                    new Inputtips.InputtipsListener() {
+                        @Override
+                        public void onGetInputtips(List<Tip> tipList, int rCode) {
+                            if (rCode == 0) {// 正确返回
+                                List<String> listString = new ArrayList<String>();
+                                for (int i = 0; i < tipList.size(); i++) {
+                                    listString.add(tipList.get(i).getName());
+                                }
+                                aAdapter = new ArrayAdapter<String>(
+                                        getContext().getApplicationContext(),
 //                                    R.layout.route_inputs, listString);
-                                    R.layout.autotextstyle,
-                                    listString
-                            );
-                            mSearchText.setAdapter(aAdapter);
-
-                            aAdapter.notifyDataSetChanged();
+                                        R.layout.autotextstyle,
+                                        listString
+                                );
+                                mSearchText.setAdapter(aAdapter);
+                                aAdapter.notifyDataSetChanged();
+                            }
                         }
-                    }
-                });
-        try {
-            inputTips.requestInputtips(newText, cityCode);// 第一个参数表示提示关键字，第二个参数默认代表全国，也可以为城市区号
+                    });
+            try {
+                inputTips.requestInputtips(newText, cityCode);// 第一个参数表示提示关键字，第二个参数默认代表全国，也可以为城市区号
 
 
-        } catch (AMapException e) {
-            e.printStackTrace();
+            } catch (AMapException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1320,6 +1326,8 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
         mRouteCostView.setText(String.valueOf(cost));
     }
 
+
+
 //    @Override
 //    public void onFocusChange(View v, boolean hasFocus) {
 //        if(v.getId()==R.id.navistart_auto_textview){
@@ -1403,5 +1411,15 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
     public void onPause() {
         super.onPause();
         mMapView.onPause();
+    }
+
+    @Override
+    public void onMenuOpen() {
+        Toast.makeText(getContext(),"菜单打开",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onMenuClose() {
+        Toast.makeText(getContext(),"菜单关闭",Toast.LENGTH_SHORT).show();
     }
 }

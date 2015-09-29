@@ -903,6 +903,7 @@ public final class Launcher extends Activity
     @Override
     protected void onStart() {
         super.onStart();
+        initFloatView();
         FirstFrameAnimatorHelper.setIsVisible(true);
     }
 
@@ -994,7 +995,7 @@ public final class Launcher extends Activity
 //        if(floatService!=null)if (floatService.isMiss()&&flagSorM)floatService.reShow();
         if(flagSorM2)FloatManager.getContext(this).reShow();
 //        bindService(new Intent(Launcher.this,FloatService.class),connection,BIND_AUTO_CREATE);
-        initFloatView();
+
 
 //        if(floatService!=null)floatService.onResume();
         FloatManager.getContext(this).onResume();
