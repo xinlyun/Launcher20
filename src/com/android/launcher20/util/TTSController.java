@@ -2,18 +2,27 @@ package com.android.launcher20.util;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
+import android.util.Log;
 
 import com.amap.api.navi.AMapNaviListener;
 import com.amap.api.navi.model.AMapNaviInfo;
 import com.amap.api.navi.model.AMapNaviLocation;
 import com.amap.api.navi.model.NaviInfo;
 import com.android.launcher20.R;
-import com.iflytek.cloud.speech.SpeechConstant;
-import com.iflytek.cloud.speech.SpeechError;
-import com.iflytek.cloud.speech.SpeechListener;
-import com.iflytek.cloud.speech.SpeechSynthesizer;
-import com.iflytek.cloud.speech.SpeechUser;
-import com.iflytek.cloud.speech.SynthesizerListener;
+import com.iflytek.cloud.ErrorCode;
+import com.iflytek.cloud.InitListener;
+import com.iflytek.cloud.RecognizerListener;
+import com.iflytek.cloud.RecognizerResult;
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechError;
+import com.iflytek.cloud.SpeechListener;
+import com.iflytek.cloud.SpeechRecognizer;
+import com.iflytek.cloud.SpeechSynthesizer;
+import com.iflytek.cloud.SpeechUtility;
+import com.iflytek.cloud.SynthesizerListener;
+
 
 /**
  * 语音播报组件
@@ -22,10 +31,11 @@ import com.iflytek.cloud.speech.SynthesizerListener;
 public class TTSController implements SynthesizerListener, AMapNaviListener {
 
 	public static TTSController ttsManager;
+	private String TAG = "TTSController";
 	private Context mContext;
 	// 合成对象.
 	private SpeechSynthesizer mSpeechSynthesizer;
-
+	private SpeechRecognizer mSpeechRecognizer;
 	TTSController(Context context) {
 		mContext = context;
 	}
@@ -37,13 +47,28 @@ public class TTSController implements SynthesizerListener, AMapNaviListener {
 		return ttsManager;
 	}
 
-	public void init() {
-		SpeechUser.getUser().login(mContext, null, null,
-				"appid=" + mContext.getString(R.string.app_id), listener);
+	public void initSynthesizer() {
+		SpeechUtility.createUtility(mContext, SpeechConstant.APPID + "=5608e250");
+//		5608e250
+//		SpeechUser.getUser().login(mContext, null, null,
+//				"appid=" + mContext.getString(R.string.app_id), listener);
 		// 初始化合成对象.
-		mSpeechSynthesizer = SpeechSynthesizer.createSynthesizer(mContext);
+		mSpeechSynthesizer = SpeechSynthesizer.createSynthesizer(mContext,null);
+//		SpeechRecognizer mIat= SpeechRecognizer.createRecognizer(mContext, null);
 		initSpeechSynthesizer();
 	}
+
+
+
+
+
+
+	//初始化监听器，只有在使用本地语音服务时需要监听（即安装讯飞语音+，通过语音+提供本地服务），初始化成功后才可进行本地操作。
+	InitListener mInitListener = new InitListener() {
+		public void onInit(int code) {
+			if (code == ErrorCode.SUCCESS) {}}
+	};
+
 
 	/**
 	 * 使用SpeechSynthesizer合成语音，不弹出合成Dialog.
@@ -56,11 +81,11 @@ public class TTSController implements SynthesizerListener, AMapNaviListener {
 		}
 		if (null == mSpeechSynthesizer) {
 			// 创建合成对象.
-			mSpeechSynthesizer = SpeechSynthesizer.createSynthesizer(mContext);
+			mSpeechSynthesizer = SpeechSynthesizer.createSynthesizer(mContext,null);
 			initSpeechSynthesizer();
 		}
 		// 进行语音合成.
-		mSpeechSynthesizer.startSpeaking(playText, this);
+		mSpeechSynthesizer.startSpeaking(playText, getSynthesizerListener());
 
 	}
 
@@ -74,44 +99,23 @@ public class TTSController implements SynthesizerListener, AMapNaviListener {
 
 	private void initSpeechSynthesizer() {
 		// 设置发音人
-		mSpeechSynthesizer.setParameter(SpeechConstant.VOICE_NAME,
-				mContext.getString(R.string.preference_default_tts_role));
-		// 设置语速
-		mSpeechSynthesizer.setParameter(SpeechConstant.SPEED,
-				"" + mContext.getString(R.string.preference_key_tts_speed));
-		// 设置音量
-		mSpeechSynthesizer.setParameter(SpeechConstant.VOLUME,
-				"" + mContext.getString(R.string.preference_key_tts_volume));
-		// 设置语调
-		mSpeechSynthesizer.setParameter(SpeechConstant.PITCH,
-				"" + mContext.getString(R.string.preference_key_tts_pitch));
+		mSpeechSynthesizer.setParameter(SpeechConstant.VOICE_NAME, "xiaoyan");//设置发音人
+		mSpeechSynthesizer.setParameter(SpeechConstant.SPEED, "50");//设置语速
+		mSpeechSynthesizer.setParameter(SpeechConstant.VOLUME, "80");//设置音量，范围0~100
+		mSpeechSynthesizer.setParameter(SpeechConstant.ENGINE_TYPE, SpeechConstant.TYPE_CLOUD); //设置云端
 
 	}
 
-	/**
-	 * 用户登录回调监听器.
-	 */
-	private SpeechListener listener = new SpeechListener() {
 
-		@Override
-		public void onData(byte[] arg0) {
-		}
-
-		@Override
-		public void onCompleted(SpeechError error) {
-			if (error != null) {
-
-			}
-		}
-
-		@Override
-		public void onEvent(int arg0, Bundle arg1) {
-		}
-	};
 
 	@Override
 	public void onBufferProgress(int arg0, int arg1, int arg2, String arg3) {
 		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onEvent(int i, int i1, int i2, Bundle bundle) {
 
 	}
 
@@ -126,6 +130,7 @@ public class TTSController implements SynthesizerListener, AMapNaviListener {
 	@Override
 	public void onSpeakBegin() {
 		// TODO Auto-generated method stub
+		Log.d(TAG,"onSpeakBegin");
 		isfinish = false;
 
 	}
@@ -139,14 +144,64 @@ public class TTSController implements SynthesizerListener, AMapNaviListener {
 	@Override
 	public void onSpeakProgress(int arg0, int arg1, int arg2) {
 		// TODO Auto-generated method stub
-
+		Log.d(TAG,"onSpeakProgress");
 	}
 
 	@Override
 	public void onSpeakResumed() {
 		// TODO Auto-generated method stub
-
+		Log.d(TAG,"onSpeakResumed");
 	}
+
+	SynthesizerListener synthesizerListener;
+	private SynthesizerListener getSynthesizerListener(){
+		if(synthesizerListener==null){
+			synthesizerListener = new SynthesizerListener() {
+				@Override
+				public void onSpeakBegin() {
+					Log.d(TAG,"onSpeakBegin");
+				}
+
+				@Override
+				public void onBufferProgress(int i, int i1, int i2, String s) {
+					Log.d(TAG,"onBufferProgress");
+				}
+
+				@Override
+				public void onSpeakPaused() {
+					Log.d(TAG,"onSpeakPaused");
+				}
+
+				@Override
+				public void onSpeakResumed() {
+					Log.d(TAG,"onSpeakResumed");
+				}
+
+				@Override
+				public void onSpeakProgress(int i, int i1, int i2) {
+					Log.d(TAG,"onSpeakProgress");
+				}
+
+				@Override
+				public void onCompleted(SpeechError speechError) {
+					Log.d(TAG,"onCompleted");
+				}
+
+				@Override
+				public void onEvent(int i, int i1, int i2, Bundle bundle) {
+					Log.d(TAG,"onEvent");
+				}
+			};
+		}
+		return synthesizerListener;
+	}
+
+
+
+//	@Override
+//	public void onCompleted(int i) throws RemoteException {
+//
+//	}
 
 	public void destroy() {
 		if (mSpeechSynthesizer != null) {
@@ -249,4 +304,12 @@ public class TTSController implements SynthesizerListener, AMapNaviListener {
 		// TODO Auto-generated method stub
 
 	}
+
+//	@Override
+//	public IBinder asBinder() {
+//		return null;
+//	}
+
+
+
 }
