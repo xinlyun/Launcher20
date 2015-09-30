@@ -16,9 +16,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -46,6 +49,7 @@ import com.android.launcher20.setting.IatSettings;
 import com.android.launcher20.util.ApkInstaller;
 import com.android.launcher20.util.FucUtil;
 import com.android.launcher20.util.JsonParser;
+import com.gc.materialdesign.views.ProgressBarCircularIndeterminate;
 import com.iflytek.cloud.ErrorCode;
 import com.iflytek.cloud.InitListener;
 import com.iflytek.cloud.LexiconListener;
@@ -61,6 +65,7 @@ import com.iflytek.cloud.util.ContactManager;
 import com.iflytek.cloud.util.ContactManager.ContactListener;
 
 import com.iflytek.sunflower.FlowerCollector;
+import com.lin.myfloatactionbtn.VoiceView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -70,6 +75,8 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Stack;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class IatDemo extends Activity implements OnClickListener,
 		PoiSearch.OnPoiSearchListener, RouteSearch.OnRouteSearchListener,TextWatcher
@@ -80,7 +87,7 @@ public class IatDemo extends Activity implements OnClickListener,
 	// 用HashMap存储听写结果
 	private HashMap<String, String> mIatResults = new LinkedHashMap<String, String>();
 
-//	private EditText mResultText;
+	//	private EditText mResultText;
 	private Toast mToast;
 	private SharedPreferences mSharedPreferences;
 	// 引擎类型
@@ -115,6 +122,10 @@ public class IatDemo extends Activity implements OnClickListener,
 	private AMapNavi mapNavi;
 
 
+	//----
+	private VoiceView vx;
+	private RotateAnimation rotateAnimation;
+	private boolean flagListen=false;
 
 	@SuppressLint("ShowToast")
 	public void onCreate(Bundle savedInstanceState) {
@@ -127,7 +138,7 @@ public class IatDemo extends Activity implements OnClickListener,
 		// 初始化识别无UI识别对象
 		// 使用SpeechRecognizer对象，可根据回调消息自定义界面；
 		mIat = SpeechRecognizer.createRecognizer(IatDemo.this, mInitListener);
-		
+
 		// 初始化听写Dialog，如果只使用有UI听写功能，无需创建SpeechRecognizer
 
 		mSharedPreferences = getSharedPreferences(IatSettings.PREFER_NAME,
@@ -135,6 +146,8 @@ public class IatDemo extends Activity implements OnClickListener,
 		mToast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
 
 		mInstaller = new ApkInstaller(IatDemo.this);
+
+
 	}
 
 	private void initView(){
@@ -208,10 +221,17 @@ public class IatDemo extends Activity implements OnClickListener,
 	 * 初始化Layout。
 	 */
 	private void initLayout() {
-		findViewById(R.id.iat_recognize).setOnClickListener(IatDemo.this);
-		findViewById(R.id.iat_recognize_stream).setOnClickListener(IatDemo.this);
-		findViewById(R.id.iat_stop).setOnClickListener(IatDemo.this);
-		findViewById(R.id.iat_cancel).setOnClickListener(IatDemo.this);
+//		findViewById(R.id.iat_recognize).setOnClickListener(IatDemo.this);
+//		findViewById(R.id.iat_recognize_stream).setOnClickListener(IatDemo.this);
+//		findViewById(R.id.iat_stop).setOnClickListener(IatDemo.this);
+//		findViewById(R.id.iat_cancel).setOnClickListener(IatDemo.this);
+		vx = (VoiceView) findViewById(R.id.iat_image);
+		rotateAnimation = new RotateAnimation(2f,720f, Animation.RELATIVE_TO_SELF, 0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+
+		rotateAnimation.setDuration(800);
+		rotateAnimation.setRepeatCount(-1);
+		vx.setOnClickListener(this);
+
 		// 选择云端or本地
 		mEngineType = SpeechConstant.TYPE_LOCAL;
 		/**
@@ -232,76 +252,80 @@ public class IatDemo extends Activity implements OnClickListener,
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
-		// 进入参数设置页面
+			// 进入参数设置页面
 
-		// 开始听写
-		// 如何判断一次听写结束：OnResult isLast=true 或者 onError
-		case R.id.iat_recognize:
-			mAutoText.setText(null);// 清空显示内容
-			mIatResults.clear();
-			// 设置参数
-			setParam();
-			boolean isShowDialog = mSharedPreferences.getBoolean(
-					getString(R.string.pref_key_iat_show), true);
-//			if (isShowDialog) {
-//				// 显示听写对话框
-//				mIatDialog.setListener(mRecognizerDialogListener);
-//				mIatDialog.show();
-//				showTip(getString(R.string.text_begin));
-//			} else {
-				// 不显示听写对话框
-				ret = mIat.startListening(mRecognizerListener);
-				if (ret != ErrorCode.SUCCESS) {
-					showTip("听写失败,错误码：" + ret);
-				} else {
-					showTip(getString(R.string.text_begin));
-				}
-//			}
-			break;
-		// 音频流识别
-		case R.id.iat_recognize_stream:
-			mAutoText.setText(null);// 清空显示内容
-			mIatResults.clear();
-			// 设置参数
-			setParam();
-			// 设置音频来源为外部文件
-			mIat.setParameter(SpeechConstant.AUDIO_SOURCE, "-1");
-			// 也可以像以下这样直接设置音频文件路径识别（要求设置文件在sdcard上的全路径）：
-			// mIat.setParameter(SpeechConstant.AUDIO_SOURCE, "-2");
-			// mIat.setParameter(SpeechConstant.ASR_SOURCE_PATH, "sdcard/XXX/XXX.pcm");
-			ret = mIat.startListening(mRecognizerListener);
-			if (ret != ErrorCode.SUCCESS) {
-				showTip("识别失败,错误码：" + ret);
-			} else {
-				byte[] audioData = FucUtil.readAudioFile(IatDemo.this, "iattest.wav");
-				
-				if (null != audioData) {
-					showTip(getString(R.string.text_begin_recognizer));
-					// 一次（也可以分多次）写入音频文件数据，数据格式必须是采样率为8KHz或16KHz（本地识别只支持16K采样率，云端都支持），位长16bit，单声道的wav或者pcm
-					// 写入8KHz采样的音频时，必须先调用setParameter(SpeechConstant.SAMPLE_RATE, "8000")设置正确的采样率
-					// 注：当音频过长，静音部分时长超过VAD_EOS将导致静音后面部分不能识别
-					mIat.writeAudio(audioData, 0, audioData.length);
+			// 开始听写
+			// 如何判断一次听写结束：OnResult isLast=true 或者 onError
+//			case R.id.iat_recognize:
+//				mAutoText.setText(null);
+//				readyListen();
+//				break;
+//			// 音频流识别
+//			case R.id.iat_recognize_stream:
+//				mAutoText.setText(null);// 清空显示内容
+//				mIatResults.clear();
+//				// 设置参数
+//				setParam();
+//				// 设置音频来源为外部文件
+//				mIat.setParameter(SpeechConstant.AUDIO_SOURCE, "-1");
+//				// 也可以像以下这样直接设置音频文件路径识别（要求设置文件在sdcard上的全路径）：
+//				// mIat.setParameter(SpeechConstant.AUDIO_SOURCE, "-2");
+//				// mIat.setParameter(SpeechConstant.ASR_SOURCE_PATH, "sdcard/XXX/XXX.pcm");
+//				ret = mIat.startListening(mRecognizerListener);
+//				if (ret != ErrorCode.SUCCESS) {
+//					showTip("识别失败,错误码：" + ret);
+//				} else {
+//					byte[] audioData = FucUtil.readAudioFile(IatDemo.this, "iattest.wav");
+//
+//					if (null != audioData) {
+//						showTip(getString(R.string.text_begin_recognizer));
+//						// 一次（也可以分多次）写入音频文件数据，数据格式必须是采样率为8KHz或16KHz（本地识别只支持16K采样率，云端都支持），位长16bit，单声道的wav或者pcm
+//						// 写入8KHz采样的音频时，必须先调用setParameter(SpeechConstant.SAMPLE_RATE, "8000")设置正确的采样率
+//						// 注：当音频过长，静音部分时长超过VAD_EOS将导致静音后面部分不能识别
+//						mIat.writeAudio(audioData, 0, audioData.length);
+//						mIat.stopListening();
+//					} else {
+//						mIat.cancel();
+//						showTip("读取音频流失败");
+//					}
+//				}
+//				break;
+//			// 停止听写
+//			case R.id.iat_stop:
+//				mIat.stopListening();
+//				showTip("停止听写");
+//				break;
+//			// 取消听写
+//			case R.id.iat_cancel:
+//				mIat.cancel();
+//				showTip("取消听写");
+//				break;
+			case R.id.iat_image:
+				if(!flagListen)readyListen();
+				else if(flagListen){
 					mIat.stopListening();
-				} else {
-					mIat.cancel();
-					showTip("读取音频流失败");
+					vx.Lock();
 				}
-			}
-			break;
-		// 停止听写
-		case R.id.iat_stop:
-			mIat.stopListening();
-			showTip("停止听写");
-			break;
-		// 取消听写
-		case R.id.iat_cancel:
-			mIat.cancel();
-			showTip("取消听写");
-			break;
-
-		default:
-			break;
+				break;
+			default:
+				break;
 		}
+	}
+	private void readyListen(){
+//		mAutoText.setText(null);// 清空显示内容
+		mIatResults.clear();
+		// 设置参数
+		setParam();
+		// 不显示听写对话框
+		ret = mIat.startListening(mRecognizerListener);
+		if (ret != ErrorCode.SUCCESS) {
+			showTip("听写失败,错误码：" + ret);
+//			if(ret==21003)
+//				readyListen();
+		} else {
+			showTip(getString(R.string.text_begin));
+		}
+//			}
 	}
 
 	/**
@@ -323,10 +347,12 @@ public class IatDemo extends Activity implements OnClickListener,
 	 * 听写监听器。
 	 */
 	private RecognizerListener mRecognizerListener = new RecognizerListener() {
-
 		@Override
 		public void onBeginOfSpeech() {
 			// 此回调表示：sdk内部录音机已经准备好了，用户可以开始语音输入
+//			waiting.startAnimation(rotateAnimation);
+			flagListen = true;
+			vx.unLock();
 			showTip("开始说话");
 		}
 
@@ -335,12 +361,16 @@ public class IatDemo extends Activity implements OnClickListener,
 			// Tips：
 			// 错误码：10118(您没有说话)，可能是录音机权限被禁，需要提示用户打开应用的录音权限。
 			// 如果使用本地功能（语记）需要提示用户开启语记的录音权限。
+			flagListen = false;
 			showTip(error.getPlainDescription(true));
 		}
 
 		@Override
 		public void onEndOfSpeech() {
 			// 此回调表示：检测到了语音的尾端点，已经进入识别过程，不再接受语音输入
+//			waiting.clearAnimation();
+			flagListen = false;
+			vx.Lock();
 			showTip("结束说话");
 		}
 
@@ -348,7 +378,7 @@ public class IatDemo extends Activity implements OnClickListener,
 		public void onResult(RecognizerResult results, boolean isLast) {
 			Log.d(TAG, results.getResultString());
 			printResult(results);
-
+			flagListen = false;
 			if (isLast) {
 				// TODO 最后的结果
 			}
@@ -357,6 +387,7 @@ public class IatDemo extends Activity implements OnClickListener,
 		@Override
 		public void onVolumeChanged(int volume, byte[] data) {
 			showTip("当前正在说话，音量大小：" + volume);
+			vx.setVoice((float)(volume)/20f);
 			Log.d(TAG, "返回音频数据："+data.length);
 		}
 
@@ -405,7 +436,7 @@ public class IatDemo extends Activity implements OnClickListener,
 
 	/**
 	 * 参数设置
-	 * 
+	 *
 	 * @param param
 	 * @return
 	 */
@@ -432,13 +463,13 @@ public class IatDemo extends Activity implements OnClickListener,
 
 		// 设置语音前端点:静音超时时间，即用户多长时间不说话则当做超时处理
 		mIat.setParameter(SpeechConstant.VAD_BOS, mSharedPreferences.getString("iat_vadbos_preference", "4000"));
-		
+
 		// 设置语音后端点:后端点静音检测时间，即用户停止说话多长时间内即认为不再输入， 自动停止录音
 		mIat.setParameter(SpeechConstant.VAD_EOS, mSharedPreferences.getString("iat_vadeos_preference", "1000"));
-		
+
 		// 设置标点符号,设置为"0"返回结果无标点,设置为"1"返回结果有标点
 		mIat.setParameter(SpeechConstant.ASR_PTT, mSharedPreferences.getString("iat_punc_preference", "0"));
-		
+
 		// 设置音频保存路径，保存音频格式支持pcm、wav，设置路径为sd卡请注意WRITE_EXTERNAL_STORAGE权限
 		// 注：AUDIO_FORMAT参数语记需要更新版本才能生效
 		mIat.setParameter(SpeechConstant.AUDIO_FORMAT,"wav");
@@ -459,6 +490,13 @@ public class IatDemo extends Activity implements OnClickListener,
 		FlowerCollector.onResume(IatDemo.this);
 		FlowerCollector.onPageStart(TAG);
 		super.onResume();
+		new Timer().schedule(new TimerTask() {
+			@Override
+			public void run() {
+				readyListen();
+			}
+		}, 500);
+
 	}
 
 	@Override
@@ -468,6 +506,9 @@ public class IatDemo extends Activity implements OnClickListener,
 		FlowerCollector.onPause(IatDemo.this);
 		super.onPause();
 	}
+
+
+
 
 
 //---------------导航相关函数-----------------

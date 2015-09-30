@@ -100,7 +100,7 @@ public class MyFloatActionButton extends ImageView {
             p.setColor(Color.BLACK);
             p.setAlpha(20);
             for (int i = 1; i <= 8; i++)
-                canvas.drawCircle(width / 2 + i / 2, width / 2 + i, width / 2, p);
+                canvas.drawCircle(width / 2 + i / 3, width / 2 + i, width / 2, p);
 //            canvas.drawBitmap(cirMap, 0, 0, null);
                 canvas.drawBitmap(cirMap,m,null);
             if (!flagUporDown) {
@@ -125,7 +125,6 @@ public class MyFloatActionButton extends ImageView {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.d("mymy","toucher "+event.getAction());
         switch (event.getAction()){
             case 1:
                 flagUporDown = true;

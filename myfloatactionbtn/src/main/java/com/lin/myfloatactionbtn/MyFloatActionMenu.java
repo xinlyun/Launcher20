@@ -8,9 +8,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.RotateAnimation;
-import android.view.animation.TranslateAnimation;
+import java.math.*;
 
 /**
  * Created by xinlyun on 15-9-22.
@@ -60,7 +58,8 @@ public class MyFloatActionMenu extends ViewGroup {
                             vx.cloesit(75+50*i);
                         }
                         AddMyFloatActionButton vx = (AddMyFloatActionButton) getChildAt(getChildCount()-1);
-                        vx.clockwise(300);
+                        vx.anticlockwise(270);
+                        if(menuListener!=null)menuListener.onMenuClose();
                         flagOpenorClose = false;
                     } else {
                         for (int i = 0; i < getChildCount() - 1; i++) {
@@ -68,7 +67,8 @@ public class MyFloatActionMenu extends ViewGroup {
                             vx.reshow(75+50*i);
                         }
                         AddMyFloatActionButton vx = (AddMyFloatActionButton) getChildAt(getChildCount()-1);
-                        vx.anticlockwise(300);
+                        vx.clockwise(270);
+                        if(menuListener!=null)menuListener.onMenuOpen();
                         flagOpenorClose = true;
                     }
                 }
@@ -79,7 +79,6 @@ public class MyFloatActionMenu extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        Log.d("MyFLoatActionMenu", "onLayout");
         if(count==0)count = getChildCount();
             for(int i= 0;i<getChildCount();i++){
                 View v = getChildAt(i);
@@ -110,13 +109,11 @@ public class MyFloatActionMenu extends ViewGroup {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Log.d("MyFLoatActionMenu","onDraw");
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        setMeasuredDimension(width,width);
-        Log.d("MyFLoatActionMenu", "onMeasure");
+        setMeasuredDimension(width*13/8,width);
     }
 
     class Posi{
@@ -147,51 +144,85 @@ public class MyFloatActionMenu extends ViewGroup {
 
 
     private void initPosiData(int i){
+        int xx,yy;
+        int r=width*3/4;
         switch (i){
             case LEFT_TOP:
                 posis = new Posi[]{
-                        new Posi(width * 3 / 4, 0, width, width / 4),
-                        new Posi((int)(width*0.65f),(int)(width*3/8),(int)(width*0.9f),(int)(width*5/8)),
-                        new Posi((int)(width*3/8),(int)(width*0.65f),(int)(width*5/8),(int)(width*0.9f)),
-                        new Posi(0,width*3/4,width/4,width),
-                        new Posi(0,0,width/3,width/3),
+                        new Posi(0+width/24, (int)(width*0.65f),(int)(width/4+width/24),(int)(width*0.9f)),
+                        new Posi((int)(width*3/8+width/24),(int)(width*3/4),(int)(width*5/8+width/24),(int)(width)),
+                        new Posi((int)(width*3/4+width/24),(int)(width*0.65f),(int)(width+width/24),(int)(width*0.9f)),
+                        new Posi((int)(width*1.02f+width/24),width*3/8,(int)(width*1.27f+width/24),width*5/8),
+                        new Posi(width*3/8-width/24,0,width*17/24-width/24,width/3),
 //                new Posi(0,width*3/4,width/4,width)
                 };
-                iconPosi = new int[]{5,5, width / 3 + 5, width / 3 + 5};
+                iconPosi = new int[]{width*3/8+5,5,width*3/8+5,width/3+5};
                 break;
             case LEFT_BOTTOM:
+                xx = width*2/5;
+                yy = width*3/4;
+//                posis = new Posi[]{
+//                new Posi(0, 0, width/4, width / 4),
+//                        new Posi((int)(width*0.1f),(int)(width*3/8),(int)(width*0.35f),(int)(width*5/8)),
+//                        new Posi((int)(width*3/8),(int)(width*0.65f),(int)(width*5/8),(int)(width*0.9f)),
+//                        new Posi(width * 3 / 4,width*3/4,width,width),
+//                        new Posi(width*2/3,0,width,width/3),
+//                          };
+//                iconPosi = new int[]{width*2/3-5,5, width -5, width / 3 + 5};
                 posis = new Posi[]{
-                        new Posi(0, 0, width/4, width/4),
-                        new Posi((int)(width*3/8),(int)(width*0.10f),(int)(width*5/8),(int)(width*0.35f)),
-                        new Posi((int)(width*0.65f),(int)(width*3/8),(int)(width*0.9),(int)(width*5/8)),
-                        new Posi(width*3/4,width*3/4,width,width ),
-                        new Posi(0,width*2/3,width/3,width),
-//                new Posi(0,width*3/4,width/4,width)
+                        new Posi((int)(xx+r*Math.cos(Math.toRadians(30))),(int)(yy-r*Math.sin(Math.toRadians(30))),(int)(xx+r*Math.cos(Math.toRadians(30))+width/4),(int)(yy-r*Math.sin(Math.toRadians(30))+width/4)),
+                        new Posi((int)(xx+r*Math.cos(Math.toRadians(60))),(int)(yy-r*Math.sin(Math.toRadians(60))),(int)(xx+r*Math.cos(Math.toRadians(60))+width/4),(int)(yy-r*Math.sin(Math.toRadians(60))+width/4)),
+                        new Posi((int)(xx+r*Math.cos(Math.toRadians(90))),(int)(yy-r*Math.sin(Math.toRadians(90))),(int)(xx+r*Math.cos(Math.toRadians(90))+width/4),(int)(yy-r*Math.sin(Math.toRadians(90))+width/4)),
+                        new Posi((int)(xx+r*Math.cos(Math.toRadians(120))),(int)(yy-r*Math.sin(Math.toRadians(120))),(int)(xx+r*Math.cos(Math.toRadians(120))+width/4),(int)(yy-r*Math.sin(Math.toRadians(120))+width/4)),
+                        new Posi(width/3,width*2/3,width*2/3,width)
                 };
-                iconPosi = new int[]{5,width*2 / 3-5, width / 3 + 5, width  - 5};
+                iconPosi = new int[]{width/3+5,width*2/3-5,width*2/3+5,width-5};
                 break;
             case RIGHT_TOP:
+                xx = (int)(width*0.70f);
+                yy  = 0;
+//                posis = new Posi[]{
+//                        new Posi(0, 0, width/4, width / 4),
+//                        new Posi((int)(width*0.1f),(int)(width*3/8),(int)(width*0.35f),(int)(width*5/8)),
+//                        new Posi((int)(width*3/8),(int)(width*0.65f),(int)(width*5/8),(int)(width*0.9f)),
+//                        new Posi(width * 3 / 4,width*3/4,width,width),
+//                        new Posi(width*2/3,0,width,width/3),
+////                new Posi(0,width*3/4,width/4,width)
+//                };
+//                iconPosi = new int[]{width*2/3-5,5, width -5, width / 3 + 5};
                 posis = new Posi[]{
-                        new Posi(0, 0, width/4, width / 4),
-                        new Posi((int)(width*0.1f),(int)(width*3/8),(int)(width*0.35f),(int)(width*5/8)),
-                        new Posi((int)(width*3/8),(int)(width*0.65f),(int)(width*5/8),(int)(width*0.9f)),
-                        new Posi(width * 3 / 4,width*3/4,width,width),
-                        new Posi(width*2/3,0,width,width/3),
-//                new Posi(0,width*3/4,width/4,width)
+                        new Posi((int)(xx+r*Math.cos(Math.toRadians(210))),(int)(yy-r*Math.sin(Math.toRadians(210))),(int)(xx+r*Math.cos(Math.toRadians(210))+width/4),(int)(yy-r*Math.sin(Math.toRadians(210))+width/4)),
+                        new Posi((int)(xx+r*Math.cos(Math.toRadians(240))),(int)(yy-r*Math.sin(Math.toRadians(240))),(int)(xx+r*Math.cos(Math.toRadians(240))+width/4),(int)(yy-r*Math.sin(Math.toRadians(240))+width/4)),
+                        new Posi((int)(xx+r*Math.cos(Math.toRadians(270))),(int)(yy-r*Math.sin(Math.toRadians(270))),(int)(xx+r*Math.cos(Math.toRadians(270))+width/4),(int)(yy-r*Math.sin(Math.toRadians(270))+width/4)),
+                        new Posi((int)(xx+r*Math.cos(Math.toRadians(300))),(int)(yy-r*Math.sin(Math.toRadians(300))),(int)(xx+r*Math.cos(Math.toRadians(300))+width/4),(int)(yy-r*Math.sin(Math.toRadians(300))+width/4)),
+                        new Posi((int)(width*0.65+5),5,(int)(width*0.9f+5),width/4+5)
                 };
-                iconPosi = new int[]{width*2/3-5,5, width -5, width / 3 + 5};
+                iconPosi = new int[]{(int)(width*0.65+5),5,(int)(width*0.99f+5),width/3+5};
                 break;
             case RIGHT_BOTTOM:
+                xx = (int)(width*0.70f);
+                yy  = (int)(width*3/4);
+//                posis = new Posi[]{
+//                        new Posi(width*3/4, 0, width, width/4),
+//                        new Posi((int)(width*3/8),(int)(width*0.1),(int)(width*5/8),(int)(width*0.35)),
+//                        new Posi((int)(width*0.1f),(int)(width*3/8f),(int)(width*0.35f),(int)(width*5/8)),
+//                        new Posi(0,(int)(width*3/4),width/4,(int)(width)),
+//                        new Posi(width*2/3,width*2/3,width,width ),
+////                new Posi(0,width*3/4,width/4,width)
+//                };
+//                iconPosi = new int[]{width*2/3-5,width*2/3-5,width-5,width-5 };
                 posis = new Posi[]{
-                        new Posi(width*3/4, 0, width, width/4),
-                        new Posi((int)(width*3/8),(int)(width*0.1),(int)(width*5/8),(int)(width*0.35)),
-                        new Posi((int)(width*0.1f),(int)(width*3/8f),(int)(width*0.35f),(int)(width*5/8)),
-                        new Posi(0,(int)(width*3/4),width/4,(int)(width)),
-                        new Posi(width*2/3,width*2/3,width,width ),
-//                new Posi(0,width*3/4,width/4,width)
+                        new Posi((int)(xx+r*Math.cos(Math.toRadians(60))),(int)(yy-r*Math.sin(Math.toRadians(60))),(int)(xx+r*Math.cos(Math.toRadians(60))+width/4),(int)(yy-r*Math.sin(Math.toRadians(60))+width/4)),
+                        new Posi((int)(xx+r*Math.cos(Math.toRadians(90))),(int)(yy-r*Math.sin(Math.toRadians(90))),(int)(xx+r*Math.cos(Math.toRadians(90))+width/4),(int)(yy-r*Math.sin(Math.toRadians(90))+width/4)),
+                        new Posi((int)(xx+r*Math.cos(Math.toRadians(120))),(int)(yy-r*Math.sin(Math.toRadians(120))),(int)(xx+r*Math.cos(Math.toRadians(120))+width/4),(int)(yy-r*Math.sin(Math.toRadians(120))+width/4)),
+                        new Posi((int)(xx+r*Math.cos(Math.toRadians(150))),(int)(yy-r*Math.sin(Math.toRadians(150))),(int)(xx+r*Math.cos(Math.toRadians(150))+width/4),(int)(yy-r*Math.sin(Math.toRadians(150))+width/4)),
+                        new Posi((int)(width*0.65+5),5,(int)(width*0.9f+5),width/4+5)
                 };
-                iconPosi = new int[]{width*2/3-5,width*2/3-5,width-5,width-5 };
+                iconPosi = new int[]{(int)(width*0.65+5),width*2/3-5,(int)(width*0.99f+5),width-5};
                 break;
+        }
+        for(Posi p:posis){
+            Log.d("MyFloatActionMenu"," "+p.l+" "+p.t+ " "+p.r+" "+p.b);
         }
     }
 
@@ -211,6 +242,10 @@ public class MyFloatActionMenu extends ViewGroup {
                 }
             });
         }
+    }
+    private MenuListener menuListener ;
+    public void setMenuListener(MenuListener menuListener){
+        this.menuListener = menuListener;
     }
 
 
