@@ -1042,16 +1042,16 @@ public class LauncherModel extends BroadcastReceiver {
                 final long workspaceWaitTime = DEBUG_LOADERS ? SystemClock.uptimeMillis() : 0;
 
                 mHandler.postIdle(new Runnable() {
-                        public void run() {
-                            synchronized (LoaderTask.this) {
-                                mLoadAndBindStepFinished = true;
-                                if (DEBUG_LOADERS) {
-                                    Log.d(TAG, "done with previous binding step");
-                                }
-                                LoaderTask.this.notify();
+                    public void run() {
+                        synchronized (LoaderTask.this) {
+                            mLoadAndBindStepFinished = true;
+                            if (DEBUG_LOADERS) {
+                                Log.d(TAG, "done with previous binding step");
                             }
+                            LoaderTask.this.notify();
                         }
-                    });
+                    }
+                });
 
                 while (!mStopped && !mLoadAndBindStepFinished && !mFlushingWorkerThread) {
                     try {
@@ -1062,6 +1062,8 @@ public class LauncherModel extends BroadcastReceiver {
                         // Ignore
                     }
                 }
+                Log.d(TAG,"mStopped="+mStopped+",mLoadAndBindStepFinished="+mLoadAndBindStepFinished+
+                        ",mFlushingWorkerThread"+mFlushingWorkerThread);
                 if (DEBUG_LOADERS) {
                     Log.d(TAG, "waited "
                             + (SystemClock.uptimeMillis()-workspaceWaitTime)

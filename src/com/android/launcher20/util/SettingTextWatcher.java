@@ -1,12 +1,13 @@
 package com.android.launcher20.util;
 
-import java.util.regex.Pattern;
 import android.content.Context;
 import android.preference.EditTextPreference;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.widget.Toast;
+
+import java.util.regex.Pattern;
 
 /**
  * 输入框输入范围控制

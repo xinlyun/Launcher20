@@ -5,10 +5,9 @@
     android:orientation="vertical" >
     <ImageView
         android:id="@+id/ali"
-        android:src="@drawable/ali"
+        android:src="@drawable/warning"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
 
 
 </LinearLayout>

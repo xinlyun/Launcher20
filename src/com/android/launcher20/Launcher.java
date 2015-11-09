@@ -1009,8 +1009,8 @@ public final class Launcher extends Activity
 
                 mSharedPreferences = getSharedPreferences("myown", Context.MODE_PRIVATE);
                     int id = mSharedPreferences.getInt("id", 1000);
-                    int x = mSharedPreferences.getInt("posix", 10);
-                    int y = mSharedPreferences.getInt("posiy", 10);
+                    int x = mSharedPreferences.getInt("posix", 0);
+                    int y = mSharedPreferences.getInt("posiy", 0);
                     SaveWidgetif(id, x, y, savecellview);
                 FloatManager.getContext(this).startWindows(NaviStart3Activity.class,saveposi[1]);
             }
@@ -1019,7 +1019,7 @@ public final class Launcher extends Activity
     @Override
     protected void onPause() {
 //        if(floatService!=null)if (!floatService.isMiss())floatService.onDismiss();
-        if(!flagSorM1)FloatManager.getContext(this).onDismiss();
+        if(flagSorM1)FloatManager.getContext(this).onDismiss();
 
         FloatManager.getContext(this).onPause();
         Log.d("lift","oncPause");
@@ -3884,8 +3884,8 @@ public final class Launcher extends Activity
                 savecellview.setOnAppWidgetHostViewPosiChangeListener(this);
                 mSharedPreferences = getSharedPreferences("myown",Context.MODE_PRIVATE);
                 int id = mSharedPreferences.getInt("id",1000);
-                int x = mSharedPreferences.getInt("posix",10);
-                int y = mSharedPreferences.getInt("posiy",10);
+                int x = mSharedPreferences.getInt("posix",0);
+                int y = mSharedPreferences.getInt("posiy",0);
 
                 SaveWidgetif(id,x,y,savecellview);
 //                Log.d("add","x"+spanXY[0]+" y"+spanXY[1]);
@@ -4496,8 +4496,8 @@ public final class Launcher extends Activity
                 mSharedPreferences = getSharedPreferences("myown",Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = mSharedPreferences.edit();
                 editor.putInt("id",1000);
-                editor.putInt("posix",10);
-                editor.putInt("posiy",10);
+                editor.putInt("posix",0);
+                editor.putInt("posiy",0);
                 editor.commit();
             }
             Log.d("receiver","ihavereceiver");

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -378,13 +379,39 @@
 
 
     </RelativeLayout>
-    <ImageView
-        android:id="@+id/navistart_float_action_btn"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="740dp"
-        android:src="@drawable/floatimage"
-        android:background="@drawable/floatflag"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-         />
+    <!--<ImageView-->
+        <!--android:id="@+id/navistart_float_action_btn"-->
+        <!--android:layout_marginTop="40dp"-->
+        <!--android:layout_marginLeft="740dp"-->
+        <!--android:src="@drawable/floatimage"-->
+        <!--android:background="@drawable/floatflag"-->
+        <!--android:layout_width="90dp"-->
+        <!--android:layout_height="90dp"-->
+         <!--/>-->
+    <com.lin.myfloatactionbtn.MyFloatActionMenu
+        android:id="@+id/navistart_mfam"
+        fab:mfam_width="300dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="540dp"
+        fab:mfam_posi="right_top"
+        fab:mfam_icon="@drawable/floatimage1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.lin.myfloatactionbtn.AddMyFloatActionButton
+            fab:cir_icon="@drawable/floatimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.lin.myfloatactionbtn.AddMyFloatActionButton
+            fab:cir_icon="@drawable/floatimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.lin.myfloatactionbtn.AddMyFloatActionButton
+            fab:cir_icon="@drawable/floatimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.lin.myfloatactionbtn.AddMyFloatActionButton
+            fab:cir_icon="@drawable/floatimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </com.lin.myfloatactionbtn.MyFloatActionMenu>
 </RelativeLayout>

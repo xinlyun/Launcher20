@@ -154,7 +154,6 @@ public class BubbleTextView extends TextView {
                 mStayPressed = false;
                 setCellLayoutPressedOrFocusedIcon();
             }
-
             final boolean backgroundEmptyNow = mPressedOrFocusedBackground == null;
             if (!backgroundEmptyBefore && backgroundEmptyNow) {
                 setCellLayoutPressedOrFocusedIcon();

@@ -1,0 +1,80 @@
+TASK com.android.launcher20 id=38
+  ACTIVITY com.android.launcher20/.Launcher 42285b50 pid=3237
+    Local Activity 42667cb0 State:
+      mResumed=true mStopped=false mFinished=false
+      mLoadersStarted=true
+      mChangingConfigurations=false
+      mCurrentConfig={1.0 ?mcc?mnc zh_CN ldltr sw1080dp w1080dp h1847dp 160dpi xlrg long port finger -keyb/v/h -nav/h s.38}
+    FragmentManager misc state:
+      mActivity=com.android.launcher20.Launcher@42667cb0
+      mContainer=android.app.Activity$1@42667f88
+      mCurState=5 mStateSaved=false mDestroyed=false
+    ViewRoot:
+      mAdded=true mRemoved=false
+      mConsumeBatchedInputScheduled=false
+      mPendingInputEventCount=0
+      mProcessInputEventsScheduled=false
+      mTraversalScheduled=false
+      android.view.ViewRootImpl$NativePreImeInputStage: mQueueLength=0
+      android.view.ViewRootImpl$ImeInputStage: mQueueLength=0
+      android.view.ViewRootImpl$NativePostImeInputStage: mQueueLength=0
+    Choreographer:
+      mFrameScheduled=false
+      mLastFrameTime=14502096 (56203 ms ago)
+    View Hierarchy:
+      com.android.internal.policy.impl.PhoneWindow$DecorView{42669a38 V.E..... R....... 0,0-1080,1872}
+        android.widget.FrameLayout{4266a0c8 V.E..... ........ 0,0-1080,1872}
+          android.widget.FrameLayout{4266ac50 V.E..... ........ 0,0-1080,1872 #1020002 android:id/content}
+            android.widget.FrameLayout{4266b688 V.E..... ........ 0,0-1080,1872 #7f0e0040 app:id/launcher}
+              com.android.launcher20.DragLayer{4266c0b8 V.E..... ........ 0,0-1080,1872 #7f0e0041 app:id/drag_layer}
+                android.widget.ImageView{4266c778 V.ED.... ........ 0,1740-1080,1746 #7f0e0042 app:id/dock_divider}
+                android.widget.ImageView{4266d050 G.ED.... ......ID 0,0-0,0 #7f0e0031 app:id/paged_view_indicator}
+                com.android.launcher20.Workspace{4266d520 V.EDH... ........ 0,25-1080,1872 #7f0e0043 app:id/workspace}
+                  com.android.launcher20.CellLayout{4266e5b0 V.ED..CL ........ 16,12-1064,1812 #7f0e0044 app:id/cell3}
+                    com.android.launcher20.ShortcutAndWidgetContainer{42670608 V.E..... ........ 4,12-1044,1792}
+                      com.android.launcher20.LauncherAppWidgetHostView{426ae230 V.E....L R....... 0,0-910,670 #9c000000}
+                        android.widget.LinearLayout{426b0880 V.E..... ........ 12,4-898,650}
+                com.android.launcher20.Hotseat{42671900 V.E..... ........ 0,1746-1080,1872 #7f0e0045 app:id/hotseat}
+                  com.android.launcher20.CellLayout{42671ec8 V.ED.... ........ 157,6-923,120 #7f0e003f app:id/layout}
+                    com.android.launcher20.ShortcutAndWidgetContainer{426746e0 V.E..... ........ 12,12-754,82}
+                      com.android.launcher20.BubbleTextView{426ac168 VFED..C. ........ 336,0-406,70 #0}
+                com.android.launcher20.SearchDropTargetBar{426769e0 V.E..... ........ 0,25-1080,127 #7f0e0046 app:id/qsb_bar}
+                  android.widget.RelativeLayout{42677520 V.E..... ........ 72,50-1008,102 #7f0e0059 app:id/qsb_search_bar}
+                    com.android.launcher20.HolographicLinearLayout{426787b8 GFED.... ......I. 0,0-0,0 #7f0e005e app:id/search_button_container}
+                      android.widget.ImageView{42679498 G.ED.... ......I. 0,0-0,0 #7f0e005d app:id/search_button}
+                    com.android.launcher20.HolographicLinearLayout{426797f0 GFED.... ......I. 0,0-0,0 #7f0e005f app:id/voice_button_container}
+                      android.widget.ImageView{42679cc8 G.ED.... ......I. 0,0-0,0 #7f0e004a app:id/voice_button}
+                  android.widget.LinearLayout{4267a0b0 V.E..... ........ 72,0-1008,102 #7f0e005a app:id/drag_target_bar}
+                    android.widget.FrameLayout{4267a5c8 V.E..... ........ 0,0-468,102}
+                      com.android.launcher20.DeleteDropTarget{4267aa08 V.ED.... ........ 138,0-330,102 #7f0e0037 app:id/delete_target_text}
+                    android.widget.FrameLayout{4267c170 V.E..... ........ 468,0-936,102}
+                      com.android.launcher20.InfoDropTarget{4267c5a8 V.ED.... ........ 122,0-346,102 #7f0e0038 app:id/info_target_text}
+                com.android.launcher20.Cling{42680018 G.E...C. ......I. 0,0-0,0 #7f0e0048 app:id/folder_cling}
+                  android.widget.FrameLayout{42680498 V.E..... ......I. 0,0-0,0}
+                    android.widget.LinearLayout{42680898 V.E..... ......I. 0,0-0,0}
+                      android.widget.TextView{42680c30 V.ED.... ......ID 0,0-0,0 #7f0e003b app:id/folder_cling_title}
+                      android.widget.TextView{426810d8 V.ED.... ......ID 0,0-0,0 #7f0e003c app:id/folder_cling_create_folder}
+                      android.widget.Button{426815c0 VFED..C. ......I. 0,0-0,0 #7f0e002a app:id/cling_dismiss}
+                com.android.launcher20.DrawableStateProxyView{42681f98 G.E...C. ......I. 0,0-0,0 #7f0e0049 app:id/voice_button_proxy}
+                com.android.launcher20.AppsCustomizeTabHost{426825d0 IFE..... ......ID 0,25-1080,1872 #7f0e004b app:id/apps_customize_pane}
+                  android.widget.LinearLayout{42682af8 G.E..... ......I. 0,0-0,0 #7f0e002c app:id/apps_customize_content}
+                    android.widget.FrameLayout{42682e98 V.E..... ......I. 0,0-0,0 #7f0e002d app:id/tabs_container}
+                      com.android.launcher20.FocusOnlyTabWidget{426832d8 VFE..... ......I. 0,0-0,0 #1020013 android:id/tabs}
+                        com.android.launcher20.AccessibleTabView{42688ca0 VFED..C. ......I. 0,0-0,0}
+                        com.android.launcher20.AccessibleTabView{42689660 VFED..C. ..S...I. 0,0-0,0}
+                      android.widget.TextView{42684088 VFED..C. ......I. 0,0-0,0 #7f0e002e app:id/market_button}
+                    android.widget.FrameLayout{42684988 V.E..... ......I. 0,0-0,0 #1020011 android:id/tabcontent}
+                      com.android.launcher20.AppsCustomizePagedView{42684dd0 V.E..... ......I. 0,0-0,0 #7f0e002f app:id/apps_customize_pane_content}
+                      android.widget.FrameLayout{42685ee0 G.E..... ......I. 0,0-0,0 #7f0e0030 app:id/animation_buffer}
+                      android.widget.ImageView{42686528 G.ED.... ......ID 0,0-0,0 #7f0e0031 app:id/paged_view_indicator}
+                  com.android.launcher20.Cling{42686bd0 G.E...C. ......I. 0,0-0,0 #7f0e0032 app:id/all_apps_cling}
+                    android.widget.FrameLayout{42687050 V.E..... ......I. 0,0-0,0}
+                      android.widget.LinearLayout{42687450 V.E..... ......I. 0,0-0,0}
+                        android.widget.TextView{426877e8 V.ED.... ......ID 0,0-0,0 #7f0e0028 app:id/all_apps_cling_title}
+                        android.widget.TextView{42687c90 V.ED.... ......ID 0,0-0,0 #7f0e0029 app:id/all_apps_cling_add_item}
+                        android.widget.Button{42688178 VFED..C. ......I. 0,0-0,0 #7f0e002a app:id/cling_dismiss}
+          android.view.ViewStub{4266b088 G.E..... ......I. 0,0-0,0 #1020313}
+    Looper (main, tid 1) {41c63af0}
+      (Total messages: 0, idling=false, quitting=false)
+ 
+Debug logs: 

@@ -873,7 +873,7 @@ public class LauncherProvider extends ContentProvider {
                         added = id >= 0;
                     } else if (TAG_FOLDER.equals(name)) {
                         String title;
-                        int titleResId =  a.getResourceId(R.styleable.Favorite_title, -1);
+                        int titleResId =  a.getResourceId(R.styleable.Favorite_titleX, -1);
                         if (titleResId != -1) {
                             title = mContext.getResources().getString(titleResId);
                         } else {
@@ -1127,8 +1127,8 @@ public class LauncherProvider extends ContentProvider {
                 TypedArray a) {
             Resources r = mContext.getResources();
 
-            final int iconResId = a.getResourceId(R.styleable.Favorite_icon, 0);
-            final int titleResId = a.getResourceId(R.styleable.Favorite_title, 0);
+            final int iconResId = a.getResourceId(R.styleable.Favorite_iconX, 0);
+            final int titleResId = a.getResourceId(R.styleable.Favorite_titleX, 0);
 
             Intent intent;
             String uri = null;

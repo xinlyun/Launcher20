@@ -66,6 +66,8 @@ import com.iflytek.cloud.util.ContactManager.ContactListener;
 
 import com.iflytek.sunflower.FlowerCollector;
 import com.lin.myfloatactionbtn.VoiceView;
+import com.liuguangqiang.swipeback.SwipeBackActivity;
+import com.liuguangqiang.swipeback.SwipeBackLayout;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -78,7 +80,7 @@ import java.util.Stack;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class IatDemo extends Activity implements OnClickListener,
+public class IatDemo extends SwipeBackActivity implements OnClickListener,
 		PoiSearch.OnPoiSearchListener, RouteSearch.OnRouteSearchListener,TextWatcher
 {
 	private static String TAG = IatDemo.class.getSimpleName();
@@ -127,12 +129,36 @@ public class IatDemo extends Activity implements OnClickListener,
 	private RotateAnimation rotateAnimation;
 	private boolean flagListen=false;
 
-	@SuppressLint("ShowToast")
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(R.layout.iatdemo);
+//	@SuppressLint("ShowToast")
+//	public void onCreate(Bundle savedInstanceState) {
+//		super.onCreate(savedInstanceState);
+////		requestWindowFeature(Window.FEATURE_NO_TITLE);
+//		setContentView(R.layout.iatdemo);
+//		setDragEdge(SwipeBackLayout.DragEdge.LEFT);
+//		initLayout();
+//		initView();
+//		// 初始化识别无UI识别对象
+//		// 使用SpeechRecognizer对象，可根据回调消息自定义界面；
+//		mIat = SpeechRecognizer.createRecognizer(IatDemo.this, mInitListener);
+//
+//		// 初始化听写Dialog，如果只使用有UI听写功能，无需创建SpeechRecognizer
+//
+//		mSharedPreferences = getSharedPreferences(IatSettings.PREFER_NAME,
+//				Activity.MODE_PRIVATE);
+//		mToast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
+//
+//		mInstaller = new ApkInstaller(IatDemo.this);
+//
+//
+//	}
 
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+//		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.iatdemo);
+		setDragEdge(SwipeBackLayout.DragEdge.LEFT);
 		initLayout();
 		initView();
 		// 初始化识别无UI识别对象
@@ -146,7 +172,6 @@ public class IatDemo extends Activity implements OnClickListener,
 		mToast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
 
 		mInstaller = new ApkInstaller(IatDemo.this);
-
 
 	}
 

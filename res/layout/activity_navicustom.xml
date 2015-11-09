@@ -6,13 +6,18 @@
     android:orientation="vertical" >
 
 
-
-   <com.amap.api.navi.AMapNaviView
-       android:layout_marginTop="40dp"
-        android:id="@+id/customnavimap"
+    <LinearLayout
+        android:id="@+id/customnavimap_group"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-       />
+        android:orientation="vertical"
+        android:layout_height="match_parent"></LinearLayout>
+   <!--<com.amap.api.navi.AMapNaviView-->
+       <!--android:layout_marginTop="40dp"-->
+        <!--android:id="@+id/customnavimap"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+       <!--/>-->
     <RelativeLayout
         android:id="@+id/rl1_title"
         android:background="@drawable/titlebackgroup"

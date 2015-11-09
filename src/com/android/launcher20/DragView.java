@@ -67,6 +67,7 @@ public class DragView extends View {
     public DragView(Launcher launcher, Bitmap bitmap, int registrationX, int registrationY,
             int left, int top, int width, int height, final float initialScale) {
         super(launcher);
+
         mDragLayer = launcher.getDragLayer();
         mInitialScale = initialScale;
 

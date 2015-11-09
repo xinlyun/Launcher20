@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 public class FloatWindowGroup extends LinearLayout {
 
 
-    public FloatWindowGroup(Context context) {
+    FloatWindowGroup(Context context) {
         super(context);
         this.wmParams = wmParams;
         this.mWindowManager = mWindowManager;

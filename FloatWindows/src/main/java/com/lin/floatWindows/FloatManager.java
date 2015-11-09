@@ -9,7 +9,7 @@ import android.view.MotionEvent;
 import java.util.ArrayList;
 
 /**
- * Created by root on 15-9-19.
+ * Created by lin on 15-9-19.
  */
 public class FloatManager {
     private boolean isMiss=false;

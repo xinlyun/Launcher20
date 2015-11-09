@@ -1,13 +1,13 @@
 package com.android.launcher20.util;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
 /**
  * Xml结果解析类

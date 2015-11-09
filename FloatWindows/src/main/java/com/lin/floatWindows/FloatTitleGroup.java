@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
  */
 public class FloatTitleGroup extends LinearLayout {
 
-    public FloatTitleGroup(Context context) {
+    FloatTitleGroup(Context context) {
         super(context);
     }
 

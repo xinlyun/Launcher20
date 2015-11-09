@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
     <TextView
         android:id="@+id/id_search_listview_item_name"
+        android:textColor="#ffffff"
         android:textSize="40dp"
         android:text="123"
         android:layout_weight="1"
@@ -17,6 +18,7 @@
         <TextView
             android:id="@+id/id_search_listview_item_distance"
             android:text="123"
+            android:textColor="#ffffff"
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:layout_width="match_parent"
@@ -24,6 +26,7 @@
 
         <TextView
             android:text="456"
+            android:textColor="#ffffff"
             android:id="@+id/id_search_listview_item_time"
             android:gravity="center_horizontal"
             android:layout_weight="1"

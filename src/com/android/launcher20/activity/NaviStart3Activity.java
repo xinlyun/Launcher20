@@ -861,8 +861,11 @@ public class NaviStart3Activity extends FloatA implements OnClickListener,
                 public void onCalculateRouteSuccess() {
                     Log.d(TAG,"onCalculateRouteSuccess");
                     try{
+
                         dissmissProgressDialog();
+
                         closeDialog();}
+
                     catch (Exception e){
 
                     }

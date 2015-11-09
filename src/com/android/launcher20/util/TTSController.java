@@ -43,17 +43,21 @@ public class TTSController implements SynthesizerListener, AMapNaviListener {
 	public static TTSController getInstance(Context context) {
 		if (ttsManager == null) {
 			ttsManager = new TTSController(context);
+
 		}
 		return ttsManager;
 	}
 
 	public void initSynthesizer() {
 		SpeechUtility.createUtility(mContext, SpeechConstant.APPID + "=5608e250");
+
 //		5608e250
 //		SpeechUser.getUser().login(mContext, null, null,
 //				"appid=" + mContext.getString(R.string.app_id), listener);
 		// 初始化合成对象.
-		mSpeechSynthesizer = SpeechSynthesizer.createSynthesizer(mContext,null);
+
+
+		mSpeechSynthesizer = SpeechSynthesizer.createSynthesizer(mContext,mInitListener);
 //		SpeechRecognizer mIat= SpeechRecognizer.createRecognizer(mContext, null);
 		initSpeechSynthesizer();
 	}
@@ -99,10 +103,10 @@ public class TTSController implements SynthesizerListener, AMapNaviListener {
 
 	private void initSpeechSynthesizer() {
 		// 设置发音人
-		mSpeechSynthesizer.setParameter(SpeechConstant.VOICE_NAME, "xiaoyan");//设置发音人
+//		mSpeechSynthesizer.setParameter(SpeechConstant.VOICE_NAME, "xiaoyan");//设置发音人
 		mSpeechSynthesizer.setParameter(SpeechConstant.SPEED, "50");//设置语速
 		mSpeechSynthesizer.setParameter(SpeechConstant.VOLUME, "80");//设置音量，范围0~100
-		mSpeechSynthesizer.setParameter(SpeechConstant.ENGINE_TYPE, SpeechConstant.TYPE_CLOUD); //设置云端
+		mSpeechSynthesizer.setParameter(SpeechConstant.ENGINE_TYPE, SpeechConstant.TYPE_LOCAL); //设置云端
 
 	}
 

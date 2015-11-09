@@ -58,7 +58,7 @@ public class FloatWindowsView {
      * 基本的构造方法，从这里获取屏幕宽高并初始化一些内容
      * @param context
      */
-    public FloatWindowsView(Context context){
+    FloatWindowsView(Context context){
         this.context = context;
 //        mWindowManager = (WindowManager) context.getApplicationContext()
 //                .getSystemService(Context.WINDOW_SERVICE);
@@ -110,7 +110,7 @@ public class FloatWindowsView {
      */
     public void createParames(LayoutParams params){
         wmParams = new LayoutParams();
-        wmParams.type = LayoutParams.LAST_APPLICATION_WINDOW;
+        wmParams.type = LayoutParams.FIRST_APPLICATION_WINDOW+1;
 //        wmParams.token = params.token;
 
         //设置图片格式，效果为背景透明
@@ -148,7 +148,7 @@ public class FloatWindowsView {
         //获取WindowManagerImpl.CompatModeWrapper
 //        mWindowManager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
         //设置window type
-        wmParams.type = LayoutParams.LAST_APPLICATION_WINDOW;
+        wmParams.type = LayoutParams.FIRST_APPLICATION_WINDOW+1;
 //        wmParams.token = iBinder;
 
         wmParams.memoryType = LayoutParams.MEMORY_TYPE_HARDWARE;
@@ -450,7 +450,7 @@ public class FloatWindowsView {
             public void run() {
                FloatWindowsView.this.close();
             }
-        }, 8*1000);
+        }, 4*1000);
     }
 
 
@@ -632,7 +632,7 @@ public class FloatWindowsView {
     }
 
 
-    private int currentX,currentY,currentH,currentW;
+    private int currentX=22,currentY,currentH,currentW;
     public void dismiss(){
         Log.d("m","dismiss");
         if(wmParams.x<=width) {
